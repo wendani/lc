@@ -7,7 +7,8 @@ struct ListNode {
 
 struct ListNode *reverseList(struct ListNode *head) {
 
-    struct ListNode *nhd, curr;
+    struct ListNode *nhd;
+    struct ListNode *curr;
 
     if (!head)
         return head;
