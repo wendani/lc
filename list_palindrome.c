@@ -14,7 +14,8 @@
 
 bool isPalindrome(struct ListNode* head) {
 
-    struct ListNode *mid, *curr, *comp_head, *nxt;
+    struct ListNode *mid, *curr, *new_mid;
+    struct ListNode *comp_head, *nxt;
     int step;
 
     if (!head)
@@ -24,25 +25,24 @@ bool isPalindrome(struct ListNode* head) {
     mid = head;
     curr = head->next;
     step = 0;
+    head = NULL;
     while (curr) {
         curr = curr->next;
         step++;
         if (step == 2) {
-            mid = mid->next;
+            new_mid = mid->next;
+            mid->next = head;
+            head = mid;
+            mid = new_mid;
             step = 0;
         }
     }
 
-    // reverse the second half of the list
-    comp_head = NULL;
-    curr = mid->next;
-    while (curr) {
-        nxt = curr->next;
-        
-        curr->next = comp_head;
-        
-        comp_head = curr;
-        curr = nxt;
+    comp_head = mid->next;
+    if (step == 1) {
+        // even # of elements
+        mid->next = head;
+        head = mid;
     }
 
     // one-by-one comparison along the list
