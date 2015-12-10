@@ -14,9 +14,14 @@ bool hasCycle(struct ListNode *head) {
         return false;
 
     curr = head->next;
-    newhd = head;
-    newhd->next = NULL;
+    if (!curr)
+        return false;
 
+    newhd = head;
+    if (curr == newhd)
+        return true;
+
+    newhd->next = NULL;
     while (curr) {
         nxt = curr->next;
         curr->next = newhd;
