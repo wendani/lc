@@ -37,6 +37,8 @@ struct ListNode* reverseBetween(struct ListNode* head, int m, int n) {
 
     if (rprev)
         rprev->next = rtail;
+    else
+        head = rtail;
 
     // reverse from m to n
     curr = rhead->next;
