@@ -11,8 +11,8 @@
  * 1 <= m <= n <= length of list.
  */
 struct ListNode* reverseBetween(struct ListNode* head, int m, int n) {
-    struct ListNode *rprev, *rnext;
-    struct ListNode *rhead, *rtail;
+
+    struct ListNode *rprev, *rhead;
     
     struct ListNode *prev, *curr, *next;
     int i;
@@ -20,30 +20,23 @@ struct ListNode* reverseBetween(struct ListNode* head, int m, int n) {
     if (m == n)
         return head;
 
-    // finding the position of rprev, rhead, rtail, and rnext
-    rprev = NULL;
-    curr = head;
-    for (i = 1; i < n; i++) {
-        if (i == m - 1)
-            rprev = curr;
-        if (i == m)
-            rhead = curr;
-
-        curr = curr->next;
+    // finding the position of rprev and rhead
+    if (m == 1) {
+        rprev = NULL;
+        rhead = head;
     }
-    rtail = curr;
-    rnext = curr->next;
-
-
-    if (rprev)
-        rprev->next = rtail;
-    else
-        head = rtail;
+    else { // m != 1
+        curr = head;
+        for (i = 1; i < m - 1; i++)
+            curr = curr->next;
+        rprev = curr;
+        rhead = curr->next;
+    }
 
     // reverse from m to n
     curr = rhead->next;
     prev = rhead;
-    while (curr != rnext) {
+    for (i = m + 1; i < n + 1; i++) {
         next = curr->next;
 
         curr->next = prev;
@@ -52,7 +45,12 @@ struct ListNode* reverseBetween(struct ListNode* head, int m, int n) {
         curr = next;
     }
 
-    rhead->next = rnext;
+    if (rprev)
+        rprev->next = prev;
+    else
+        head = prev;
+
+    rhead->next = curr;
 
     return head;
 }
