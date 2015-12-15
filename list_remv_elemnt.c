@@ -23,7 +23,7 @@ struct ListNode* removeElements(struct ListNode* head, int val) {
             else {
                 prev->next = curr->next;
                 free(curr);
-                curr = prev-next;
+                curr = prev->next;
             }
         }
         else {
