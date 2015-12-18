@@ -7,19 +7,24 @@
  */
 void deleteNode(struct ListNode* node) {
 
-    struct ListNode *prev, *curr;
+    struct ListNode *pprev, *prev, *curr;
 
     if (!node)
         return;
 
-    prev = node;
-    curr = node->next;
+    pprev = NULL;
+    prev  = node;
+    curr  = node->next;
     while (curr) {
         prev->val = curr->val;
-        prev = curr;
-        curr = curr->next;
+
+        pprev = prev;
+        prev  = curr;
+        curr  = curr->next;
     }
 
-    prev->next = NULL;
-    free(curr);
+    if (pprev) {
+        pprev->next = NULL;
+        free(prev);
+    }
 }
