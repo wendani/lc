@@ -17,7 +17,7 @@ static inline struct ListNode *lastElement(struct ListNode *head)
 
 struct ListNode* sortList(struct ListNode* head) {
     struct ListNode *se_head, *l_head, *pvt;
-    struct ListNode *curr, prv, nxt;
+    struct ListNode *curr, *prv, *nxt;
 
     if (!head) return NULL;
     if (!head->next) return head;
