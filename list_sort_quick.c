@@ -18,13 +18,15 @@ static inline struct ListNode *lastElement(struct ListNode *head)
 struct ListNode* sortList(struct ListNode* head) {
     struct ListNode *se_head, *l_head, *pvt;
     struct ListNode *curr, *prv, *nxt;
+    struct ListNode *pvt_tail;
 
     if (!head) return NULL;
     if (!head->next) return head;
 
     se_head = NULL;
-    l_head = NULL;
-    pvt   = head;
+    l_head  = NULL;
+    pvt      = head;
+    pvt_tail = head;
     curr  = head->next;
     while (curr) {
         nxt = curr->next;
@@ -33,9 +35,13 @@ struct ListNode* sortList(struct ListNode* head) {
             curr->next = l_head;
             l_head = curr;
         }
-        else {
+        else if (curr->val < pvt->val) {
             curr->next = se_head;
             se_head = curr;
+        }
+        else {
+            curr->next = pvt;
+            pvt = curr;
         }
 
         curr = nxt;
@@ -50,7 +56,7 @@ struct ListNode* sortList(struct ListNode* head) {
     else
         prv->next = pvt;
 
-    pvt->next = l_head;
+    pvt_tail->next = l_head;
 
     
     return se_head;
