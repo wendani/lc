@@ -59,11 +59,12 @@ struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *he
     struct ListNode *tailA, *tailB;
     int a, b, c;
     int ac_sum, bc_sum, ab_sum;
-    struct ListNode *intersect;
+    struct ListNode *intersect, *prev, *curr, *nxt;
+    int cnt;
 
     if (!headA || !headB) return NULL;
 
-    tailA = listTraverse(headA, &ac_cum);
+    tailA = listTraverse(headA, &ac_sum);
     tailB = listReverse(headB, &bc_sum);
     if (tailA != tailB) {
         // retain list B's orginial structure
