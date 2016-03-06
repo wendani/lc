@@ -95,6 +95,7 @@ struct ListNode* sortList(struct ListNode* head) {
             tail->next = scd_half;
             scd_half = scd_half->next;
         }
+        tail = tail->next;
     }
     if (fst_half)
         tail->next = fst_half;
