@@ -25,7 +25,8 @@ static struct ListNode *listTraverse(struct ListNode *head, int *cnt)
 
 struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB) {
     struct ListNode *tailA, *tailB;
-    int ac_sum, bc_sum;
+    int ac_sum, bc_sum, ab_diff;
+    int i;
 
     if (!headA || !headB) return NULL;
 
