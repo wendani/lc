@@ -1,5 +1,5 @@
 void merge(int* nums1, int m, int* nums2, int n) {
-    int *;
+    int i, j, curr;
     
     if (!n) return;
     if (!m) {
@@ -8,8 +8,8 @@ void merge(int* nums1, int m, int* nums2, int n) {
         return;
     }
 
-    for (i = 0; i < m; ++i)
-        nums1[i + n] = nums1[i];
+    for (i = n + m - 1; i > n - 1; --i)
+        nums1[i] = nums1[i - n];
 
     i = n;
     j = 0;
