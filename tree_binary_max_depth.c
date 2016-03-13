@@ -9,7 +9,7 @@
 int maxDepth(struct TreeNode* root) {
     int ldepth, rdepth;
 
-    if (!root) 
+    if (!root)
         return 0;
 
     ldepth = maxDepth(root->left);
