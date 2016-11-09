@@ -13,14 +13,16 @@ typedef struct {
 /** @param head The linked list's head.
         Note that the head is guaranteed to be not null, so it contains at least one node. */
 Solution* solutionCreate(struct ListNode* head) {
-	int cnt = 0;
-	stuct ListNode *curr = head;
+	int cnt;
+	struct ListNode *curr;
 	
 	Solution *obj = (Solution *)malloc(sizeof(Solution));
 	if (!obj)
 		return NULL;
 
-	while (!curr) {
+	curr = head;
+	cnt  = 0;
+	while (curr) {
 		cnt++;
 		curr = curr->next;
 	}
@@ -31,15 +33,17 @@ Solution* solutionCreate(struct ListNode* head) {
 }
 
 /** Returns a random node's value. */
+/* Caller must make sure that obj is not NULL */
 int solutionGetRandom(Solution* obj) {
 	int i, idx;
 	struct ListNode *curr;
 
 	// need to validate input, but the following may not work
-	if (!obj)
-		return -1;
+//	if (!obj)
+//		return -1;
 	
-	idx = rand() % obj->cnt;
+	srand(time(NULL));
+	idx = rand() % obj->tot;
 	curr = obj->head;
 	for (i = 0; i < idx; i++)
 		curr = curr->next;
