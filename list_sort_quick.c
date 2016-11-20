@@ -15,6 +15,7 @@ static inline struct ListNode *lastElement(struct ListNode *head)
     return head;
 }
 
+/* Sort in ascending order*/
 struct ListNode* sortList(struct ListNode* head) {
     struct ListNode *se_head, *l_head, *pvt;
     struct ListNode *curr, *prv, *nxt;
