@@ -2,15 +2,18 @@
  * Return an array of size *returnSize
  * Note: The returned array must be malloced, assume caller calls free().
  */
+#define ENOMEM 12
+#define DEBUG_HTABLE_CONSTRUCT
+
 struct elmt {
 	int  val;
 	bool added;
 	struct elmt *next;
-}
+};
 
 int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
-	int *str;
-	struct elmt *htable[10] = {NULL};
+	int *arr;
+	struct elmt *htab[10] = {NULL};
 	int i, indx;
 	
 	if (!returnSize)
@@ -21,28 +24,29 @@ int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* ret
 		return NULL;   
 	}
 
-	str = (int *) malloc((nums1Size + nums2Size) * sizeof(int));
-	if (!str) {
+	arr = (int *) malloc((nums1Size + nums2Size) * sizeof(int));
+	if (!arr) {
 		*returnSize = -ENOMEM;
 		return NULL;
 	}
 
 	// construct a hash table for array 1
 	for (i = 0; i < nums1Size; i++) {
-		struct elmt *prev;
-		struct elmt *curr =  htable[nums1[i] % 10];
+		int hval = nums1[i] % 10;
+		struct elmt *prev = NULL;
+		struct elmt *curr = htab[hval];
 
 		while (curr) {
-			if (curr->val < nums1[i]) {
+			if (nums1[i] > curr->val) {
 				prev = curr;
 				curr = curr->next;
 				continue;
 			}
 
-			if (curr->val == nums1[i]) 
+			if (nums1[i] == curr->val)
 				break;
 			
-			if (curr->val > nums1[i]) {
+			if (nums1[i] < curr->val) {
 				// insert a new element between prev and curr
 				struct elmt *node = (struct elmt *) malloc(sizeof(struct elmt));
 				if (!node) {
@@ -53,7 +57,10 @@ int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* ret
 				node->val   = nums1[i];
 				node->added = false;
 				
-				prev->next = node;
+				if (prev)
+					prev->next = node;
+				else
+					htab[hval] = node;
 				node->next = curr;
 
 				break;
@@ -61,9 +68,9 @@ int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* ret
 		}
 		if (!curr) {
 			/* element not found
-			 * add a new element at the tail of the list
+			 * add a new element to the tail of the list
 			 */
-			struct elmt *node = (struct elmt *) malloc(sizeof(struct elemt));
+			struct elmt *node = (struct elmt *) malloc(sizeof(struct elmt));
 			if (!node) {
 				*returnSize = -ENOMEM;
 				return NULL;
@@ -72,37 +79,61 @@ int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* ret
 			node->val   = nums1[i];
 			node->added = false;
 
-			prev->next = node;
+			if (prev)
+				prev->next = node;
+			else
+				htab[hval] = node;
 			node->next = NULL;
 		}
 	}
 	
+#ifdef DEBUG_HTABLE_CONSTRUCT
+	for (i = 0; i < 10; i++) {
+		struct elmt *curr = htab[i];
+
+		printf("%d:" ,i);
+		while (curr) {
+			printf(" %d", curr->val);
+			curr = curr->next;
+		}
+		printf("\n");
+	}
+#endif
+
 	indx = 0;
 	// find intersection
 	for (i = 0; i < nums2Size; i++) {
-		struct elmt *curr = htable[nums2[i] % 10];
+		struct elmt *curr = htab[nums2[i] % 10];
 
 		while (curr) {
+			if (nums2[i] < curr->val)
+				break;
+
+			if (nums2[i] > curr->val) {
+				curr = curr->next;
+				continue;
+			}
+
 			if (curr->val == nums2[i]) {
 				if (curr->added == false) {
-					// add to str---array to return
-					str[indx]   = nums2[i];
+					// first-time occurrence
+					// add to arr---array to return
+					arr[indx]   = nums2[i];
 
 					curr->added = true;
 					++indx;
 				}
+
 				break;
 			}
-
-			curr = curr->next;
 		}
 	}
 	*returnSize = indx;
 	
 	// free hash table elements, if any
 	for (i = 0; i < 10; i++) {
-		struct element *next;
-		struct element *curr = htable[i];
+		struct elmt *next;
+		struct elmt *curr = htab[i];
 
 		while (curr) {
 			next = curr->next;
@@ -111,5 +142,5 @@ int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* ret
 		}
 	}
 
-	return str;
+	return arr;
 }
