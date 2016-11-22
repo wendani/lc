@@ -88,7 +88,7 @@ void bsort(int *nums, int numSize) {
  */
 int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
 	int *arr;
-	int i, j;
+	int i, j, indx;
 
 	if (!returnSize)
 		return NULL;
