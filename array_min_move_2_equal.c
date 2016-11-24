@@ -1,3 +1,8 @@
+#define TEST
+#ifdef TEST
+#include <stdio.h>
+#endif
+
 #define EINVAL 22
 
 /**
@@ -28,7 +33,7 @@ static int is_equal(int *nums, int num_size)
  */
 static int get_max(int *nums, int num_size)
 {
-	int indx = 0;
+	int i, indx = 0;
 
 	if (!nums || !num_size)
 		return -1;
@@ -42,10 +47,16 @@ static int get_max(int *nums, int num_size)
 }
 
 int minMoves(int* nums, int numsSize) {
-	int moves;
+	int i, indx, moves;
 
 	if (!nums || !numsSize)
 		return 0;
+
+	if (numsSize == 1)
+		return 0;
+
+	if (numsSize == 2)
+		return abs(nums[0] - nums[1]);
 
 	moves = 0;
 	while (!is_equal(nums, numsSize)) {
@@ -63,3 +74,14 @@ int minMoves(int* nums, int numsSize) {
 
 	return  moves;
 }
+
+#ifdef TEST
+int main(int argc, char *argv[])
+{
+	int arr[] = {1, 2147483647};
+
+	printf("moves: %d\n", minMoves(arr, 2));
+
+	return 0;
+}
+#endif
