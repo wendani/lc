@@ -7,7 +7,7 @@
  */
 void reorderList(struct ListNode* head) {
 	int i;
-	struct ListNode *mid, prev, curr, next;
+	struct ListNode *mid, *prev, *curr, *next;
 
 	if (!head)
 		return;
