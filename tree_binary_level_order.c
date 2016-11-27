@@ -12,7 +12,7 @@ struct list_node_head {
 	struct list_node *prev;
 
 	uint32_t qlen;
-}
+};
 
 /**
  * Caller ensures that argument head is not NULL
@@ -22,7 +22,7 @@ static inline void __list_head_init(struct list_node_head *head)
 	head->next = (struct list_node *) head;
 	head->prev = (struct list_node *) head;
 
-	head->len = 0;
+	head->qlen = 0;
 }
 
 struct list_node {
@@ -30,7 +30,7 @@ struct list_node {
 	struct list_node *prev;
 
 	struct TreeNode  *tnode;
-}
+};
 
 int find_depth(struct TreeNode *root)
 {
@@ -56,7 +56,7 @@ static inline int __list_empty(struct list_node_head *head)
 
 static inline int __list_len(struct list_node_head *head)
 {
-	return head->len;
+	return head->qlen;
 }
 
 static inline void __list_add_tail(struct list_node_head *head, struct list_node *node)
@@ -69,7 +69,7 @@ static inline void __list_add_tail(struct list_node_head *head, struct list_node
 	head->prev = node;
 	node->prev = prev;
 
-	++head->len;
+	++head->qlen;
 }
 
 /**
@@ -82,7 +82,7 @@ static inline struct list_node *__list_dequeue(struct list_node_head *head)
 
 	head->next = next;
 	next->prev = (struct list_node *) head;
-	--head->len;
+	--head->qlen;
 
 	return curr;
 }
@@ -121,7 +121,7 @@ int** levelOrder(struct TreeNode* root, int** columnSizes, int* returnSize) {
 	}
 
 	// find the depth of the tree to determine the array size for allocation
-	depth = find_depth(struct TreeNode *root);
+	depth = find_depth(root);
 	arr = (int **) malloc(depth * sizeof(int *));
 	colmn = (int *) malloc(depth * sizeof(int));
 
@@ -132,7 +132,7 @@ int** levelOrder(struct TreeNode* root, int** columnSizes, int* returnSize) {
 	new_lnode->tnode = root;
 	__list_add_tail(head, new_lnode);
 	rindx = 0;
-	colmn[rindx] = head->len;
+	colmn[rindx] = head->qlen;
 	arr[rindx] = (int *) malloc(colmn[rindx] * sizeof(int));
 	cindx = 0;
 	level_tail = head->prev;
@@ -157,7 +157,10 @@ int** levelOrder(struct TreeNode* root, int** columnSizes, int* returnSize) {
 
 		if (curr == level_tail) {
 			++rindx;
-			colmn[rindx] = head->len;
+			if (rindx == depth)
+				break;
+
+			colmn[rindx] = head->qlen;
 			arr[rindx] = (int *) malloc(colmn[rindx] * sizeof(int));
 
 			cindx = 0;
