@@ -21,14 +21,14 @@ static bool __isBalanced(struct TreeNode *root, int *depth)
 	lbalanced = __isBalanced(root->left, &ldepth);
 	rbalanced = __isBalanced(root->right, &rdepth);
 	if (depth)
-		*depth = (*ldepth >= *rdepth) ? (*ldepth + 1) : (*rdepth + 1);
+		*depth = (ldepth >= rdepth) ? (ldepth + 1) : (rdepth + 1);
 
 	if (!lbalanced || !rbalanced) {
 		return false;
 	}
 
 	// reach here when both children are balanced
-	return (abs(*ldepth - *rdepth) > 1) ? false : true;
+	return (abs(ldepth - rdepth) > 1) ? false : true;
 }
 
 bool isBalanced(struct TreeNode* root) {
