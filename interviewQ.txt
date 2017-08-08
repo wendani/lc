@@ -1,0 +1,21 @@
+n to the power of 2, two's complement
+
+test if an unsigned integer is odd or even
+
+bit operations, bit swap
+
+bit count
+
+binary search
+
+bubble sort, quick sort, merge sort
+
+stack growth direction
+
+factorial
+
+if a singly linked list has a circle
+
+endian
+
+head tail swap of a singly linked list
