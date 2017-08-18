@@ -1,26 +1,32 @@
+/**
+ * Rotate an array of n elements to the right by k steps.
+ *
+ * For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
+ */
+
 void rotate(int* nums, int numsSize, int k) {
-    int oidx, nidx, otemp, ntemp;
-    int i, init_idx;
+	int oidx, nidx, temp;
+	int i, init_idx;
 
-    if (k % numsSize == 0) return;
+	k %= numsSize;
+	if (k == 0) return;
 
-    oidx = 0;
-    init_idx = oidx;
-    otemp = nums[oidx];
-    for (i = 1; i <= numsSize; ++i) {
-        nidx = oidx + k;
-        if (nidx >= numsSize)
-            nidx %= numsSize;
+	init_idx = numsSize - 1;
+	nidx = init_idx;
+	temp = nums[nidx];
+	for (i = 1; i <= numsSize; ++i) {
+		if (nidx < k)
+			oidx = nidx + numsSize - k;
+		else
+			oidx = nidx - k;
 
-        ntemp = nums[nidx];
-        nums[nidx] = otemp;
-        
-        oidx = nidx;
-        otemp = ntemp;
-        if (oidx == init_idx) {
-            ++oidx;
-            init_idx = oidx;
-            otemp = nums[oidx];
-        }
-    }
+		if (oidx == init_idx) {
+			nums[nidx] = temp;
+			--init_idx;
+			nidx = init_idx;
+		} else {
+			nums[nidx] = nums[oidx];
+			nidx = oidx;
+		}
+	}
 }
