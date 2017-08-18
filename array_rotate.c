@@ -22,8 +22,10 @@ void rotate(int* nums, int numsSize, int k) {
 
 		if (oidx == init_idx) {
 			nums[nidx] = temp;
+
 			--init_idx;
 			nidx = init_idx;
+			temp = nums[nidx];
 		} else {
 			nums[nidx] = nums[oidx];
 			nidx = oidx;
