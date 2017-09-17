@@ -8,6 +8,8 @@ bit count
 
 binary search
 
+binary search min on a rotated sorted array
+
 bubble sort, quick sort, merge sort
 
 stack growth direction
@@ -21,3 +23,5 @@ endian
 head tail swap of a singly linked list
 
 Delete elements with value equal to N in a singly linked list
+
+if four points form a square
