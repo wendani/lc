@@ -1,3 +1,6 @@
+// The maximum depth is the numer of noes along the longest path
+// from the root node to the farthest leaf node
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -9,7 +12,7 @@
 int maxDepth(struct TreeNode* root) {
     int ldepth, rdepth;
 
-    if (!root) 
+    if (!root)
         return 0;
 
     ldepth = maxDepth(root->left);
