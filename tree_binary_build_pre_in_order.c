@@ -35,7 +35,7 @@ struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int in
 
 // iteration
 struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize) {
-	int i, lo, up;
+	int i, j, lo, up, nup;
 	struct TreeNode *root, *add_pnt, *p, *op;
 
 	if ((!preorder) || (!inorder))
@@ -55,7 +55,8 @@ struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int in
 	add_pnt = NULL;
 
 	// core
-	for (i = 0; i < inorderSize; i++) {
+	i = 0;
+	while (i < inorderSize) {
 		if (lo > 0 && preorder[lo - 1] == inorder[i]) {
 			lo--;
 
@@ -67,10 +68,13 @@ struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int in
 			// update root and add point
 			add_pnt = p;
 			root = p;
+			i++;
 		} else {
 			// construct right subtree and connect
 			for (nup = up + 1; preorder[nup] != inorder[i]; nup++)
 				;
+			assert(nup < preorderSize);
+
 			op = NULL;
 			for (j = nup; j > up; j--) {
 				p = (struct TreeNode *)malloc(sizeof(struct TreeNode));
@@ -84,6 +88,7 @@ struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int in
 
 			// update add point and upper bound
 			add_pnt = op;
+			i += (nup - up);
 			up = nup;
 		}
 	}
