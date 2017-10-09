@@ -8,7 +8,7 @@
  */
 
 struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize) {
-	int rval;
+	int rval, i;
 	struct TreeNode *root, *ltree, *rtree;
 
 	if ((!preorder) || (!inorder))
@@ -18,7 +18,8 @@ struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int in
 		return NULL;
 
 	rval = preorder[0];
-	for (i = 0; inorderSize[i] != rval; i++)
+	for (i = 0; inorder[i] != rval; i++)
+		;
 	assert(i < inorderSize);
 
 	ltree = buildTree(preorder + 1, i, inorder, i);
@@ -30,4 +31,3 @@ struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int in
 	root->right = rtree;
 	return root;
 }
-
