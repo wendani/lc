@@ -1,3 +1,4 @@
+Bit manipulation
 n to the power of 2, two's complement
 
 test if an unsigned integer is odd or even
@@ -6,22 +7,44 @@ bit swap: swap odd and even bits in an integer
 
 bit count
 
-binary search
 
-binary search min on a rotated sorted array
-
+Sorting
 bubble sort, quick sort, merge sort
 
-stack growth direction
+if four points form a square
 
-factorial
 
+Linked list
 if a singly linked list has a circle
-
-endian
 
 head tail swap of a singly linked list
 
 Delete elements with value equal to N in a singly linked list
 
-if four points form a square
+print a linked list in reverse order with constant memory
+
+
+Array
+binary search
+
+binary search min on a rotated sorted array
+
+merge two sorted arrays
+
+
+Tree
+if a binary tree is a binary search tree
+
+
+Queue
+doubly linked list
+array
+stack
+
+
+Misc
+stack growth direction
+
+factorial
+
+endian
