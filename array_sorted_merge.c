@@ -8,7 +8,7 @@ void merge(int* nums1, int m, int* nums2, int n) {
         return;
     }
 
-    for (i = n + m - 1; i > n - 1; --i)
+    for (i = n + m - 1; i >= n; --i)
         nums1[i] = nums1[i - n];
 
     i = n;
