@@ -29,3 +29,28 @@ void merge(int* nums1, int m, int* nums2, int n) {
         for (; j < n; ++j, ++curr)
             nums1[curr] = nums2[j];
 }
+
+void merge(int *nums1, int m, int *nums2, int n) {
+	int i, tail, k;
+	int j;
+
+	i = 0;
+	tail = m - 1;
+	j = 0;
+	while (j < n) {
+		if ((i <= tail) && (nums1[i] <= nums2[j]))
+			i++;
+		else {
+			// nums1[i] > nums2[j]
+			// right shift nums1[i]..nums1[tail] by one
+			for (k = tail; k >= i; k--)
+				nums1[k + 1] = nums1[k];
+
+			nums1[i] = nums2[j];
+			i++;
+			tail++;
+			j++;
+			assert(tail == l - 1 + j);
+		}
+	}
+}
