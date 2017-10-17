@@ -1,50 +1,50 @@
 Bit manipulation
-n to the power of 2, two's complement
+n to the power of 2, two's complement (Irdeto, Cisco)
 
-test if an unsigned integer is odd or even
+test if an unsigned integer is odd or even (Irdeto, Pure Storage)
 
-bit swap: swap odd and even bits in an integer
+bit swap: swap odd and even bits in an integer (Cisco)
 
-bit count
+bit count (Qualcomm)
 
 
 Sorting
-bubble sort, quick sort, merge sort
+bubble sort, quick sort, merge sort (Qualcomm)
 
-if four points form a square
+if four points form a square (Pure Storage)
 
 
 Linked list
-if a singly linked list has a circle
+if a singly linked list has a circle (Microsoft)
 
-head tail swap of a singly linked list
+head tail swap of a singly linked list (Microsoft)
 
-Delete elements with value equal to N in a singly linked list
+Delete elements with value equal to N in a singly linked list (Cisco)
 
-print a linked list in reverse order with constant memory
+print a linked list in reverse order with constant memory (Microsoft)
 
 
 Array
-binary search
+binary search (Cisco)
 
-binary search min on a rotated sorted array
+binary search min on a rotated sorted array (Arista Networks)
 
-merge two sorted arrays
+merge two sorted arrays (Microsoft)
 
 
 Tree
-if a binary tree is a binary search tree
+if a binary tree is a binary search tree (Microsoft)
 
 
-Queue
+Queue (Microsoft)
 doubly linked list
 array
 stack
 
 
 Misc
-stack growth direction
+stack growth direction (Cisco)
 
-factorial
+factorial (Cisco)
 
-endian
+endian (Microsoft)
