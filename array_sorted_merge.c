@@ -50,7 +50,23 @@ void merge(int *nums1, int m, int *nums2, int n) {
 			i++;
 			tail++;
 			j++;
-			assert(tail == l - 1 + j);
+			assert(tail == m - 1 + j);
 		}
 	}
+}
+
+
+void merge(int *nums1, int m, int *nums2, int n) {
+	int i, j, curr;
+
+	for (i = m - 1, j = n - 1, curr = m + n - 1; j >= 0; curr--)
+		if ((i >= 0) && (nums1[i] > nums2[j])) {
+			nums1[curr] = nums1[i];
+			i--;
+		} else {
+			// nums1[i] <= nums2[j]
+			// or i <= 0, where original nums1[i] are all in place
+			nums1[curr] = nums2[j];
+			j--;
+		}
 }
