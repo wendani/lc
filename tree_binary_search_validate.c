@@ -14,7 +14,7 @@ bool __isValidBST(struct TreeNode* root, int *lower_bound_for_left_child, int *u
 		if (root->left->val >= root->val)
 			return false;
 
-		if ((lower_bound_for_left_child) && (root->left->val <= *lower_bound_for_left_child)
+		if ((lower_bound_for_left_child) && (root->left->val <= *lower_bound_for_left_child))
 			return false;
 	}
 
