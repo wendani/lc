@@ -25,3 +25,20 @@ struct ListNode *reverseList(struct ListNode *head) {
 
     return head;
 }
+
+
+struct ListNode *reverseList(struct ListNode *head) {
+	struct ListNode *prev, *curr, *nxt;
+
+	curr = head;
+	prev = NULL;
+	while (curr) {
+		nxt = curr->next;
+		currr->next = prev;
+
+		prev = curr;
+		curr = nxt;
+	}
+
+	return prev;
+}
