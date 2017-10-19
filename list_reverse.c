@@ -34,7 +34,7 @@ struct ListNode *reverseList(struct ListNode *head) {
 	prev = NULL;
 	while (curr) {
 		nxt = curr->next;
-		currr->next = prev;
+		curr->next = prev;
 
 		prev = curr;
 		curr = nxt;
