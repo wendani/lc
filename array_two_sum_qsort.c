@@ -1,8 +1,12 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+// quick sort
 static void _qsort(int *aSortedIdx, int *a, int size)
 {
     int i;
 
-    if (!a || size < 2)
+    if (!aSortedIdx || !a || size < 2)
         return;
 
     int piv = size - 1;
@@ -20,29 +24,29 @@ static void _qsort(int *aSortedIdx, int *a, int size)
 }
 
 int* twoSum(int* nums, int numsSize, int target, int* returnSize){
-    int *aSortedIdx;
+    int *numsSortedIdx;
     int i, j;
 
-    aSortedIdx = (int *)malloc(numsSize * sizeof(int));
-    for (i = 0; i < size; i++)
-        aSortedIdx[i] = i;
-    _qsort(aSortedIdx, nums, numsSize);
+    numsSortedIdx = (int *)malloc(numsSize * sizeof(int));
+    for (i = 0; i < numsSize; i++)
+        numsSortedIdx[i] = i;
+    _qsort(numsSortedIdx, nums, numsSize);
 
     i = 0;
     j = numsSize - 1;
     while (i < j) {
-        if (nums[aSortedIdx[i]] + nums[aSortedIdx[j]] == target) {
+        if (nums[numsSortedIdx[i]] + nums[numsSortedIdx[j]] == target) {
             int *indices = (int *)malloc(2 * sizeof(int));
-            indices[0] = aSortedIdx[i];
-            indices[1] = aSortedIdx[j];
+            indices[0] = numsSortedIdx[i];
+            indices[1] = numsSortedIdx[j];
             *returnSize = 2;
             return indices;
         }
-        else if (nums[aSortedIdx[i]] + nums[aSortedIdx[j]] < target) {
+        else if (nums[numsSortedIdx[i]] + nums[numsSortedIdx[j]] < target) {
             ++i;
         }
         else {
-            // nums[aSortedIdx[i]] + nums[aSortedIdx[j]] > target
+            // nums[numsSortedIdx[i]] + nums[numsSortedIdx[j]] > target
             --j;
         }
     }
