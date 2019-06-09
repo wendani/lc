@@ -11,7 +11,7 @@ static void _qsort(int *aSortedIdx, int *a, int size)
 
     int piv = size - 1;
     for (i = piv - 1; i >= 0; i--)
-        if (a[i] >= a[piv]) {
+        if (a[aSortedIdx[i]] >= a[aSortedIdx[piv]]) {
             int temp = aSortedIdx[i];
             aSortedIdx[i] = aSortedIdx[piv - 1];
             aSortedIdx[piv - 1] = aSortedIdx[piv];
@@ -20,7 +20,7 @@ static void _qsort(int *aSortedIdx, int *a, int size)
         }
 
     _qsort(aSortedIdx, a, piv);
-    _qsort(&aSortedIdx[piv + 1], &a[piv + 1], size - (piv + 1));
+    _qsort(&aSortedIdx[piv + 1], a, size - (piv + 1));
 }
 
 int* twoSum(int* nums, int numsSize, int target, int* returnSize){
