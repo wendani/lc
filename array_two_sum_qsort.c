@@ -5,22 +5,31 @@
 static void _qsort(int *aSortedIdx, int *a, int size)
 {
     int i;
+    int piv_lo, piv_hi;
 
     if (!aSortedIdx || !a || size < 2)
         return;
 
-    int piv = size - 1;
-    for (i = piv - 1; i >= 0; i--)
-        if (a[aSortedIdx[i]] >= a[aSortedIdx[piv]]) {
+    piv_hi = size - 1;
+    piv_lo = piv_hi;
+    for (i = piv_lo - 1; i >= 0; i--)
+        if (a[aSortedIdx[i]] > a[aSortedIdx[piv_lo]]) {
             int temp = aSortedIdx[i];
-            aSortedIdx[i] = aSortedIdx[piv - 1];
-            aSortedIdx[piv - 1] = aSortedIdx[piv];
-            aSortedIdx[piv] = temp;
-            piv--;
+            aSortedIdx[i] = aSortedIdx[piv_lo - 1];
+            aSortedIdx[piv_lo - 1] = aSortedIdx[piv_hi];
+            aSortedIdx[piv_hi] = temp;
+            piv_lo--;
+            piv_hi--;
+        }
+        else if (a[aSortedIdx[i]] == a[aSortedIdx[piv_lo]]) {
+            int temp = aSortedIdx[i];
+            piv_lo--;
+            aSortedIdx[i] = aSortedIdx[piv_lo];
+            aSortedIdx[piv_lo] = temp;
         }
 
-    _qsort(aSortedIdx, a, piv);
-    _qsort(&aSortedIdx[piv + 1], a, size - (piv + 1));
+    _qsort(aSortedIdx, a, piv_lo);
+    _qsort(&aSortedIdx[piv_hi + 1], a, size - (piv_hi + 1));
 }
 
 int* twoSum(int* nums, int numsSize, int target, int* returnSize){
