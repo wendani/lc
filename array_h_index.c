@@ -44,7 +44,7 @@ int hIndex(int* citations, int citationsSize){
 	}
 	_qsort(citeSortedIdx, citations, citationsSize);
 
-	for (i = 0; citations[citeSortedIdx[i]] < citationsSize - i && i < citationsSize; i++)
+	for (i = 0; i < citationsSize && citations[citeSortedIdx[i]] < citationsSize - i; i++)
 		;
 
 	free(citeSortedIdx);
