@@ -1,5 +1,5 @@
 int trap(int* height, int heightSize){
-	int i;
+	int i, head, tail;
 	int sum, total_trap;
 
 	if (!height || heightSize < 1)
