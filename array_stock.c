@@ -20,37 +20,37 @@ int maxProfit(int* prices, int pricesSize){
 		i++;
 		j--;
 
-		if (a[head] >= a[i]) {
+		if (prices[head] >= prices[i]) {
 			head = i;
-			if (a[tail] - a[head] > max_prof) {
+			if (prices[tail] - prices[head] > max_prof) {
 				min_idx = head;
 				max_idx = tail;
-				max_prof = a[tail] - a[head];
+				max_prof = prices[tail] - prices[head];
 			}
 		}
 		else {
-			// a[head] < a[i]
-			if (a[i] - a[head] > max_prof) {
+			// prices[head] < prices[i]
+			if (prices[i] - prices[head] > max_prof) {
 				min_idx = head;
 				max_idx = i;
-				max_prof = a[i] - a[head];
+				max_prof = prices[i] - prices[head];
 			}
 		}
 
-		if (a[j] >= a[tail]) {
+		if (prices[j] >= prices[tail]) {
 			tail = j;
-			if (a[tail] - a[head] > max_prof) {
+			if (prices[tail] - prices[head] > max_prof) {
 				min_idx = head;
 				max_idx = tail;
-				max_prof = a[tail] - a[head];
+				max_prof = prices[tail] - prices[head];
 			}
 		}
 		else {
-			// a[j] < a[tail]
-			if (a[tail] - a[j] > max_prof) {
+			// prices[j] < prices[tail]
+			if (prices[tail] - prices[j] > max_prof) {
 				min_idx = j;
 				max_idx = tail;
-				max_prof = a[j] - a[tail];
+				max_prof = prices[j] - prices[tail];
 			}
 		}
 	}
