@@ -28,7 +28,7 @@ static void _qsort(int aSortedIdx[], int aOrig[], int size)
 	}
 
 	_qsort(&aSortedIdx[0], aOrig, pvt_lo);
-	_qsort(&aSortedIdx[piv_hi + 1], aOrig, size - (pvt_hi + 1));
+	_qsort(&aSortedIdx[pvt_hi + 1], aOrig, size - (pvt_hi + 1));
 }
 
 int hIndex(int* citations, int citationsSize){
@@ -44,10 +44,9 @@ int hIndex(int* citations, int citationsSize){
 	}
 	_qsort(citeSortedIdx, citations, citationsSize);
 
-	for (i = 0; citations[citeSortedIdx[i]] < citationsSize - i && i < size; i++)
+	for (i = 0; citations[citeSortedIdx[i]] < citationsSize - i && i < citationsSize; i++)
 		;
 
 	free(citeSortedIdx);
-
 	return citationsSize - i;
 }
