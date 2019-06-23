@@ -65,7 +65,7 @@ void merge(int *nums1, int m, int *nums2, int n) {
 			i--;
 		} else {
 			// nums1[i] <= nums2[j]
-			// or i <= 0, where original nums1[i] are all in place
+			// or i < 0, where original nums1[i] are all in place
 			nums1[curr] = nums2[j];
 			j--;
 		}
