@@ -1,3 +1,24 @@
+Warm-up checklist
+
+quick sort
+binary search
+is binary search tree
+set
+merge sort
+heap
+red black tree
+
+
+Amazon
+# of islands
+Best time to buy and sell stock
+array
+2 sum
+
+array trap water
+
+
+
 Bit manipulation
 n to the power of 2, two's complement (Irdeto, Cisco)
 
