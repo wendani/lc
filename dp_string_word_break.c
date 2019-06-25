@@ -24,18 +24,35 @@ bool wordBreak(char * s, char ** wordDict, int wordDictSize){
 	size_t len;
 	int i, j, k;
 	bool *canBreak, final;
+	size_t word_len_min, word_len_max;
 
 	if (!s)
+		return false;
+
+	if (!wordDict || wordDictSize < 1)
 		return false;
 
 	len = strlen(s);
 	canBreak = (bool *)malloc((len + 1) * sizeof(bool));
 
+	word_len_min = strlen(wordDict[0]);
+	word_len_max = strlen(wordDict[0]);
+	for (i = 1; i < wordDictSize; i++) {
+		size_t word_len = strlen(wordDict[i]);
+		if (word_len_max < word_len) {
+			word_len_max = word_len;
+		}
+		else if (word_len < word_len_min) {
+			word_len_min = word_len;
+		}
+	}
+
+	// canBreak[i] means the first i characters are word breakable
 	canBreak[0] = true;
 	for (i = 1; i <= len; i++) {
 		canBreak[i] = false;
 
-		for (j = i - 1; j >= 0; j--) {
+		for (j = i - word_len_min; j >= 0 && j >= i - word_len_max; j--) {
 			if (canBreak[i])
 				break;
 
