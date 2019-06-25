@@ -1,4 +1,4 @@
-// recursion O(2^n)
+// Time limit exceeded
 bool wordBreak(char * s, char ** wordDict, int wordDictSize){
 	int i, j;
 	size_t len;
@@ -22,6 +22,7 @@ bool wordBreak(char * s, char ** wordDict, int wordDictSize){
 
 bool wordBreak(char * s, char ** wordDict, int wordDictSize){
 	size_t len;
+	int i, j, k;
 	bool *canBreak;
 
 	if (!s)
@@ -42,9 +43,10 @@ bool wordBreak(char * s, char ** wordDict, int wordDictSize){
 				continue;
 
 			for (k = 0; k < wordDictSize; k++) {
-				if (strlen(wordDict[k]) == i - j && !strncmp(&s[j], wordDict[k], i - j))
+				if (strlen(wordDict[k]) == i - j && !strncmp(&s[j], wordDict[k], i - j)) {
 					canBreak[i] = true;
 					break;
+				}
 			}
 		}
 	}
