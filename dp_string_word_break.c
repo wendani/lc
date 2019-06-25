@@ -1,3 +1,4 @@
+// recursion O(2^n)
 bool wordBreak(char * s, char ** wordDict, int wordDictSize){
 	int i, j;
 	size_t len;
@@ -17,4 +18,36 @@ bool wordBreak(char * s, char ** wordDict, int wordDictSize){
 			}
 
 	return false;
+}
+
+bool wordBreak(char * s, char ** wordDict, int wordDictSize){
+	size_t len;
+	bool *canBreak;
+
+	if (!s)
+		return false;
+
+	len = strlen(s);
+	canBreak = (bool *)malloc((len + 1) * sizeof(bool));
+
+	canBreak[0] = true;
+	for (i = 1; i <= len; i++) {
+		canBreak[i] = false;
+
+		for (j = 0; j < i; j++) {
+			if (canBreak[i])
+				break;
+
+			if (!canBreak[j])
+				continue;
+
+			for (k = 0; k < wordDictSize; k++) {
+				if (strlen(wordDict[k]) == i - j && !strncmp(&s[j], wordDict[k], i - j))
+					canBreak[i] = true;
+					break;
+			}
+		}
+	}
+
+	return canBreak[len];
 }
