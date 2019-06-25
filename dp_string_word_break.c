@@ -52,7 +52,7 @@ bool wordBreak(char * s, char ** wordDict, int wordDictSize){
 	for (i = 1; i <= len; i++) {
 		canBreak[i] = false;
 
-		for (j = i - word_len_min; j >= 0 && j >= i - word_len_max; j--) {
+		for (j = i - word_len_min; j >= 0 && j >= (int)(i - word_len_max); j--) {
 			if (canBreak[i])
 				break;
 
