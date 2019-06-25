@@ -13,7 +13,6 @@ bool wordBreak(char * s, char ** wordDict, int wordDictSize){
 		for (j = 0; j < wordDictSize; j++)
 			if (strlen(wordDict[j]) == i && !strncmp(s, wordDict[j], i) &&
 			    wordBreak(&s[i], wordDict, wordDictSize)) {
-				printf("%s\n", &s[i]);
 				return true;
 			}
 
