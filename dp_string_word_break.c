@@ -23,7 +23,7 @@ bool wordBreak(char * s, char ** wordDict, int wordDictSize){
 bool wordBreak(char * s, char ** wordDict, int wordDictSize){
 	size_t len;
 	int i, j, k;
-	bool *canBreak;
+	bool *canBreak, final;
 
 	if (!s)
 		return false;
@@ -51,5 +51,7 @@ bool wordBreak(char * s, char ** wordDict, int wordDictSize){
 		}
 	}
 
-	return canBreak[len];
+	final = canBreak[len];
+	free(canBreak);
+	return final;
 }
