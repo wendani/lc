@@ -92,7 +92,7 @@ static inline struct list_node *__list_dequeue(struct list_node_head *head)
  * The sizes of the arrays are returned as *columnSizes array.
  * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
  */
-int** levelOrder(struct TreeNode* root, int** columnSizes, int* returnSize) {
+int** levelOrder(struct TreeNode* root, int* returnSize, int** columnSizes) {
 	int depth, rindx, cindx;
 	int **arr;
 	int *colmn;
