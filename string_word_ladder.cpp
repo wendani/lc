@@ -42,7 +42,7 @@ int ladderLength(string beginWord, string endWord, vector<string>& wordList)
 		length++;
 		transformed.insert(word);
 
-		for (auto &w : wordList) {
+		for (const auto &w : wordList) {
 			if (transformed.count(w)) {
 				continue;
 			}
