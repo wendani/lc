@@ -28,31 +28,41 @@ bool isDiffByOne(const string &a, const string &b)
 
 int ladderLength(string beginWord, string endWord, vector<string>& wordList)
 {
-	queue<string> toTransform;
-	unordered_set<string> transformed;
+	vector<queue<string>> q[2];
+	unordered_set<string> touched;
+
+	queue<string> *curr = &q[0];
+	queue<string> *next = &q[1];
 
 	int length = 0;
-	toTransform.push(beginWord);
-	while (!toTransform.empty()) {
-		string &word = toTransform.front();
-
-		if (word == endWord)
-			return length;
+	next->push(beginWord);
+	while (!next->empty()) {
+		auto *temp = curr;
+		curr = next;
+		next = temp;
 
 		length++;
-		transformed.insert(word);
 
-		for (const auto &w : wordList) {
-			if (transformed.count(w)) {
-				continue;
+		while (!curr->empty()) {
+			string &word = curr->front();
+
+			if (word == endWord)
+				return length;
+
+
+			for (const auto &w : wordList) {
+				if (touched.count(w)) {
+					continue;
+				}
+
+				if (isDiffByOne(word, w)) {
+					next->push(w);
+					touched.insert(word);
+				}
 			}
 
-			if (isDiffByOne(word, w)) {
-				toTransform.push(w);
-			}
+			curr->pop();
 		}
-
-		toTransform.pop();
 	}
 
 	return 0;
