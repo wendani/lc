@@ -1,7 +1,9 @@
 int ladderLength(string beginWord, string endWord, vector<string>& wordList)
 {
-	vector<queue<string>> q(2);
-	unordered_set<string> touched;
+	unordered_set<string> wordSet;
+	for (const auto &w : wordList) {
+		wordSet.insert(w);
+	}
 
 	vector<unordered_set<string>> s(2);
 	unordered_set<string> searched;
@@ -18,14 +20,20 @@ int ladderLength(string beginWord, string endWord, vector<string>& wordList)
 			if (word == endWord)
 				return length;
 
-			for (const auto &w : wordList) {
-				if (searched.count(w)) {
-					continue;
-				}
+			int wLen = word.length();
+			for (int i = 0; i < wLen; i++) {
+				string w = word;
 
-				if (isDiffByOne(word, w)) {
-					next->insert(w);
-					searched.insert(w);
+				for (char newc = 'a'; newc <= 'z'; newc++) {
+					if (w[i] == newc) {
+						continue;
+					}
+
+					w[i] = newc;
+					if (wordSet.count(w) && !searched.count(w)) {
+						next->insert(w);
+						searched.insert(w);
+					}
 				}
 			}
 		}
