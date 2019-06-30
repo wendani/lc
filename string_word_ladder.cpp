@@ -31,38 +31,37 @@ int ladderLength(string beginWord, string endWord, vector<string>& wordList)
 	vector<queue<string>> q(2);
 	unordered_set<string> touched;
 
-	queue<string> *curr = &q[0];
-	queue<string> *next = &q[1];
+	vector<unordered_set<string>> s(2);
+	unordered_set<string> searched;
+
+	unordered_set<string> *curr = &s[0];
+	unordered_set<string> *next = &s[1];
 
 	int length = 0;
-	next->push(beginWord);
-	while (!next->empty()) {
-		auto *temp = curr;
-		curr = next;
-		next = temp;
-
+	curr->insert(beginWord);
+	while (!curr->empty()) {
 		length++;
 
-		while (!curr->empty()) {
-			string &word = curr->front();
-
+		for (const auto &word : *curr) {
 			if (word == endWord)
 				return length;
 
-
 			for (const auto &w : wordList) {
-				if (touched.count(w)) {
+				if (searched.count(w)) {
 					continue;
 				}
 
 				if (isDiffByOne(word, w)) {
 					next->push(w);
-					touched.insert(w);
+					searched.insert(w);
 				}
 			}
-
-			curr->pop();
 		}
+		curr->clear();
+
+		auto *temp = curr;
+		curr = next;
+		next = temp;
 	}
 
 	return 0;
