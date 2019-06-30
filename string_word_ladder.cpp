@@ -52,7 +52,7 @@ int ladderLength(string beginWord, string endWord, vector<string>& wordList)
 				}
 
 				if (isDiffByOne(word, w)) {
-					next->push(w);
+					next->insert(w);
 					searched.insert(w);
 				}
 			}
