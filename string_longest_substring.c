@@ -24,6 +24,10 @@ int lengthOfLongestSubstring(char * s){
 	}
 
 	len = strlen(s);
+	if (!len) {
+		return 0;
+	}
+
 	start = 0;
 	curr_len = 1;
 	max_len = 1;
