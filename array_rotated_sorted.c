@@ -6,35 +6,35 @@ int search(int* nums, int numsSize, int target){
 	}
 
 	lo = 0;
-	hi = size;
+	hi = numsSize;
 	while (lo < hi) {
 		mid = (lo + hi) >> 1;
 
-		if (a[mid] == target) {
+		if (nums[mid] == target) {
 			return mid;
 		}
-		else if (a[mid] < target) {
-			if (a[lo] == target) {
+		else if (nums[mid] < target) {
+			if (nums[lo] == target) {
 				return lo;
 			}
-			else if (a[lo] < target) {
+			else if (nums[lo] < target) {
 				hi = mid;
 			}
 			else {
-				// target < a[lo]
+				// target < nums[lo]
 				lo = mid + 1;
 			}
 		}
 		else {
-			// target < a[mid]
-			if (a[lo] == target) {
+			// target < nums[mid]
+			if (nums[lo] == target) {
 				return lo;
 			}
-			else if (a[lo] < target) {
+			else if (nums[lo] < target) {
 				hi = mid;
 			}
 			else {
-				// target < a[lo]
+				// target < nums[lo]
 				lo = mid + 1;
 			}
 		}
