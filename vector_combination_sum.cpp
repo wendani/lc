@@ -16,9 +16,15 @@ bool _combinationSum(const vector<int> &candidates, int target, vector<vector<in
 		vector<vector<int>> subcombinations;
 
 		if (_combinationSum(candidates, target - candidate, subcombinations)) {
-			for (auto &subcombination : subcombinations) {
-				subcombination.push_back(candidate);
-				combinations.push_back(subcombination);
+			if (subcombinations.size()) {
+				for (auto &subcombination : subcombinations) {
+					subcombination.push_back(candidate);
+					combinations.push_back(subcombination);
+				}
+			}
+			else {
+				// combinations.emplace_back(1, candidate);
+				combinations.emplace_back(initializer_list<int>({candidate}));
 			}
 		}
 	}
