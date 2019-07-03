@@ -1,4 +1,4 @@
-bool _combinationSum(const vector<int> &candidates, int target, vector<<vector<int>> &combinations)
+bool _combinationSum(const vector<int> &candidates, int target, vector<vector<int>> &combinations)
 {
 	if (combinations.size()) {
 		combinations.clear();
@@ -13,7 +13,7 @@ bool _combinationSum(const vector<int> &candidates, int target, vector<<vector<i
 	}
 
 	for (const auto &candidate : candidates) {
-		vector<<vector<int>> subcombinations;
+		vector<vector<int>> subcombinations;
 
 		if (_combinationSum(candidates, target - candidate, subcombinations)) {
 			for (auto &subcombination : subcombinations) {
