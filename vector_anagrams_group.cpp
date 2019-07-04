@@ -3,7 +3,7 @@ vector<vector<string>> groupAnagrams(vector<string>& strs) {
 	vector<vector<string>> results;
 
 	int curr_idx = 0;
-	for (const atuo &str : strs) {
+	for (const auto &str : strs) {
 		string s = str;
 		sort(s.begin(), s.end());
 
@@ -13,8 +13,8 @@ vector<vector<string>> groupAnagrams(vector<string>& strs) {
 		}
 		else {
 			// it == signatures.end()
+			results.emplace_back(initializer_list<string>({str}));
 			signatures[s] = curr_idx;
-			results[curr_idx].push_back(str);
 			curr_idx++;
 		}
 	}
