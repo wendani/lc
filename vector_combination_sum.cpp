@@ -1,4 +1,4 @@
-bool _combinationSum(const vector<int> &candidates, int target, vector<vector<int>> &combinations)
+bool _combinationSum(vector<int>::const_iterator begin, vector<int>::const_iterator end, int target, vector<vector<int>> &combinations)
 {
 	if (combinations.size()) {
 		combinations.clear();
@@ -12,19 +12,19 @@ bool _combinationSum(const vector<int> &candidates, int target, vector<vector<in
 		return true;
 	}
 
-	for (const auto &candidate : candidates) {
+	for (auto it = begin; it != end; ++it) {
 		vector<vector<int>> subcombinations;
 
-		if (_combinationSum(candidates, target - candidate, subcombinations)) {
+		if (_combinationSum(it, end, target - *it, subcombinations)) {
 			if (subcombinations.size()) {
 				for (auto &subcombination : subcombinations) {
-					subcombination.push_back(candidate);
+					subcombination.push_back(*it);
 					combinations.push_back(subcombination);
 				}
 			}
 			else {
-				// combinations.emplace_back(1, candidate);
-				combinations.emplace_back(initializer_list<int>({candidate}));
+				// combinations.emplace_back(1, *it);
+				combinations.emplace_back(initializer_list<int>({*it}));
 			}
 		}
 	}
@@ -38,7 +38,8 @@ bool _combinationSum(const vector<int> &candidates, int target, vector<vector<in
 vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
 	vector<vector<int>> combinations;
 
-	_combinationSum(candidates, target, combinations);
+	sort(candidates.begin(), candidates.end());
+	_combinationSum(candidates.cbegin(), candidates.cend(), target, combinations);
 
 	return combinations;
 }
