@@ -1,13 +1,11 @@
 int coinChange(vector<int>& coins, int amount) {
-	int nums = 0;
-
-	if (!coins.size() || amount < 1) {
+	if (!coins.size() || amount < 0) {
 		return -1;
 	}
 
 	unordered_set<int> amounts;
 	for (int i = 1; i <= amount; i++) {
-		amounts.push_back(i);
+		amounts.insert(i);
 	}
 
 	unordered_set<int> a[2];
