@@ -1,4 +1,24 @@
 int coinChange(vector<int>& coins, int amount) {
+	vector<int> coinNum(amount + 1, amount + 1);
+
+	int coinSize = coins.size();
+	coinNum[0] = 0;
+	for (int i = 1; i < amount + 1; i++) {
+		for (j = 0; j < coinSize; j++) {
+			int subamount = i - coins[j];
+			if (subamount >= 0 && coinNum[subamount] + 1 < coinNum[i]) {
+				coinNum[i] = coinNum[subamount] + 1;
+			}
+		}
+	}
+
+	if (coinNum[amount] > amount) {
+		return -1;
+	}
+	return coinNum[amount];
+}
+
+int coinChange(vector<int>& coins, int amount) {
 	if (!coins.size() || amount < 0) {
 		return -1;
 	}
