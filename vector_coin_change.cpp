@@ -2,6 +2,9 @@ int coinChange(vector<int>& coins, int amount) {
 	if (!coins.size() || amount < 0) {
 		return -1;
 	}
+	if (amount == 0) {
+		return 0;
+	}
 
 	unordered_set<int> amounts;
 	for (int i = 1; i <= amount; i++) {
