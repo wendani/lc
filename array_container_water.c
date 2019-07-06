@@ -1,7 +1,7 @@
 int maxArea(int* height, int heightSize) {
 	int i, j;
 	int lo, hi;
-	int hasUpdate;
+	int maxWater;
 
 	lo = 0;
 	hi = heightSize - 1;
