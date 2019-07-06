@@ -4,7 +4,7 @@ vector<vector<int>> threeSum(vector<int>& nums) {
 	vector<vector<int>> results;
 	int len = nums.size();
 	for (int i = 0; i < len - 2; i++) {
-		if (i > 0 || nums[i] == nums[i - 1]) {
+		if (i > 0 && nums[i] == nums[i - 1]) {
 			continue;
 		}
 
