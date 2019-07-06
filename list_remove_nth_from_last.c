@@ -8,16 +8,15 @@
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
     struct ListNode *curr, *nprev, *ncurr;
     int i;
-    
+
     curr = head;
-    for (i = 0; i < n - 1; i++) {
-        
+    for (i = 1; i < n; i++) {
         if (!curr) return head;
         curr = curr->next;
     }
-    
     ncurr = head;
     nprev = NULL;
+
     curr = curr->next;
     while (curr) {
         nprev = ncurr;
@@ -25,8 +24,8 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
 
         curr = curr->next;
     }
-    
-    if (ncurr == head)
+
+    if (!nprev)
         head = head->next;
     else
         nprev->next = ncurr->next;
