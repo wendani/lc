@@ -34,3 +34,30 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
     return head;
 }
 
+
+
+
+struct ListNode *_remove(struct ListNode *node, int *pos, int n)
+{
+	if (!node) {
+		*pos = 0;
+		return NULL;
+	}
+
+	int npos;
+	struct ListNode *next = _remove(node->next, &npos, n);
+	*pos = npos + 1;
+	if (*pos ==  n) {
+		free(node);
+		return next;
+	}
+	else {
+		node->next = next;
+		return node;
+	}
+}
+
+struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
+	int hpos;
+	return _remove(head, &hpos, n);
+}
