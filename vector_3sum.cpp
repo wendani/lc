@@ -9,8 +9,8 @@ vector<vector<int>> threeSum(vector<int>& nums) {
 	for (int i = 0; i < len - 2; i++)
 		for (int j = i + 1; j < len - 1; j++) {
 			auto it = numIdxMap.find(0 - nums[i] - nums[j]);
-			if (it != numIdxMap.end() && it->second > j) {
-				results.emplace_back(initializer_list<int>({a[i], a[j], it->first}));
+			if (it != numIdxMap.end() && j < it->second) {
+				results.emplace_back(initializer_list<int>({nums[i], nums[j], it->first}));
 			}
 		}
 
