@@ -1,23 +1,52 @@
 Warm-up checklist
 
+heap
+merge sort
+red black tree
+
+hash table
 quick sort
 binary search
 is binary search tree
 set
-merge sort
-heap
-red black tree
+
+18 4Sum
+16 3Sum closest
+40 combination sum 2
+212 word search 2
 
 
 Amazon
-array
 partition labels
-word ladder
-# of islands
-Best time to buy and sell stock
-2 sum
+topological sort
+k distance
+LRU cache
+array hashmap
 
+10 regular expression matching
+17. letter combinations of a phone number
+
+remove Nth node from end of list
+word search
+# of islands
+
+anagram group
+
+binary search in rotated sorted array
+
+combination sum
+
+word ladder
+
+coin change
+word break
+
+container with most water
+best time to buy and sell stock
+3 sum
+2 sum
 array trap water
+
 
 *********************************************
 
