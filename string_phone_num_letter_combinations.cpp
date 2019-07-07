@@ -19,14 +19,8 @@ void _letterCombinations(vector<string> &combinations, const string &digits)
 		_letterCombinations(subcombinations, digits.substr(1));
 
 		for (const auto &ltr : numLtrsMap.at(digits.substr(0,1))) {
-			if (subcombinations.size()) {
-				for (const auto &subcombination : subcombinations) {
-					combinations.push_back(ltr + subcombination);
-				}
-			}
-			else {
-				// subcombinations.size() == 0
-				combinations.push_back(ltr);
+			for (const auto &subcombination : subcombinations) {
+				combinations.push_back(ltr + subcombination);
 			}
 		}
 	}
