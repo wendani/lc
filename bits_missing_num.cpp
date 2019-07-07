@@ -1,5 +1,20 @@
 int missingNumber(vector<int>& nums) {
 	int size = nums.size() + 1;
+	int missNum = 0;
+	for (int i = 0; i < size; i++) {
+		missNum ^= i;
+	}
+
+	for (const auto &num : nums) {
+		missNum ^= num;
+	}
+
+	return missNum;
+}
+
+
+int missingNumber(vector<int>& nums) {
+	int size = nums.size() + 1;
 	vector<bool> bitmap(size, false);
 
 	for (const auto &num : nums) {
