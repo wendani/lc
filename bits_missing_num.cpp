@@ -3,6 +3,9 @@ int missingNumber(vector<int>& nums) {
 	vector<bool> bitmap(size, false);
 
 	for (const auto &num : nums) {
+		if (num >= size) {
+			return -1;
+		}
 		bitmap[num] = true;
 	}
 
