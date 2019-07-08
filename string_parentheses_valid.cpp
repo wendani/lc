@@ -26,7 +26,7 @@ bool isValid(string s) {
 		}
 	}
 
-	return true;
+	return cStk.empty() ? true : false;
 }
 
 const unordered_map<char, char> Solution::bracketPair = {
