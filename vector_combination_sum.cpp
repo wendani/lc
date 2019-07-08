@@ -24,7 +24,7 @@ bool _combinationSum(vector<int>::const_iterator begin, vector<int>::const_itera
 			}
 			else {
 				// combinations.emplace_back(1, *it);
-				combinations.emplace_back(initializer_list<int>({*it}));
+				combinations.emplace_back(initializer_list<int>{*it});
 			}
 		}
 	}
