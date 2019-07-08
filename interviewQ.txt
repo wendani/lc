@@ -1,5 +1,6 @@
 Warm-up checklist
 
+trie
 heap
 merge sort
 red black tree
@@ -17,35 +18,56 @@ set
 
 
 Amazon
+gas station
 partition labels
 topological sort
 k distance
+
 LRU cache
-array hashmap
 
 10 regular expression matching
-17. letter combinations of a phone number
 
+Largest K element
+array hashmap
+204. Count Primes
+
+
+XOR, bitmap
+missing number
+
+stack
+valid parentheses
+
+signature
+anagram group
+
+recursion
 remove Nth node from end of list
 word search
 # of islands
 
-anagram group
-
+binary search
 binary search in rotated sorted array
 
-combination sum
-
-word ladder
-
-coin change
-word break
-
+invariant
+majority element
 container with most water
 best time to buy and sell stock
 3 sum
 2 sum
 array trap water
+
+dfs
+subsets
+letter combinations of a phone number
+combination sum
+
+bfs
+word ladder
+
+dp
+coin change
+word break
 
 
 *********************************************
