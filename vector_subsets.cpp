@@ -6,7 +6,7 @@ void _subsets(vector<vector<int>> &subsets, vector<int>::const_iterator cbegin, 
 
 	if (cbegin + 1 == cend) {
 		subsets.emplace_back();
-		subsets.emplace_back(initializer_list<int>({*cbegin}));
+		subsets.emplace_back(initializer_list<int>{*cbegin});
 	}
 
 	// reach here when cbegin + 1 != cend
@@ -16,7 +16,7 @@ void _subsets(vector<vector<int>> &subsets, vector<int>::const_iterator cbegin, 
 
 	vector<vector<int>> currsubsets = {{}, {*cbegin}};
 	// currsubsets.emplace_back();
-	// currsubsets.emplace_back(initializer_list<int>({*cbegin}));
+	// currsubsets.emplace_back(initializer_list<int>{*cbegin});
 	for (const auto &currsubset : currsubsets) {
 		for (const auto &subsubset : subsubsets) {
 			vector<int> subnet;
