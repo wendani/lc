@@ -14,9 +14,9 @@ void _subsets(vector<vector<int>> &subsets, vector<int>::const_iterator cbegin, 
 	vector<vector<int>> subsubsets;
 	_subsets(subsubsets, cbegin + 1, cend);
 
-	vector<vector<int>> currsubsets;
-	currsubsets.emplace_back();
-	currsubsets.emplace_back(initializer_list<int>({*cbegin}));
+	vector<vector<int>> currsubsets = {{}, {*cbegin}};
+	// currsubsets.emplace_back();
+	// currsubsets.emplace_back(initializer_list<int>({*cbegin}));
 	for (const auto &currsubset : currsubsets) {
 		for (const auto &subsubset : subsubsets) {
 			vector<int> subnet;
