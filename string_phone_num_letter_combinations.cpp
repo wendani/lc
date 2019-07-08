@@ -14,14 +14,12 @@ void _letterCombinations(vector<string> &combinations, const string &digits)
 		}
 	}
 
-	if (len > 1) {
-		vector<string> subcombinations;
-		_letterCombinations(subcombinations, digits.substr(1));
-
-		for (const auto &ltr : numLtrsMap.at(digits.substr(0,1))) {
-			for (const auto &subcombination : subcombinations) {
-				combinations.push_back(ltr + subcombination);
-			}
+	// reach here when len > 1
+	vector<string> subcombinations;
+	_letterCombinations(subcombinations, digits.substr(1));
+	for (const auto &ltr : numLtrsMap.at(digits.substr(0,1))) {
+		for (const auto &subcombination : subcombinations) {
+			combinations.push_back(ltr + subcombination);
 		}
 	}
 }
