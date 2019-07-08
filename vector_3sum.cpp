@@ -22,7 +22,7 @@ vector<vector<int>> threeSum(vector<int>& nums) {
 				// nums[j] + num[k] == t
 				if ((j == i + 1) || (k == len - 1)
 					|| (nums[j] != nums[j - 1]) || nums[k] != nums[k + 1]) {
-					results.emplace_back(initializer_list<int>({nums[i], nums[j], nums[k]}));
+					results.emplace_back(initializer_list<int>{nums[i], nums[j], nums[k]});
 				}
 				j++;
 				k--;
