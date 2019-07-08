@@ -22,8 +22,8 @@ void _subsets(vector<vector<int>> &subsets, vector<int>::const_iterator cbegin, 
 			vector<int> subnet;
 			subnet.insert(subnet.end(), currsubset.begin(), currsubset.end());
 			subnet.insert(subnet.end(), subsubset.begin(), subsubset.end());
+			subsets.push_back(subnet);
 		}
-		subsets.push_back(subnet);
 	}
 }
 
