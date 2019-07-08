@@ -13,7 +13,7 @@ vector<vector<string>> groupAnagrams(vector<string>& strs) {
 		}
 		else {
 			// it == signatures.end()
-			results.emplace_back(initializer_list<string>({str}));
+			results.emplace_back(initializer_list<string>{str});
 			signatures[s] = curr_idx;
 			curr_idx++;
 		}
