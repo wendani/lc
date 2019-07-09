@@ -1,15 +1,21 @@
 int countPrimes(int n) {
 	vector<bool> isPrime(n, true);
 
-	int incl_bound = (int)sqrt(n - 1) + 1;
-	for (int i = 2; i <= incl_bound; i++) {
+	int incl_bound = n > 2 ? (int)sqrt(n - 1) + 1 : 1;
+	int i = 2;
+	int cnt = 0;
+	for (; i <= incl_bound; i++) {
+		if (!isPrime[i]) {
+			continue;
+		}
+
+		cnt++;
 		for (int j = i << 1; j < n; j += i) {
 			isPrime[j] = false;
 		}
 	}
 
-	int cnt = 0;
-	for (int i = 2; i < n; i++) {
+	for (; i < n; i++) {
 		if (isPrime[i]) {
 			cnt++;
 		}
