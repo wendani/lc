@@ -2,12 +2,12 @@ int countPrimes(int n){
 	int i, j;
 	int not_prime_count;
 
-	if (n < 1) {
+	if (n < 2) {
 		return 0;
 	}
 
 	not_prime_count = 1;
-	for (i = 3; i <= n; i ++) {
+	for (i = 3; i < n; i++) {
 		int incl_bound = (int)sqrt(i) + 1;
 
 		for (j = 2; j <= incl_bound; j++) {
@@ -18,5 +18,5 @@ int countPrimes(int n){
 		}
 	}
 
-	return n - not_prime_count;
+	return (n - 1) - not_prime_count;
 }
