@@ -1,49 +1,38 @@
-struct Pillar{
-	Pillar() {
-	}
-
-	Pillar(int h, int s) : height(h), start(s) {
-	}
-
-	int height;
-	int start;
-};
-
 int largestRectangleArea(vector<int>& heights) {
 	heights.push_back(0);
 	int len = heights.size();
 
-	vector<Pillar> pillars;
+	vector<int> starts;
 	int maxRect = 0;
 	for (int i = 0; i < len; i++) {
-		int pLen = pillars.size();
+		int sLen = starts.size();
 		int j;
-		for (j = pLen - 1; j >= 0; j--) {
-			if (pillars[j].height > heights[i]) {
-				int rect = (i - pillars[j].start) * pillars[j].height;
+		for (j = sLen - 1; j >= 0; j--) {
+			if (heights[starts[j]] > heights[i]) {
+				int rect = (i - starts[j]) * heights[starts[j]];
 				if (rect > maxRect) {
 					maxRect = rect;
 				}
 
-				pillars[j].height = heights[i];
+				heights[starts[j]] = heights[i];
 			}
-			else if (pillars[j].height == heights[i]) {
+			else if (heights[starts[j]] == heights[i]) {
 				j++;
 				break;
 			} else {
-				// pillars[j].height < heights[i]
+				// heights[starts[j]] < heights[i]
 				j += 2;
 				break;
 			}
 		}
 		if (j > pLen || pLen == 0) {
-			pillars.emplace_back(heights[i], i);
+			starts.emplace_back(i);
 		}
 		else if (j < pLen) {
 			if (j < 0) {
 				j = 1;
 			}
-			pillars.resize(j);
+			starts.resize(j);
 		}
 	}
 
