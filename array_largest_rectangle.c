@@ -1,4 +1,7 @@
 struct Pillar{
+	Pillar() {
+	}
+
 	Pillar(int h, int s) : height(h), start(s) {
 	}
 
@@ -14,7 +17,7 @@ int largestRectangleArea(vector<int>& heights) {
 	int maxRect = 0;
 	for (int i = 0; i < len; i++) {
 		int pLen = pillars.size();
-
+		int j;
 		for (j = pLen - 1; j >= 0; j--) {
 			if (pillars[j].height > heights[i]) {
 				int rect = (i - pillars[j].start) * pillars[j].height;
