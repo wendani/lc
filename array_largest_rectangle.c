@@ -25,6 +25,7 @@ int _largestRectangleArea(int heights[], int start, int excl_end) {
 	if (subMaxRect > maxRect) {
 		maxRect = subMaxRect;
 	}
+	return maxRect;
 }
 
 int largestRectangleArea(int* heights, int heightsSize){
