@@ -36,10 +36,13 @@ int largestRectangleArea(vector<int>& heights) {
 				break;
 			}
 		}
-		if (j > pLen) {
+		if (j > pLen || pLen == 0) {
 			pillars.emplace_back(heights[i], i);
 		}
 		else if (j < pLen) {
+			if (j < 0) {
+				j = 1;
+			}
 			pillars.resize(j);
 		}
 	}
