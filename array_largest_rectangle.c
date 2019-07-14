@@ -1,32 +1,50 @@
+struct Pillar{
+	Pillar(int h, int s) : height(h), start(s) {
+	}
+
+	int height;
+	int start;
+};
+
 int largestRectangleArea(vector<int>& heights) {
+	heights.push_back(0);
 	int len = heights.size();
 
-	map<int, int> btlNeckStart;
+	vector<Pillar> pillars;
 	int maxRect = 0;
 	for (int i = 0; i < len; i++) {
-		auto it = btlNeckStart.lower_bound(heights[i]);
+		int pLen = pillars.size();
 
-		if (it != btlNeckStart.end()) {
-			int start = it->second;
-			btlNeckStart.erase(it, btlNeckStart.end());
-			btlNeckStart[heights[i]] = start;
+		for (j = pLen - 1; j >= 0; j--) {
+			if (pillars[j].height > heights[i]) {
+				int rect = (i - pillars[j].start) * pillars[j].height;
+				if (rect > maxRect) {
+					maxRect = rect;
+				}
 
-			int rect = (i - start + 1) * heights[i];
-			if (rect > maxRect) {
-				maxRect = rect;
+				pillars[j].height = heights[i];
+			}
+			else if (pillars[j].height == heights[i]) {
+				j++;
+				break;
+			} else {
+				// pillars[j].height < heights[i]
+				j += 2;
+				break;
 			}
 		}
-		else {
-			// it == btlNeckStart.end()
-			btlNeckStart[heights[i]] = i;
-
-			if (heights[i] > maxRect) {
-				maxRect = heights[i];
-			}
+		if (j > pLen) {
+			pillars.emplace_back(heights[i], i);
+		}
+		else if (j < pLen) {
+			pillars.resize(j);
 		}
 	}
+
 	return maxRect;
 }
+
+
 
 int _largestRectangleArea(int heights[], int start, int excl_end) {
 	int i;
