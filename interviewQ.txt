@@ -18,25 +18,27 @@ set
 
 
 Amazon
-partition labels
 topological sort
 k distance
 
 LRU cache
 
-10 regular expression matching
 
 698. Partition to K Equal Sum Subsets
 Largest K element
 array hashmap
-gas station
+10 regular expression matching
 
 
 XOR, bitmap
 missing number
 
+sliding window
+longest substring with no repeating characters
+
 stack
 valid parentheses
+largest rectangle in histogram
 
 signature
 anagram group
@@ -50,12 +52,14 @@ binary search
 binary search in rotated sorted array
 
 invariant
+gas station
 majority element
+largest rectangle in histogram
 container with most water
+array trap water
 best time to buy and sell stock
 3 sum
 2 sum
-array trap water
 
 dfs
 subsets
@@ -63,6 +67,7 @@ letter combinations of a phone number
 combination sum
 
 bfs
+partition labels
 word ladder
 
 dp
