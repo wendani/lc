@@ -2,6 +2,43 @@ int largestRectangleArea(vector<int>& heights) {
 	heights.push_back(0);
 	int len = heights.size();
 
+	stack<int> startStk;
+	int maxRect = 0;
+	for (int i = 0; i < len; i++) {
+		int lastPopStart = i;
+
+		while (!startStk.empty()) {
+			int &start = startStk.top();
+
+			if (heights[start] > heights[i]) {
+				int rect = (i - start) * heights[start];
+				if (rect > maxRect) {
+					maxRect = rect;
+				}
+				lastPopStart = start;
+				startStk.pop();
+			}
+			else if (heights[start] == heights[i]) {
+				break;
+			}
+			else {
+				// heights[start] < heights[i]
+				heights[lastPopStart] = heights[i];
+				startStk.push(lastPopStart);
+			}
+		}
+		if (startStk.empty()) {
+			heights[lastPopStart] = heights[i];
+			startStk.push(lastPopStart);
+		}
+	}
+	return maxRect;
+}
+
+int largestRectangleArea(vector<int>& heights) {
+	heights.push_back(0);
+	int len = heights.size();
+
 	vector<int> starts;
 	int maxRect = 0;
 	for (int i = 0; i < len; i++) {
