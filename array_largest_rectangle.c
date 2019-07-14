@@ -25,10 +25,10 @@ int largestRectangleArea(vector<int>& heights) {
 				break;
 			}
 		}
-		if (j > pLen || pLen == 0) {
+		if (j > sLen || sLen == 0) {
 			starts.emplace_back(i);
 		}
-		else if (j < pLen) {
+		else if (j < sLen) {
 			if (j < 0) {
 				j = 1;
 			}
