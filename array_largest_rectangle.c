@@ -3,13 +3,15 @@ int largestRectangleArea(vector<int>& heights) {
 
 	map<int, int> btlNeckStart;
 	int maxRect = 0;
-	for (i = 0; i < len; i++) {
+	for (int i = 0; i < len; i++) {
 		auto it = btlNeckStart.lower_bound(heights[i]);
 
 		if (it != btlNeckStart.end()) {
-			it->first = heights[i];
-			btlNeckStart.erase(it + 1, btlNeckStart.end());
-			int rect = (i - it->second + 1) * heights[i];
+			int start = it->second;
+			btlNeckStart.erase(it, btlNeckStart.end());
+			btlNeckStart[heights[i]] = start;
+
+			int rect = (i - start + 1) * heights[i];
 			if (rect > maxRect) {
 				maxRect = rect;
 			}
@@ -17,6 +19,7 @@ int largestRectangleArea(vector<int>& heights) {
 		else {
 			// it == btlNeckStart.end()
 			btlNeckStart[heights[i]] = i;
+
 			if (heights[i] > maxRect) {
 				maxRect = heights[i];
 			}
