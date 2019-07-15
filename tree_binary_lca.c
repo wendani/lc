@@ -13,7 +13,7 @@ struct TreeNode *_lca(struct TreeNode *node, struct TreeNode *p, struct TreeNode
 		return lca;
 	}
 
-	lca = _lca(node-right, p, q, &rpAncestor, &rqAncestor);
+	lca = _lca(node->right, p, q, &rpAncestor, &rqAncestor);
 	if (lca) {
 		return lca;
 	}
