@@ -18,17 +18,9 @@ struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
 	}
 
 	if (p->val < root->val && q->val < root->val) {
-		lca = lowestCommonAncestor(root->left, p, q);
-		if (lca) {
-			return lca;
-		}
-		return root;
+		return lowestCommonAncestor(root->left, p, q);
 	}
 
 	// reach here when (root->val < p->val && root->val < q->val)
-	lca = lowestCommonAncestor(root->right, p, q);
-	if (lca) {
-		return lca;
-	}
-	return root;
+	return lowestCommonAncestor(root->right, p, q);
 }
