@@ -2,7 +2,7 @@ vector<vector<int>> merge(vector<vector<int>>& intervals) {
 	vector<vector<int>> mergedIntervals;
 
 	int len = intervals.size();
-	if (！len) {
+	if (!len) {
 		return mergedIntervals;
 	}
 
