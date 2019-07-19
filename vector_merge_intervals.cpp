@@ -6,6 +6,8 @@ vector<vector<int>> merge(vector<vector<int>>& intervals) {
 		return mergedIntervals;
 	}
 
+	sort(intervals.begin(), intervals.end());
+
 	// reach here when intervals has at least one interval
 	int i = 0;
 	int close = intervals[i][1];
@@ -20,4 +22,5 @@ vector<vector<int>> merge(vector<vector<int>>& intervals) {
 		}
 	}
 	mergedIntervals.emplace_back(initializer_list<int>{intervals[i][0], close});
+	return mergedIntervals;
 }
