@@ -7,7 +7,7 @@ bool  _dfs(const vector<unordered_set<int> &adjList, vector<bool> &searched, int
 	searched[courseNum] = true;
 
 	for (const auto &i : adjList[courseNum]) {
-		if (!_dfs(adjList, searched, i) {
+		if (!_dfs(adjList, searched, i)) {
 			return false;
 		}
 	}
