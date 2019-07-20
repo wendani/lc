@@ -15,18 +15,17 @@ set
 16 3Sum closest
 40 combination sum 2
 212 word search 2
+210. Course Schedule 2
 
 
 Amazon
-topological sort
+merge k sorted linked list
 k distance
 
 LRU cache
 
-
 698. Partition to K Equal Sum Subsets
 Largest K element
-array hashmap
 10 regular expression matching
 
 
@@ -39,6 +38,8 @@ longest substring with no repeating characters
 stack
 valid parentheses
 largest rectangle in histogram
+
+array hashmap
 
 signature
 anagram group
@@ -63,11 +64,13 @@ best time to buy and sell stock
 2 sum
 
 dfs
+topological sort
 subsets
 letter combinations of a phone number
 combination sum
 
 bfs
+course schedule (true/false)
 merge intervals
 partition labels
 word ladder
@@ -110,6 +113,7 @@ print a linked list in reverse order with constant memory (Microsoft)
 
 Array
 binary search (Cisco)
+binary search on duplicates (Barefoot Networks)
 
 binary search min on a rotated sorted array (Arista Networks)
 
@@ -125,9 +129,10 @@ doubly linked list
 array
 stack
 
+Average of 4 elements (Barefoot Networks)
 
 Misc
-stack growth direction (Cisco)
+stack growth direction (Cisco, Barefoot Networks)
 
 factorial (Cisco)
 
