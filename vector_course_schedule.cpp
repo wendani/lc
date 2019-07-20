@@ -1,4 +1,4 @@
-bool  _dfs(const vector<unordered_set<int> &adjList, vector<bool> &searched, int courseNum)
+bool  _dfs(const vector<unordered_set<int>> &adjList, vector<bool> &searched, int courseNum)
 {
 	if (searched[courseNum]) {
 		return false;
@@ -18,7 +18,7 @@ bool  _dfs(const vector<unordered_set<int> &adjList, vector<bool> &searched, int
 
 bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
 	vector<unordered_set<int>> adjList(numCourses);
-	vector<bool> searched(false, numCourses);
+	vector<bool> searched(numCourses, false);
 
 	for (const auto &prerequisite : prerequisites) {
 		adjList[prerequisite[1]].insert(prerequisite[0]);
