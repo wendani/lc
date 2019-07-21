@@ -39,6 +39,7 @@ stack
 valid parentheses
 largest rectangle in histogram
 
+hashtable
 array hashmap
 
 signature
