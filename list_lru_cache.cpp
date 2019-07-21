@@ -10,26 +10,21 @@ public:
 			recencies.splice(recencies.end(), recencies, it->second->recency_pos);
 			return it->second->val;
 		}
-
 		return -1;
 	}
 
 	void put(int key, int value) {
-		auto it = vp.find(key);
-		if (it != vp.end()) {
-			it->second->val = value;
-			recencies.splice(recencies.end(), recencies, it->second->recency_pos);
+		auto it_vp = vp.find(key);
+		if (it_vp != vp.end()) {
+			it_vp->second->val = value;
+			recencies.splice(recencies.end(), recencies, it_vp->second->recency_pos);
 			return;
 		}
 
 		// reach here when key is not present
-		if (size == cap) {
+		if (vp.size() == cap) {
 			vp.erase(recencies.front());
 			recencies.pop_front();
-		}
-		else {
-			// size < cap
-			++size;
 		}
 
 		auto p = vp.emplace(key, new node(value, recencies.end()));
@@ -38,7 +33,7 @@ public:
 
 private:
 	struct node {
-		node(int v, list<unordered_map<int, unique_ptr<node>>::iterator>::iterator it) : val(v), recency_pos(it) {
+		node(int v, list<unordered_map<int, unique_ptr<node>>::iterator>::iterator it = recencies.end()) : val(v), recency_pos(it) {
 		}
 
 		int val;
@@ -50,7 +45,21 @@ private:
 	unordered_map<int, unique_ptr<node>> vp;
 
 	int cap;
-	int size = 0;
+
+	void printRecencies() {
+		for (const auto &it_vp : recencies) {
+			cout << "key: " << it_vp->first;
+
+			auto it_rec = it_vp->second->recency_pos;
+			if (it_rec != recencies.end()) {
+				cout << "key: " << (*it_rec)->first;
+			}
+			else {
+				cout << "end() iterator";
+			}
+		}
+		cout << endl;
+	}
 };
 
 /**
