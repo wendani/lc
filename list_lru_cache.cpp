@@ -7,8 +7,8 @@ public:
 	int get(int key) {
 		auto it = vp.find(key);
 		if (it != vp.end()) {
-			recencies.splice(recencies.end(), recencies, it->second.recency_pos);
-			return it->second.val;
+			recencies.splice(recencies.end(), recencies, it->second->recency_pos);
+			return it->second->val;
 		}
 
 		return -1;
@@ -17,8 +17,8 @@ public:
 	void put(int key, int value) {
 		auto it = vp.find(key);
 		if (it != vp.end()) {
-			it->second.val = value;
-			recencies.splice(recencies.end(), recencies, it->second.recency_pos);
+			it->second->val = value;
+			recencies.splice(recencies.end(), recencies, it->second->recency_pos);
 			return;
 		}
 
@@ -32,22 +32,22 @@ public:
 			++size;
 		}
 
-		auto p = vp.emplace(piecewise_construct, forward_as_tuple(key), forward_as_tuple(value, recencies.end()));
+		auto p = vp.emplace(key, new node(value, recencies.end()));
 		recencies.push_back(p.first);
 	}
 
 private:
 	struct node {
-		node(int v, list<unordered_map<int, node>::iterator>::iterator it) : val(v), recency_pos(it) {
+		node(int v, list<unordered_map<int, node *>::iterator>::iterator it) : val(v), recency_pos(it) {
 		}
 
 		int val;
-		list<unordered_map<int, node>::iterator>::iterator recency_pos;
+		list<unordered_map<int, node *>::iterator>::iterator recency_pos;
 	};
 
-	list<unordered_map<int, node>::iterator> recencies;
+	list<unordered_map<int, node *>::iterator> recencies;
 
-	unordered_map<int, node> vp;
+	unordered_map<int, node *> vp;
 
 	int cap;
 	int size = 0;
