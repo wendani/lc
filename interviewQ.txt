@@ -19,14 +19,15 @@ set
 
 
 Amazon
+5. Longest Palindromic Substring
 merge k sorted linked list
-k distance
 
-LRU cache
 
 698. Partition to K Equal Sum Subsets
-Largest K element
 10 regular expression matching
+
+k distance
+Largest K element
 
 
 XOR, bitmap
@@ -41,6 +42,9 @@ largest rectangle in histogram
 
 hashtable
 array hashmap
+
+hashtable + list
+LRU cache
 
 signature
 anagram group
