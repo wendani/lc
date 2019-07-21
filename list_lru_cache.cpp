@@ -24,16 +24,21 @@ public:
 		// reach here when key is not present
 		if (vp.size() == cap) {
 			vp.erase(recencies.front());
-			recencies.pop_front();
+			auto p = vp.emplace(key, new node(value, recencies.begin()));
+			recencies.front() = p.first;
+			recencies.splice(recencies.end(), recencies, recencies.begin());
 		}
-
-		auto p = vp.emplace(key, new node(value, recencies.end()));
-		recencies.push_back(p.first);
+		else {
+			// vp size has not reached cap
+			auto p = vp.emplace(key, new node(value, recencies.end()));
+			recencies.push_back(p.first);
+			--(p.first->second->recency_pos);
+		}
 	}
 
 private:
 	struct node {
-		node(int v, list<unordered_map<int, unique_ptr<node>>::iterator>::iterator it = recencies.end()) : val(v), recency_pos(it) {
+		node(int v, list<unordered_map<int, unique_ptr<node>>::iterator>::iterator it) : val(v), recency_pos(it) {
 		}
 
 		int val;
