@@ -9,7 +9,7 @@ public:
 
 	/** value will always be non-negative. */
 	void put(int key, int value) {
-		int i = hash[key];
+		int i = hash(key);
 
 		node *curr = bins[i];
 		while (curr) {
@@ -56,7 +56,7 @@ private:
 		int key;
 		int value;
 		struct node *next;
-	}
+	};
 
 	node *bins[NBIN];
 
