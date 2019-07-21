@@ -38,16 +38,16 @@ public:
 
 private:
 	struct node {
-		node(int v, list<unordered_map<int, node *>::iterator>::iterator it) : val(v), recency_pos(it) {
+		node(int v, list<unordered_map<int, unique_ptr<node>>::iterator>::iterator it) : val(v), recency_pos(it) {
 		}
 
 		int val;
-		list<unordered_map<int, node *>::iterator>::iterator recency_pos;
+		list<unordered_map<int, unique_ptr<node>>::iterator>::iterator recency_pos;
 	};
 
-	list<unordered_map<int, node *>::iterator> recencies;
+	list<unordered_map<int, unique_ptr<node>>::iterator> recencies;
 
-	unordered_map<int, node *> vp;
+	unordered_map<int, unique_ptr<node>> vp;
 
 	int cap;
 	int size = 0;
