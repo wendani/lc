@@ -7,7 +7,7 @@ public:
 		}
 
 		int len = nums.size();
-		for (i < len; i++) {
+		for (; i < len; i++) {
 			if (minPriQ.top() < nums[i]) {
 				minPriQ.pop();
 				minPriQ.push(nums[i]);
@@ -16,9 +16,9 @@ public:
 	}
 
 	int add(int val) {
-		if (minPriQ.top() < nums[i]) {
+		if (minPriQ.top() < val) {
 			minPriQ.pop();
-			minPriQ.push(nums[i]);
+			minPriQ.push(val);
 		}
 		return minPriQ.top();
 	}
