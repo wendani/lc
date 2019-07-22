@@ -11,12 +11,10 @@ int _qsort(int *nums, int numsSize, int k) {
 			piv_hi--;
 			piv_lo--;
 			nums[i] = nums[piv_lo];
-			nums[piv_lo] = piv_val;
 		}
 		else if (nums[i] == piv_val) {
 			piv_lo--;
 			nums[i] = nums[piv_lo];
-			nums[piv_lo] = piv_val;
 		}
 	}
 	if (piv_lo <= k - 1 && k - 1 <= piv_hi) {
