@@ -47,13 +47,23 @@ private:
 
 		if (!findTarget(nodes, distToTarget, node->left, target, K)) {
 			distToTarget++;
-			findNodes(nodes, node->right, K - distToTarget - 1);
+			if (distToTarget < K) {
+				findNodes(nodes, node->right, K - distToTarget - 1);
+			}
+			else if (distToTarget == K) {
+				nodes.push_back(node->val);
+			}
 			return 0;
 		}
 
 		if (!findTarget(nodes, distToTarget, node->right, target, K)) {
 			distToTarget++;
-			findNodes(nodes, node->left, K - distToTarget - 1);
+			if (distToTarget < K) {
+				findNodes(nodes, node->left, K - distToTarget - 1);
+			}
+			else if (distToTarget == K) {
+				nodes.push_back(node->val);
+			}
 			return 0;
 		}
 
