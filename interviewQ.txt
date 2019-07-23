@@ -20,13 +20,12 @@ set
 
 Amazon
 5. Longest Palindromic Substring
-merge k sorted linked list
 
 
 698. Partition to K Equal Sum Subsets
 10 regular expression matching
 
-k distance
+merge k sorted linked list
 
 
 XOR, bitmap
@@ -46,14 +45,15 @@ hashtable + list
 LRU cache
 
 priority queue
-k-th largest element in a stream
+K-th largest element in a stream
 
 signature
 anagram group
 
 recursion
-k-th largest element in an array
+K-th largest element in an array
 lca in binary tree, bst
+distance K nodes in binary tree
 remove Nth node from end of list
 word search
 # of islands
