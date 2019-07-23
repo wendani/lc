@@ -45,13 +45,13 @@ private:
 			return 0;
 		}
 
-		if (!findTarget(nodes, distToTarget, node->left, target, K) {
+		if (!findTarget(nodes, distToTarget, node->left, target, K)) {
 			distToTarget++;
 			findNodes(nodes, node->right, K - distToTarget - 1);
 			return 0;
 		}
 
-		if (!findTarget(nodes, distToTarget, node->right, target, K) {
+		if (!findTarget(nodes, distToTarget, node->right, target, K)) {
 			distToTarget++;
 			findNodes(nodes, node->left, K - distToTarget - 1);
 			return 0;
