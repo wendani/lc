@@ -11,6 +11,14 @@ binary search
 is binary search tree
 set
 
+binary tree
+lca
+distance k nodes
+Construct from preorder + inorder
+height
+	isBalanced
+	max-length path
+
 18 4Sum
 16 3Sum closest
 40 combination sum 2
@@ -30,6 +38,7 @@ merge k sorted linked list
 
 XOR, bitmap
 missing number
+broken machine (bop)
 
 sliding window
 longest substring with no repeating characters
