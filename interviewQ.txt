@@ -14,10 +14,13 @@ set
 binary tree
 lca
 distance k nodes
-Construct from preorder + inorder
+Construct
+	from preorder + inorder
+	from            inorder + postorder
+	from preorder      +      postorder (undetermined left/right node)
 height
 	isBalanced
-	max-length path
+	max distance between two nodes
 
 18 4Sum
 16 3Sum closest
@@ -28,10 +31,11 @@ height
 
 Amazon
 5. Longest Palindromic Substring
-
+144. Binary Tree Preorder Traversal
 
 698. Partition to K Equal Sum Subsets
 10 regular expression matching
+335. Self Crossing
 
 merge k sorted linked list
 
