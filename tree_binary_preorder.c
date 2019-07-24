@@ -13,6 +13,7 @@ public:
 	vector<int> preorderTraversal(TreeNode* root) {
 		vector<int> preTrav;
 		_preorderTraversal(preTrav, root);
+		return preTrav;
 	}
 private:
 	void _preorderTraversal(vector<int> &preTrav, TreeNode *node) {
