@@ -133,6 +133,7 @@ print a linked list in reverse order with constant memory (Microsoft)
 
 
 Array
+2Sum (Bytedance)
 binary search (Cisco)
 binary search on duplicates (Barefoot Networks)
 
