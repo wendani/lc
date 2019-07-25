@@ -10,8 +10,8 @@ public:
 			int cmpl = target - nums[i];
 			auto it = numIdx.find(cmpl);
 			if (it != numIdx.end()) {
-				indicies.push_back(i);
-				indicies.push_back(it->second);
+				indices.push_back(i);
+				indices.push_back(it->second);
 				return indices;
 			}
 			else {
