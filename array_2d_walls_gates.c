@@ -8,28 +8,34 @@ void updateDist(int **rooms, int rowSize, int colSize, int i, int j, int distToG
 		return;
 	}
 
+	// we hit a wall
 	if (rooms[i][j] == -1) {
 		return;
 	}
 
-	if (distToGate < rooms[i][j]) {
-		rooms[i][j] = distToGate;
+	// we step onto another gate
+	if (rooms[i][j] == 0 && distToGate > 0) {
+		return;
 	}
 
-	distToGate++;
-	// East
-	updateDist(rooms, rowSize, colSize, i, j + 1, distToGate);
-	// South
-	updateDist(rooms, rowSize, colSize, i + 1, j, distToGate);
-	// North
-	updateDist(rooms, rowSize, colSize, i - 1, j, distToGate);
-	// West
-	updateDist(rooms, rowSize, colSize, i, j - 1, distToGate);
+	if (distToGate < rooms[i][j] || distToGate == 0) {
+		rooms[i][j] = distToGate;
+
+		distToGate++;
+		// East
+		updateDist(rooms, rowSize, colSize, i, j + 1, distToGate);
+		// South
+		updateDist(rooms, rowSize, colSize, i + 1, j, distToGate);
+		// North
+		updateDist(rooms, rowSize, colSize, i - 1, j, distToGate);
+		// West
+		updateDist(rooms, rowSize, colSize, i, j - 1, distToGate);
+	}
 }
 
 void wallsAndGates(int** rooms, int roomsSize, int* roomsColSize){
 	int i, j;
-	if (!rooms || !*rooms || roomsSize < 1 || *roomsColSize < 1) {
+	if (!rooms || !*rooms || roomsSize < 1 || !roomsColSize || *roomsColSize < 1) {
 		return;
 	}
 
