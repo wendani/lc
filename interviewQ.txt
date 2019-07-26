@@ -20,7 +20,7 @@ Construct
 	from preorder      +      postorder (undetermined left/right node)
 height
 	isBalanced
-	max distance between two nodes
+	max distance between two nodes / diameter
 
 18 4Sum
 16 3Sum closest
