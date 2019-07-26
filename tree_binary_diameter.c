@@ -10,7 +10,7 @@
 
 int _diameterOfBinaryTree(struct TreeNode *node, int *height)
 {
-	int dist, nDist;
+	int diam, nDiam;
 	int lHeight, rHeight;
 
 	if (!node) {
@@ -20,10 +20,10 @@ int _diameterOfBinaryTree(struct TreeNode *node, int *height)
 		return -1;
 	}
 
-	dist = _diameterOfBinaryTree(node->left, &lHeight);
-	nDist = _diameterOfBinaryTree(node->right, &rHeight);
-	if (nDist > dist) {
-		dist = nDist;
+	diam = _diameterOfBinaryTree(node->left, &lHeight);
+	nDiam = _diameterOfBinaryTree(node->right, &rHeight);
+	if (nDiam > diam) {
+		diam = nDiam;
 	}
 
 	// calculate the height of the current node
@@ -34,11 +34,11 @@ int _diameterOfBinaryTree(struct TreeNode *node, int *height)
 	}
 
 	// calculate return value
-	nDist = lHeight + rHeight;
-	if (nDist > dist) {
-		dist = nDist;
+	nDiam = lHeight + rHeight;
+	if (nDiam > diam) {
+		diam = nDiam;
 	}
-	return dist;
+	return diam;
 }
 
 int diameterOfBinaryTree(struct TreeNode* root){
