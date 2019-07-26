@@ -42,5 +42,6 @@ int _diameterOfBinaryTree(struct TreeNode *node, int *height)
 }
 
 int diameterOfBinaryTree(struct TreeNode* root){
-	return _diameterOfBinaryTree(root, NULL);
+	int diam = _diameterOfBinaryTree(root, NULL);
+	return diam > 0 ? diam : 0;
 }
