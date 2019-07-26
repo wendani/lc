@@ -20,8 +20,8 @@ int _diameterOfBinaryTree(struct TreeNode *node, int *height)
 		return -1;
 	}
 
-	dist = _diameterOfBinaryTree(root->left, &lHeight);
-	nDist = _diameterOfBinaryTree(root->right, &rHeight);
+	dist = _diameterOfBinaryTree(node->left, &lHeight);
+	nDist = _diameterOfBinaryTree(node->right, &rHeight);
 	if (nDist > dist) {
 		dist = nDist;
 	}
