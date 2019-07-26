@@ -7,8 +7,8 @@ int findMaxLen(struct TreeNode *node, int *height)
 	if (!node) {
 		if (height) {
 			*height = -1;
-			return -1;
 		}
+		return -1;
 	}
 
 	maxLen = findMaxLen(node->left, &lHeight);
