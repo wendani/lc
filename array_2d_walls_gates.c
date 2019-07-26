@@ -29,14 +29,14 @@ void updateDist(int **rooms, int rowSize, int colSize, int i, int j, int distToG
 
 void wallsAndGates(int** rooms, int roomsSize, int* roomsColSize){
 	int i, j;
-	if (!room || !*room || roomsSize < 1 || *roomsColSize < 1) {
+	if (!rooms || !*rooms || roomsSize < 1 || *roomsColSize < 1) {
 		return;
 	}
 
 	for (i = 0; i < roomsSize; i++)
 		for (j = 0; j < *roomsColSize; j++) {
 			if (rooms[i][j] == 0) {
-				updateDist(room, roomsSize, *roomsColSize, i, j, 0);
+				updateDist(rooms, roomsSize, *roomsColSize, i, j, 0);
 			}
 		}
 }
