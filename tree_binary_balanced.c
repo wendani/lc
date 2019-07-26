@@ -24,6 +24,15 @@ static bool __isBalanced(struct TreeNode *root, int *depth)
 	// calculate the height of the current node
 	if (depth)
 		*depth = (ldepth >= rdepth) ? (ldepth + 1) : (rdepth + 1);
+	// if (depth) {
+	// 	if (ldepth >= rdepth) {
+	// 		*depth = ldepth + 1;
+	// 	}
+	// 	else {
+	// 		// ldepth < rdepth
+	// 		*depth = rdepth + 1;
+	// 	}
+	// }
 
 	// calculate return value
 	if (!lbalanced || !rbalanced) {
@@ -31,6 +40,14 @@ static bool __isBalanced(struct TreeNode *root, int *depth)
 	}
 	// reach here when both children are balanced
 	return (abs(ldepth - rdepth) > 1) ? false : true;
+
+	// if (lbalanced && rbalanced) {
+	// 	if (ldepth - rdepth > 1 || ldepth - rdepth < -1) {
+	// 		return false;
+	// 	}
+	// 	return true;
+	// }
+	// return false;
 }
 
 bool isBalanced(struct TreeNode* root) {
