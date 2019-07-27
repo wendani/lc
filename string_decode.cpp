@@ -10,9 +10,10 @@ public:
 		stack<element> eStk;
 		string decoded;
 
+		string factorStr;
 		for (const auto &c : s) {
 			if (isNum(c)) {
-				eStk.emplace(c - '0');
+				factorStr.push_back(c);
 			}
 			else if (isAlphabetic(c)) {
 				if (eStk.empty()) {
@@ -40,6 +41,20 @@ public:
 					// eStk.empty() == false
 					eStk.top().str += subStr;
 				}
+			}
+			else {
+				assert(c == '[');
+				int factor;
+				try {
+					factor = stoi(factorStr);
+				}
+				catch (const std::invalid_argument &e) {
+				}
+				catch (const std::out_of_range &e){
+				}
+
+				eStk.emplace(factor);
+				factorStr.clear();
 			}
 		}
 		return decoded;
