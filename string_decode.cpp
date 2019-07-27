@@ -20,18 +20,26 @@ public:
 				}
 				else {
 					// eStk.empty() == false
-					element &elmt = eStk.top();
-					elmt.str.push_back(c);
+					eStk.top().str.push_back(c);
 				}
 			}
 			else if (c == ']') {
 				assert(!eStk.empty());
 
 				element &elmt = eStk.top();
+				string subStr;
 				for (int i = 0; i < elmt.factor; i++) {
-					decoded += elmt.str;
+					subStr += elmt.str;
 				}
 				eStk.pop();
+
+				if (eStk.empty()) {
+					decoded += subStr;
+				}
+				else {
+					// eStk.empty() == false
+					eStk.top().str += subStr;
+				}
 			}
 		}
 		return decoded;
