@@ -1,6 +1,52 @@
 class Solution {
 public:
 	string longestPalindrome(string s) {
+		string longestPalindrome;
+		int maxLen = 0;
+
+		int len = s.length();
+		for (int i = 0; i < len; i++) {
+			string curr;
+			int cLen = findLongestPalindrome(curr, s, i, i);
+			if (cLen > maxLen) {
+				longestPalindrome = curr;
+				maxLen = cLen;
+			}
+		}
+
+		for (int i = 0; i < len - 1; i++) {
+			if (s[i] == s[i + 1]) {
+				string curr;
+				int cLen = findLongestPalindrome(curr, s, i, i + 1);
+				if (cLen > maxLen) {
+					longestPalindrome = curr;
+					maxLen = cLen;
+				}
+			}
+		}
+		return longestPalindrome;
+	}
+
+private:
+	int findLongestPalindrome(string &lpSub, const string &s, const int &start, const int&end)
+	{
+		int i = start - 1;
+		int j = end + 1;
+		while (i >= 0 && j < len && s[i] == s[j]) {
+			i--;
+			j++;
+		}
+
+		int len = j - i - 1;
+		lpSub = s.substr(i + 1, len);
+		return len;
+	}
+};
+
+
+class Solution {
+public:
+	string longestPalindrome(string s) {
 		vector<vector<int>> curr;
 		string longestPalindrome;
 		string longestPalindromeEven;
