@@ -32,14 +32,15 @@ private:
 	{
 		int i = start - 1;
 		int j = end + 1;
+		int len = s.length();
 		while (i >= 0 && j < len && s[i] == s[j]) {
 			i--;
 			j++;
 		}
 
-		int len = j - i - 1;
-		lpSub = s.substr(i + 1, len);
-		return len;
+		int lpLen = j - i - 1;
+		lpSub = s.substr(i + 1, lpLen);
+		return lpLen;
 	}
 };
 
