@@ -51,7 +51,7 @@ public:
 			}
 		}
 
-		return longestPalindrome;
+		return longestPalindrome.length() > longestPalindromeEven.length() ? longestPalindrome : longestPalindromeEven;
 	}
 
 private:
