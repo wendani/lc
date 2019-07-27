@@ -11,6 +11,17 @@ binary search
 is binary search tree
 set
 
+binary tree
+lca
+distance k nodes
+Construct
+	from preorder + inorder
+	from            inorder + postorder
+	from preorder      +      postorder (undetermined left/right node)
+height
+	isBalanced
+	max distance between two nodes / diameter
+
 18 4Sum
 16 3Sum closest
 40 combination sum 2
@@ -20,18 +31,21 @@ set
 
 Amazon
 5. Longest Palindromic Substring
-merge k sorted linked list
-
+144. Binary Tree Preorder Traversal
 
 698. Partition to K Equal Sum Subsets
 10 regular expression matching
+335. Self Crossing
 
-k distance
-Largest K element
+merge k sorted linked list
 
 
 XOR, bitmap
 missing number
+broken machine (bop)
+
+two pointers
+valid palindrome
 
 sliding window
 longest substring with no repeating characters
@@ -46,11 +60,16 @@ array hashmap
 hashtable + list
 LRU cache
 
+priority queue
+K-th largest element in a stream
+
 signature
 anagram group
 
 recursion
+K-th largest element in an array
 lca in binary tree, bst
+distance K nodes in binary tree
 remove Nth node from end of list
 word search
 # of islands
@@ -81,7 +100,9 @@ partition labels
 word ladder
 
 dp
+longest palindromic substring
 coin change
+
 word break
 
 space
@@ -117,6 +138,7 @@ print a linked list in reverse order with constant memory (Microsoft)
 
 
 Array
+2Sum (Bytedance)
 binary search (Cisco)
 binary search on duplicates (Barefoot Networks)
 
