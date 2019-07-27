@@ -44,6 +44,9 @@ XOR, bitmap
 missing number
 broken machine (bop)
 
+two pointers
+valid palindrome
+
 sliding window
 longest substring with no repeating characters
 
