@@ -40,8 +40,8 @@ public:
 private:
 	bool isAlphabetic(const char &c)
 	{
-		if ('a' <= c && c <= 'z')
-			|| ('A' <= c && c <= 'Z') {
+		if (('a' <= c && c <= 'z')
+			|| ('A' <= c && c <= 'Z')) {
 			return true;
 		}
 		return false;
@@ -61,5 +61,5 @@ private:
 
 		int factor;
 		string str;
-	}
+	};
 };
