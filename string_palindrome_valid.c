@@ -1,3 +1,15 @@
+/*
+ *Example 1:
+ *
+ *Input: "A man, a plan, a canal: Panama"
+ *Output: true
+ *
+ *Example 2:
+ *
+ *Input: "race a car"
+ *Output: false
+*/
+
 class Solution {
 public:
 	bool isPalindrome(string s) {

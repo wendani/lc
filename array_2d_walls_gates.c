@@ -1,3 +1,19 @@
+/*
+ * Given the 2D grid:
+ *
+ * INF  -1  0  INF
+ * INF INF INF  -1
+ * INF  -1 INF  -1
+ *   0  -1 INF INF
+ *
+ * After running your function, the 2D grid should be:
+ *
+ * 3  -1   0   1
+ * 2   2   1  -1
+ * 1  -1   2  -1
+ * 0  -1   3   4
+*/
+
 void updateDist(int **rooms, int rowSize, int colSize, int i, int j, int distToGate)
 {
 	if (i < 0 || i > rowSize - 1) {
