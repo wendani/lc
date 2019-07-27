@@ -1,3 +1,8 @@
+/*
+ * Input: S = "ababcbacadefegdehijhklij"
+ * Output: [9,7,8]
+ */
+
 vector<int> partitionLabels(string S) {
 	int len = S.length();
 
