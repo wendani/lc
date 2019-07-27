@@ -9,7 +9,7 @@ public:
 			bool iValid = isAlphaNumeric(s[i]);
 			bool jValid = isAlphaNumeric(s[j]);
 			if (iValid && jValid) {
-				if (s[i] != s[j]) {
+				if (tolower(s[i]) != tolower(s[j])) {
 					return false;
 				}
 				i++;
