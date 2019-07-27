@@ -30,7 +30,6 @@ height
 
 
 Amazon
-5. Longest Palindromic Substring
 144. Binary Tree Preorder Traversal
 
 698. Partition to K Equal Sum Subsets
@@ -49,6 +48,9 @@ valid palindrome
 
 sliding window
 longest substring with no repeating characters
+
+queue
+moving average (Barefoot)
 
 stack
 valid parentheses
