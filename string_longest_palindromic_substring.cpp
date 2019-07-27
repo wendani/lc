@@ -1,46 +1,56 @@
 class Solution {
 public:
 	string longestPalindrome(string s) {
-		map<char, vector<int>> charIndices;
+		vector<vector<int>> curr;
 		string longestPalindrome;
+		string longestPalindromeEven;
 
 		int len = s.length();
-		if (len < 1) {
-			return longestPalindrome;
-		}
 
 		for (int i = 0; i < len; i++) {
-			charIndices[s[i]].push_back(i);
+			curr.emplace_back(initializer_list<int>{i, i});
 		}
+		while (!curr.empty()) {
+			longestPalindrome = s.substr(curr[0][0], curr[0][1] - curr[0][0] + 1);
 
-		longestPalindrome = s.substr(0, 1);
-		int maxLen = 1;
-		for (const auto &it : charIndices) {
-			int startIdx = 0;
-			int endIdx = it.second.size() - 1;
-
-			while (startIdx < endIdx) {
-				int start = it.second[startIdx];
-				int end = it.second[endIdx];
-				int sLen = end - start + 1;
-				if (sLen < maxLen) {
-					break;
-				}
-
-				if (isPalindrome(s, start, end)) {
-					maxLen = sLen;
-					longestPalindrome = s.substr(start, maxLen);
-					break;
-				}
-
-				if (it.second[startIdx + 1] - start > end - it.second[endIdx - 1]) {
-					endIdx--;
+			auto it = curr.begin();
+			while (it != curr.end()) {
+				int nstart = it->at(0) - 1;
+				int nend = (*it)[1] + 1;
+				if (nstart < 0 || nend > len - 1 || s[nstart] != s[nend]) {
+					it = curr.erase(it);
 				}
 				else {
-					startIdx++;
+					it->at(0) = nstart;
+					(*it)[1] = nend;
+					++it;
 				}
 			}
 		}
+
+		for (int i = 0; i < len - 1; i++) {
+			if (s[i] == s[i + 1]) {
+				curr.emplace_back(initializer_list<int>{i, i + 1});
+			}
+		}
+		while (!curr.empty()) {
+			longestPalindromeEven = s.substr(curr[0][0], curr[0][1] - curr[0][0] + 1);
+
+			auto it = curr.begin();
+			while (it != curr.end()) {
+				int nstart = it->at(0) - 1;
+				int nend = (*it)[1] + 1;
+				if (nstart < 0 || nend > len - 1 || s[nstart] != s[nend]) {
+					it = curr.erase(it);
+				}
+				else {
+					it->at(0) = nstart;
+					(*it)[1] = nend;
+					++it;
+				}
+			}
+		}
+
 		return longestPalindrome;
 	}
 
