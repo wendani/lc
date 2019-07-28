@@ -45,7 +45,14 @@ public:
 		int startCol = 0;
 		int endRow = rowSize - 1;
 		int endCol = colSize - 1;
-		findSpiral(spiral, matrix, startRow, startCol, endRow, endCol);
+		while (startRow <= endRow && startCol <= endCol) {
+			findSpiral(spiral, matrix, startRow, startCol, endRow, endCol);
+
+			startRow++;
+			endRow--;
+			startCol++;
+			endCol--;
+		}
 		return spiral;
 	}
 
