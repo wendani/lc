@@ -42,22 +42,24 @@ public:
 
 		// reach here when matrix has at least 1 element
 		int startRow = 0;
-		int startcol = 0;
+		int startCol = 0;
 		int endRow = rowSize - 1;
 		int endCol = colSize - 1;
-		spiralOrder(spiral, matrix, startRow, endRow, endRow, endCol);
+		findSpiral(spiral, matrix, startRow, startCol, endRow, endCol);
+		return spiral;
 	}
 
 private:
-	void spiralOrder(vector<int> &spiral, const vector<vector<int>> &matrix, const int &startRow, const int &startCol, const int &endRow, const int &endCol)
+	void findSpiral(vector<int> &spiral, const vector<vector<int>> &matrix, const int &startRow, const int &startCol, const int &endRow, const int &endCol)
 	{
 		if (startRow > endRow || startCol > endCol) {
 			return;
 		}
 
+		spiral.push_back(matrix[startRow][startCol]);
+
 		// single element
 		if (startRow == endRow && startCol == endCol) {
-			spiral.push_back(matrix[startRow][startCol]);
 			return;
 		}
 
@@ -90,4 +92,4 @@ private:
 			}
 		}
 	}
-}
+};
