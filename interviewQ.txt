@@ -53,6 +53,7 @@ queue
 moving average (Barefoot)
 
 stack
+string decode
 valid parentheses
 largest rectangle in histogram
 
