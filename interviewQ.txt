@@ -76,6 +76,7 @@ distance K nodes in binary tree
 remove Nth node from end of list
 word search
 # of islands
+walls & gates
 
 binary search
 binary search in rotated sorted array
