@@ -25,17 +25,16 @@ public:
 		}
 
 		int len = digits.size();
-		vector<int> indices;
+		vector<vector<int>> dis; // digit-index
 		for (int i = 0; i < len; i++) {
-			indices.push_back(i);
+			dis.emplace_back(initializer_list<int>{digits[i], i});
 		}
-		sort(indices.begin(), indices.end(), &Solution::comp);
+		sort(dis.begin(), dis.end());
 
 		for (int i = len - 1; i >= 0; i--) {
-			if (indices[i] ! = i) {
-				temp = digits[i];
-				digits[i] = digits[indices[i]];
-				digits[indices[i]] = temp;
+			if (dis[i][1] != i) {
+				digits[dis[i][1]] = digits[i];
+				digits[i] = dis[i][0];
 				break;
 			}
 		}
