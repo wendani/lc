@@ -71,8 +71,7 @@ private:
 		else {
 			currCol++;
 		}
-
-		while (currRow != startRow && currCol != startCol) {
+		while (currRow != startRow || currCol != startCol) {
 			spiral.push_back(matrix[currRow][currCol]);
 
 			if (currRow == startRow && currCol < endCol) {
