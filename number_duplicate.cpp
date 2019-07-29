@@ -37,5 +37,42 @@ public:
 class Solution {
 public:
 	int findDuplicate(vector<int>& nums) {
+		int len = nums.size();
+		int lo = 0;
+		int hi = len - 1;
+
+		while (lo <= hi) {
+			int mid = (lo + hi) >> 1;
+
+			int loCnt;
+			int midCnt;
+			count(loCnt, midCnt, nums, lo, mid);
+			if (midCnt > 1) {
+				return mid;
+			}
+			else if (loCnt > mid - lo) {
+				hi = mid - 1;
+			}
+			else {
+				lo = mid + 1;
+			}
+		}
+		return -1;
+	}
+
+private:
+	void count(int &loCnt, int &midCnt, vector<int> &nums, int lo, int mid)
+	{
+		int len = nums.size();
+		loCnt = 0;
+		midCnt = 0;
+		for (int i = 0; i < len; i++) {
+			if (lo <= nums[i] && nums[i] < mid) {
+				loCnt++;
+			}
+			else if (nums[i] == mid) {
+				midCnt++;
+			}
+		}
 	}
 };
