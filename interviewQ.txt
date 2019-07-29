@@ -45,6 +45,7 @@ broken machine (bop)
 
 two pointers
 valid palindrome
+duplicate number (287)
 
 sliding window
 longest substring with no repeating characters
@@ -82,6 +83,7 @@ word search
 walls & gates
 
 binary search
+duplicate number (287)
 binary search in rotated sorted array
 
 invariant
