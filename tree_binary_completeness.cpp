@@ -27,12 +27,12 @@ public:
 				return false;
 			}
 
-			if (idx == size - 1) {
+			if (idx << 1 == size) {
 				size <<= 1;
 				nodeExist.resize(size, false);
 			}
 
-			TreeNode *node = nodeQ.top();
+			TreeNode *node = nodeQ.front();
 			if (node->left) {
 				nodeExist[2 * idx] = true;
 				nodeQ.push(node->left);
