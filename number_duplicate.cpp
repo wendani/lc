@@ -38,7 +38,7 @@ class Solution {
 public:
 	int findDuplicate(vector<int>& nums) {
 		int len = nums.size();
-		int lo = 0;
+		int lo = 1;
 		int hi = len - 1;
 
 		while (lo <= hi) {
