@@ -66,6 +66,7 @@ LRU cache
 
 priority queue
 K-th largest element in a stream
+last stone weight
 
 signature
 anagram group
@@ -104,6 +105,7 @@ combination sum
 
 bfs
 binary tree level order traversal
+binary tree completeness
 course schedule (true/false)
 merge intervals
 partition labels
