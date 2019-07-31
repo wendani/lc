@@ -24,14 +24,19 @@
 class Solution {
 public:
 	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-		int num1 = getNum(l1);
-		int num2 = getNum(l2);
+		uint64_t num1 = getNum(l1);
+		uint64_t num2 = getNum(l2);
 
-		int num = num1 + num2;
+		uint64_t num = num1 + num2;
 		stack<int> digiStk;
-		while (num) {
-			digiStk.push(num % 10);
-			num /= 10;
+		if (!num) {
+			digiStk.push(num);
+		}
+		else {
+			while (num) {
+				digiStk.push(num % 10);
+				num /= 10;
+			}
 		}
 
 		ListNode *curr = NULL;
@@ -48,13 +53,13 @@ public:
 	}
 
 private:
-	int getNum(ListNode *node)
+	uint64_t getNum(ListNode *node)
 	{
 		if (!node) {
 			return 0;
 		}
 
-		int num = getNum(node->next);
+		uint64_t num = getNum(node->next);
 		return num * 10 + node->val;
 	}
 };
