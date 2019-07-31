@@ -24,20 +24,22 @@
 class Solution {
 public:
 	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-		uint64_t num1 = getNum(l1);
-		uint64_t num2 = getNum(l2);
-
-		uint64_t num = num1 + num2;
 		stack<int> digiStk;
-		if (!num) {
-			digiStk.push(num);
-		}
-		else {
-			while (num) {
-				digiStk.push(num % 10);
-				num /= 10;
+		int credit = 0;
+		while (l1 || l2) {
+			int digit = credit;
+			if (l1) {
+				digit += l1->val;
+				l1 = l1->next;
 			}
+			if (l2) {
+				digit += l2->val;
+				l2 = l2->next;
+			}
+			digiStk.push(digit % 10);
+			credit = digit / 10;
 		}
+
 
 		ListNode *curr = NULL;
 		while (!digiStk.empty()) {
