@@ -39,7 +39,9 @@ public:
 			digiStk.push(digit % 10);
 			credit = digit / 10;
 		}
-
+		if (credit) {
+			digiStk.push(credit);
+		}
 
 		ListNode *curr = NULL;
 		while (!digiStk.empty()) {
