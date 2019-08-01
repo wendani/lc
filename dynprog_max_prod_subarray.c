@@ -35,6 +35,8 @@ int maxProduct(int* nums, int numsSize){
 		minNegProdStartFromNextIdx = 0;
 	}
 	for (int i = numsSize - 2; i >= 0; i--) {
+		int maxPosProdStartFromCurrIdx;
+		int minNegProdStartFromCurrIdx;
 		if (nums[i] > 0) {
 			maxPosProdStartFromCurrIdx = nums[i] * maxPosProdStartFromNextIdx;
 			if (nums[i] > maxPosProdStartFromCurrIdx) {
@@ -58,7 +60,7 @@ int maxProduct(int* nums, int numsSize){
 		}
 
 		if (maxPosProdStartFromCurrIdx > maxProd) {
-			maxProd = maxProdStartFromCurrIdx;
+			maxProd = maxPosProdStartFromCurrIdx;
 		}
 
 		maxPosProdStartFromNextIdx = maxPosProdStartFromCurrIdx;
