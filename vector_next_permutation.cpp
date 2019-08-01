@@ -10,6 +10,10 @@
  * 1,2,3 → 1,3,2
  * 3,2,1 → 1,2,3
  * 1,1,5 → 1,5,1
+ *
+ * Input    [2,3,1]
+ * Output   [1,2,3]
+ * Expected [3,1,2]
  */
 
 class Solution {
@@ -17,13 +21,37 @@ public:
 	void nextPermutation(vector<int>& nums) {
 		int len = nums.size();
 
-		int lastNum = nums[len - 1];
-		for (int i = len - 2; i >= 0; i--) {
-			if (nums[i] < lastNum) {
-				sort(nums.begin() + i, nums.end(), greater<int>());
-				return;
+		int bound = 0;
+		int currIdx = -1;
+		for (int i = len - 1; i > bound; i--) {
+			for (int j = i - 1; j >= bound; j--) {
+				if (nums[j] < nums[i]) {
+					if (j == bound) {
+						if (currIdx < 0) {
+							currIdx = i;
+						}
+						else if (nums[i] < nums[currIdx]) {
+							currIdx = i;
+						}
+					}
+					else {
+						bound = j;
+						currIdx = i;
+						break;
+					}
+				}
 			}
 		}
-		sort(nums.begin(), nums.end());
+
+		if (currIdx > 0) {
+			int temp = nums[currIdx];
+			nums[currIdx] = nums[bound];
+			nums[bound] = temp;
+
+			sort(nums.begin() + bound + 1, nums.end());
+		}
+		else {
+			sort(nums.begin(), nums.end());
+		}
 	}
 };
