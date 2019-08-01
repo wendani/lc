@@ -33,8 +33,10 @@ Amazon
 144. Binary Tree Preorder Traversal
 
 698. Partition to K Equal Sum Subsets
+416. Partition Equal Subset Sum
 10 regular expression matching
 335. Self Crossing
+
 
 merge k sorted linked list
 
@@ -113,10 +115,11 @@ word ladder
 
 dp
 longest palindromic substring
-coin change
+coin change, fewest number
 
 word break
 max subarray
+max product subarray
 
 space
 count primes
