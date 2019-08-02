@@ -38,7 +38,7 @@ public:
 			}
 			for (j = stones[i]; j <= weightLimit; j++) {
 				if (stoneWeight[i - 1][j - stones[i]] || stoneWeight[i - 1][j]) {
-					stoneWeight[i][j] == true;
+					stoneWeight[i][j] = true;
 					if (maxWeight < j) {
 						maxWeight = j;
 					}
