@@ -19,6 +19,42 @@
 class Solution {
 public:
 	void nextPermutation(vector<int>& nums) {
+		int i, j;
+
+		int len = nums.size();
+		for (i = len - 2; i >= 0; i--) {
+			if (nums[i] < nums[i + 1]) {
+				// find in i + 1 to len - 1
+				// the smallest nums[j] having nums[i] < nums[j]
+				j = len - 1;
+				while (nums[i] >= nums[j]) {
+					j--;
+				}
+				assert(i < j);
+
+				int temp = nums[i];
+				nums[i] = nums[j];
+				nums[j] = temp;
+				break;
+			}
+		}
+
+		i++;
+		j = len - 1;
+		while (i < j) {
+			int temp = nums[i];
+			nums[i] = nums[j];
+			nums[j] = temp;
+
+			i++;
+			j--;
+		}
+	}
+}
+
+class Solution {
+public:
+	void nextPermutation(vector<int>& nums) {
 		int len = nums.size();
 
 		int bound = 0;
