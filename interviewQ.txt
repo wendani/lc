@@ -102,6 +102,7 @@ best time to buy and sell stock
 dfs
 topological sort
 subsets
+permutations
 letter combinations of a phone number
 combination sum
 
@@ -114,8 +115,12 @@ partition labels
 word ladder
 
 dp
+1 dimension
 longest palindromic substring
 coin change, fewest number
+
+2 dimension
+last stone weight 2
 
 word break
 max subarray
