@@ -1,3 +1,20 @@
+/*
+ * Example:
+ *
+ * Input: nums = [1,2,3]
+ * Output:
+ * [
+ *   [3],
+ *   [1],
+ *   [2],
+ *   [1,2,3],
+ *   [1,3],
+ *   [2,3],
+ *   [1,2],
+ *   []
+ * ]
+ */
+
 void _subsets(vector<vector<int>> &subsets, vector<int>::const_iterator cbegin, vector<int>::const_iterator cend)
 {
 	if (cbegin == cend) {
