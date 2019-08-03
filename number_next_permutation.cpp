@@ -50,7 +50,7 @@ public:
 			j--;
 		}
 	}
-}
+};
 
 class Solution {
 public:
