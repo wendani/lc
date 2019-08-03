@@ -24,6 +24,7 @@ void _subsets(vector<vector<int>> &subsets, vector<int>::const_iterator cbegin, 
 	if (cbegin + 1 == cend) {
 		subsets.emplace_back();
 		subsets.emplace_back(initializer_list<int>{*cbegin});
+		return;
 	}
 
 	// reach here when cbegin + 1 != cend
