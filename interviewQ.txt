@@ -75,6 +75,7 @@ anagram group
 
 sorting
 maximum swap
+next permutation
 
 recursion
 K-th largest element in an array
