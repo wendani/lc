@@ -26,7 +26,7 @@ height
 16 3Sum closest
 40 combination sum 2
 212 word search 2
-210. Course Schedule 2
+210 Course Schedule 2
 
 
 Amazon
@@ -45,39 +45,42 @@ XOR, bitmap
 missing number
 broken machine (bop)
 
-two pointers
+Number
+next permutation
+
+Two pointers
 valid palindrome
 duplicate number (287)
 
-sliding window
+Sliding window
 longest substring with no repeating characters
 
-queue
+Queue
 moving average (Barefoot)
 
-stack
+Stack
 string decode
 valid parentheses
 largest rectangle in histogram
 
-hashtable
+Hashtable
 array hashmap
 
-hashtable + list
+Hashtable + list
 LRU cache
 
-priority queue
+Priority queue
 K-th largest element in a stream
 last stone weight
 
-signature
+Signature
 anagram group
 
-sorting
+Sorting
 maximum swap
 next permutation
 
-recursion
+Recursion
 K-th largest element in an array
 lca in binary tree, bst
 distance K nodes in binary tree
@@ -86,11 +89,11 @@ word search
 # of islands
 walls & gates
 
-binary search
+Binary search
 duplicate number (287)
 binary search in rotated sorted array
 
-invariant
+Invariant
 gas station
 majority element
 largest rectangle in histogram
@@ -100,14 +103,14 @@ best time to buy and sell stock
 3 sum
 2 sum
 
-dfs
+DFS
 topological sort
 subsets
 permutations
 letter combinations of a phone number
 combination sum
 
-bfs
+BFS
 binary tree level order traversal
 binary tree completeness
 course schedule (true/false)
@@ -115,7 +118,7 @@ merge intervals
 partition labels
 word ladder
 
-dp
+DP
 1 dimension
 longest palindromic substring
 coin change, fewest number
@@ -127,7 +130,7 @@ word break
 max subarray
 max product subarray
 
-space
+Space
 count primes
 
 
