@@ -40,12 +40,12 @@ private:
 		for (const auto &subPermute : subPermutes) {
 			auto it = subPermute.begin();
 			while (it != subPermute.end()) {
-				vector<int> permute;
+				permutes.emplace_back();
+				auto &permute = permutes.back();
+
 				permute.insert(permute.end(), subPermute.begin(), it);
 				permute.push_back(*cBeginIt);
 				permute.insert(permute.end(), it, subPermute.end());
-
-				permutes.push_back(permute);
 
 				++it;
 			}
