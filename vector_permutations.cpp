@@ -30,7 +30,7 @@ private:
 
 		if (cBeginIt + 1 == cEndIt) {
 			permutes.emplace_back(initializer_list<int>{*cBeginIt});
-			return
+			return;
 		}
 
 		// reach here when cBeginIt + 1 != cEndIt
@@ -51,7 +51,7 @@ private:
 			}
 
 			permutes.push_back(subPermute);
-			permutes.back().push_back(*cbegin);
+			permutes.back().push_back(*cBeginIt);
 		}
 	}
 };
