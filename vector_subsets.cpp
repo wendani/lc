@@ -37,10 +37,10 @@ void _subsets(vector<vector<int>> &subsets, vector<int>::const_iterator cbegin, 
 	// currsubsets.emplace_back(initializer_list<int>{*cbegin});
 	for (const auto &currsubset : currsubsets) {
 		for (const auto &subsubset : subsubsets) {
-			vector<int> subnet;
-			subnet.insert(subnet.end(), currsubset.begin(), currsubset.end());
-			subnet.insert(subnet.end(), subsubset.begin(), subsubset.end());
-			subsets.push_back(subnet);
+			vector<int> subset;
+			subset.insert(subset.end(), currsubset.begin(), currsubset.end());
+			subset.insert(subset.end(), subsubset.begin(), subsubset.end());
+			subsets.push_back(subset);
 		}
 	}
 }
