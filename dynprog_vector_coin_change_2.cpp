@@ -25,18 +25,15 @@
 class Solution {
 public:
 	int change(int amount, vector<int>& coins) {
-		vector<int> amounts(amount + 1, 0);
-		amounts[0] = 1;
+		vector<int> combiNum(amount + 1, 0);
 
 		int len = coins.size();
-		for (int amnt = 0; amnt <= amount; amnt++) {
-			for (int j = 0; j < len; j++) {
-				int subAmnt = amnt - coins[j];
-				if (subAmnt >= coins[j] || subAmnt == 0) {
-					amounts[amnt] += amounts[subAmnt];
-				}
+		combiNum[0] = 1;
+		for (int i = 0; i < len; i++) {
+			for (int amnt = coins[i]; amnt <= amount; amnt++) {
+				combiNum[amnt] += combiNum[amnt - coins[i]];
 			}
 		}
-		return amounts[amount];
+		return combiNum[amount];
 	}
 };
