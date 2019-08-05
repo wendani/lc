@@ -20,6 +20,7 @@ int coinChange(vector<int>& coins, int amount) {
 	vector<int> coinNum(amount + 1, amount + 1);
 
 	int coinSize = coins.size();
+	coinNum[0] = 0;
 	for (int i = 0; i < coinSize; i++) {
 		for (int j = coins[i]; j <= amount; j++) {
 			if (coinNum[j - coins[i]] + 1 < coinNum[j]) {
