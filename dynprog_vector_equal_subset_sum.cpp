@@ -22,16 +22,19 @@ public:
 		}
 
 		int sumTarget = sum >> 1;
-		if (nums[0] == sumTarget) {
-			return true;
-		}
-
 		vector<vector<bool>> numSum;
 		int len = nums.size();
 		for (int i = 0; i < len; i++) {
+			if (nums[i] == sumTarget) {
+				return true;
+			}
+			else if (nums[i] > sumTarget) {
+				return false;
+			}
 			numSum.emplace_back(sumTarget + 1, false);
 			numSum[i][0] = true;
 		}
+
 		numSum[0][nums[0]] = true;
 		for (int i = 1; i < len; i++) {
 			for (int j = 1; j < nums[i]; j++) {
