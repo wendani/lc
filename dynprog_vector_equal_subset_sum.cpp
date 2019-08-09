@@ -22,7 +22,6 @@ public:
 		}
 
 		int sumTarget = sum >> 1;
-		vector<vector<bool>> numSum;
 		int len = nums.size();
 		for (int i = 0; i < len; i++) {
 			if (nums[i] == sumTarget) {
@@ -31,23 +30,18 @@ public:
 			else if (nums[i] > sumTarget) {
 				return false;
 			}
-			numSum.emplace_back(sumTarget + 1, false);
-			numSum[i][0] = true;
 		}
 
-		numSum[0][nums[0]] = true;
+		vector<bool> numSum(sumTarget + 1, false);
+		numSum[0] = true;
+		numSum[nums[0]] = true;
 		for (int i = 1; i < len; i++) {
-			for (int j = 1; j < nums[i]; j++) {
-				if (numSum[i - 1][j]) {
-					numSum[i][j] = true;
-				}
-			}
 			for (int j = nums[i]; j <= sumTarget; j++) {
-				if (numSum[i - 1][j - nums[i]] || numSum[i - 1][j]) {
+				if (!numSum[j] && numSum[j - nums[i]]) {
 					if (j == sumTarget) {
 						return true;
 					}
-					numSum[i][j] = true;
+					numSum[j] = true;
 				}
 			}
 		}
