@@ -20,7 +20,7 @@ public:
 		}
 
 		int sumTarget = sum / k;
-		vector<bool> numSum(sumTarget + 1, false);
+		vector<bool> numSum(sum + 1, false);
 		numSum[0] = true;
 		int len = nums.size();
 		for (int i = 0; i < len; i++) {
@@ -28,7 +28,7 @@ public:
 				return false;
 			}
 
-			for (int j = sumTarget; j >= nums[i]; j--) {
+			for (int j = sum; j >= nums[i]; j--) {
 				if (!numSum[j] && numSum[j - nums[i]]) {
 					numSum[j] = true;
 				}
