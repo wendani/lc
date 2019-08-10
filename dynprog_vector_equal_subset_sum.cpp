@@ -8,6 +8,49 @@
  * Explanation: The array can be partitioned as [1, 5, 5] and [11].
  */
 
+
+class Solution {
+public:
+	bool canPartition(vector<int>& nums) {
+		int sum = 0;
+		for (const auto &num : nums) {
+			sum += num;
+		}
+
+		if (sum & 0x1) {
+			return false;
+		}
+
+		int sumTarget = sum >> 1;
+		sort(nums.begin(), nums.end());
+		return _canPartition(nums, 0, sumTarget);
+
+	}
+private:
+	// Can get sum starting from startIdx
+	bool _canPartition(const vector<int> &sortedNums, int startIdx, int sum)
+	{
+		int len = sortedNums.size();
+		if (startIdx >= len) {
+			return false;
+		}
+
+		if (sortedNums[startIdx] == sum) {
+			return true;
+		}
+
+		if (sortedNums[startIdx] > sum) {
+			return false;
+		}
+
+		if (_canPartition(sortedNums, startIdx + 1, sum - sortedNums[startIdx])
+			|| _canPartition(sortedNums, startIdx + 1, sum)) {
+			return true;
+		}
+		return false;
+	}
+};
+
 class Solution {
 public:
 	bool canPartition(vector<int>& nums) {
