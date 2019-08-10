@@ -37,7 +37,7 @@ public:
 			unordered_set<int> canPartitionSum;
 			auto it = toPartitionSum.begin();
 			while (it != toPartitionSum.end()) {
-				if (canPartitionSum.count(*it - nums[i])) {
+				if (partitionedSum.count(*it - nums[i])) {
 					if (*it == sumTarget) {
 						return true;
 					}
