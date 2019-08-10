@@ -43,6 +43,9 @@ public:
 					partitionedSum.insert(*it);
 					it = toPartitionSum.erase(it);
 				}
+				else {
+					++it;
+				}
 			}
 		}
 		return false;
