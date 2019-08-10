@@ -8,6 +8,46 @@
  * Explanation: The array can be partitioned as [1, 5, 5] and [11].
  */
 
+class Solution {
+public:
+	bool canPartition(vector<int>& nums) {
+		int sum = 0;
+		for (const auto &num : nums) {
+			sum += num;
+		}
+
+		if (sum & 0x1) {
+			return false;
+		}
+
+		int sumTarget = sum >> 1;
+		unordered_set<int> partitionedSum;
+		unordered_set<int> toPartitionSum;
+		for (int i = 1; i <= sumTarget; i++) {
+			toPartitionSum.insert(i);
+		}
+		partitionedSum.insert(0);
+
+		int len = nums.size();
+		for (int i = 0; i < len; i++) {
+			if (nums[i] > sumTarget) {
+				return false;
+			}
+
+			auto it = toPartitionSum.begin();
+			while (it != toPartitionSum.end()) {
+				if (canPartitionSum.count(*it - nums[i])) {
+					if (*it == sumTarget) {
+						return true;
+					}
+					partitionedSum.insert(*it);
+					it = toPartitionSum.erase(it);
+				}
+			}
+		}
+		return false;
+	}
+}
 
 class Solution {
 public:
