@@ -34,23 +34,25 @@ public:
 				return false;
 			}
 
+			unordered_set<int> canPartitionSum;
 			auto it = toPartitionSum.begin();
 			while (it != toPartitionSum.end()) {
 				if (canPartitionSum.count(*it - nums[i])) {
 					if (*it == sumTarget) {
 						return true;
 					}
-					partitionedSum.insert(*it);
+					canPartitionSum.insert(*it);
 					it = toPartitionSum.erase(it);
 				}
 				else {
 					++it;
 				}
 			}
+			partitionedSum.insert(canPartitionSum.begin(), canPartitionSum.end());
 		}
 		return false;
 	}
-}
+};
 
 class Solution {
 public:
