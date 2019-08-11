@@ -109,6 +109,42 @@ class Solution {
 public:
 	bool canPartition(vector<int>& nums) {
 		int sum = 0;
+		for (const auto num : nums) {
+			sum += num;
+		}
+
+		if (sum & 0x1) {
+			return false;
+		}
+
+		int sumTarget = sum >> 1;
+		unordered_set<int> partitionedSum;
+
+		int len = nums.size();
+		for (int i = 0; i < len; i++) {
+			if (nums[i] > sumTarget) {
+				return false;
+			}
+
+			unordered_set<int> canPartitionSum;
+			canPartitionSum.insert(nums[i]);
+			for (const auto &pSum : partitionedSum) {
+				int cSum = pSum + nums[i];
+				if (cSum == sumTarget) {
+					return true;
+				}
+				canPartitionSum.insert(cSum);
+			}
+			partitionedSum.insert(canPartitionSum.begin(), canPartitionSum.end());
+		}
+		return false;
+	}
+};
+
+class Solution {
+public:
+	bool canPartition(vector<int>& nums) {
+		int sum = 0;
 		for (const auto &num : nums) {
 			sum += num;
 		}
