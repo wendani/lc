@@ -59,7 +59,7 @@ public:
 			curr--;
 		}
 
-		sort(logs.begin(), logs.being() + digitSwapIdx, comp);
+		sort(logs.begin(), logs.begin() + digitSwapIdx + 1, comp);
 
 		return logs;
 	}
@@ -69,8 +69,8 @@ private:
 		size_t found = log.find(" ");
 		assert(found != string::npos);
 
-		char *c = log.substr(found + 1, found + 1).c_str();
-		if ('0' <= c[0] && c[0] <= '9') {
+		const string &&s = log.substr(found + 1, found + 1);
+		if ('0' <= s[0] && s[0] <= '9') {
 			return true;
 		}
 		return false;
