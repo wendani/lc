@@ -60,10 +60,9 @@ int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, i
 	// 	}
 	// }
 
-	if (image[sr][sc] == newColor) {
-		return;
+	if (image[sr][sc] != newColor) {
+		_floodFill(image, imageSize, *imageColSize, sr, sc, image[sr][sc], newColor);
 	}
-	_floodFill(image, imageSize, *imageColSize, sr, sc, image[sr][sc], newColor);
 
 	if (returnSize) {
 		*returnSize = imageSize;
