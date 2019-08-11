@@ -1,6 +1,7 @@
 /*
  * Example 1:
  *
+ *
  * Input:
  * image = [[1,1,1],[1,1,0],[1,0,1]]
  * sr = 1, sc = 1, newColor = 2
@@ -51,26 +52,28 @@ int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, i
 		return NULL;
 	}
 
-	int **newImage = (int **)malloc(imageSize * sizeof(int *));
-	for (int i = 0; i < imageSize; i++) {
-		newImage[i] = (int *)malloc(*imageColSize * sizeof(int));
-		for (int j = 0; j < *imageColSize; j++) {
-			newImage[i][j] = image[i][j];
-		}
-	}
+	// int **newImage = (int **)malloc(imageSize * sizeof(int *));
+	// for (int i = 0; i < imageSize; i++) {
+	// 	newImage[i] = (int *)malloc(*imageColSize * sizeof(int));
+	// 	for (int j = 0; j < *imageColSize; j++) {
+	// 		newImage[i][j] = image[i][j];
+	// 	}
+	// }
 
 	if (image[sr][sc] == newColor) {
 		return;
 	}
-	_floodFill(newImage, imageSize, *imageColSize, sr, sc, image[sr][sc], newColor);
+	_floodFill(image, imageSize, *imageColSize, sr, sc, image[sr][sc], newColor);
 
 	if (returnSize) {
 		*returnSize = imageSize;
 	}
 	if (returnColumnSizes) {
-		int *colSize = (int *)malloc(sizeof(int));
-		*colSize = *imageColSize;
-		*returnColumnSizes = colSize;
+		// int *colSize = (int *)malloc(sizeof(int));
+		// *colSize = *imageColSize;
+		// *returnColumnSizes = colSize;
+		*returnColumnSizes = imageColSize;
 	}
-	return newImage;
+	// return newImage;
+	return image;
 }
