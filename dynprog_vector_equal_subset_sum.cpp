@@ -118,7 +118,7 @@ public:
 		}
 
 		int sumTarget = sum >> 1;
-		unordered_set<int> partitionedSum;
+		unordered_set<int> partitionedSum = {0};
 
 		int len = nums.size();
 		for (int i = 0; i < len; i++) {
@@ -127,7 +127,6 @@ public:
 			}
 
 			unordered_set<int> canPartitionSum;
-			canPartitionSum.insert(nums[i]);
 			for (const auto &pSum : partitionedSum) {
 				int cSum = pSum + nums[i];
 				if (cSum == sumTarget) {
