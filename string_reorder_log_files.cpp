@@ -11,7 +11,7 @@
  */
 
 
-static comp(const string &a, const string &b)
+static bool comp(const string &a, const string &b)
 {
 	size_t aFound = a.find(" ");
 	assert(aFound != string::npos);
