@@ -31,7 +31,14 @@ private:
 	bool _canPartition(const vector<int> &sortedNums, int startIdx, int sum)
 	{
 		int len = sortedNums.size();
-		if (startIdx >= len) {
+		if (startIdx > len) {
+			return false;
+		}
+
+		if (startIdx == len) {
+			if (sum == 0) {
+				return true;
+			}
 			return false;
 		}
 
@@ -43,9 +50,15 @@ private:
 			return false;
 		}
 
-		if (_canPartition(sortedNums, startIdx + 1, sum - sortedNums[startIdx])
-			|| _canPartition(sortedNums, startIdx + 1, sum)) {
-			return true;
+		int nextIdx = startIdx + 1;
+		for (; nextIdx < len && sortedNums[nextIdx]  == sortedNums[nextIdx - 1]; nextIdx++) {
+			;
+		}
+		for (int i = 0; i <= nextIdx - startIdx; i++) {
+			if (_canPartition(sortedNums, nextIdx, sum)) {
+				return true;
+			}
+			sum -= sortedNums[startIdx];
 		}
 		return false;
 	}
