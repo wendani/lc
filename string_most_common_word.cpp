@@ -80,4 +80,4 @@ private:
 	static const unordered_set<char> puncSymbols;
 };
 
-const unordered_set<char> Solution::puncSymbols = {"!", "?", "'", ",", ";", "."};
+const unordered_set<char> Solution::puncSymbols = {'!', '?', '\'', ',', ';', '.'};
