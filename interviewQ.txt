@@ -35,8 +35,8 @@ Amazon
 10 regular expression matching
 335. Self Crossing
 
+1026
 
-merge k sorted linked list
 
 
 XOR, bitmap
@@ -49,6 +49,8 @@ next permutation
 Two pointers
 valid palindrome
 duplicate number (287)
+reorder log files
+most common word
 
 Sliding window
 longest substring with no repeating characters
@@ -60,6 +62,7 @@ Stack
 string decode
 valid parentheses
 largest rectangle in histogram
+add two numbers
 
 Hashtable
 array hashmap
@@ -70,6 +73,7 @@ LRU cache
 Priority queue
 K-th largest element in a stream
 last stone weight
+merge K sorted linked list
 
 Signature
 anagram group
