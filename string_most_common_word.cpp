@@ -19,6 +19,9 @@
  * paragraph only consists of letters, spaces, or the punctuation symbols !?',;.
  * There are no hyphens or hyphenated words.
  * Words only consist of letters, never apostrophes or other punctuation symbols.
+ *
+ * "a, a, a, a, b,b,b,c, c"
+ * ["a"]
  */
 
 
@@ -36,24 +39,28 @@ public:
 		string mostCommonWord;
 
 		while (!subParagraph.empty()) {
-			size_t pos = subParagraph.find(" ");
-			string &&w = subParagraph.substr(0, pos);
-			if (pos != string::npos) {
-				subParagraph = subParagraph.substr(pos + 1);
+			// find the next word
+			int len = subParagraph.size();
+			int startPos = 0;
+			for (; startPos < len && !isalpha(subParagraph[startPos]); startPos++) {
+				;
 			}
-			else {
-				// pos == string::npos
-				subParagraph.clear();
+			if (startPos == len) {
+				break;
+			}
+			int endPosExcl = startPos + 1;
+			while (endPosExcl < len && isalpha(subParagraph[endPosExcl]) {
+				subParagraph[pos] = tolower(subParagraph[endPosExcl]);
+				endPosExcl++;
 			}
 
-			// process word w
-			// remove tailing punctuation symbols
-			while (puncSymbols.count(w.back())) {
-				w.pop_back();
+			string &&w = subParagraph.substr(startPos, endPosExcl - startPos);
+			if (endPosExcl < len) {
+				subParagraph = subParagraph.substr(endPosExcl);
 			}
-			// convert to lower case
-			for (auto &c : w) {
-				c = tolower(c);
+			else {
+				// endPosExcl == len
+				subParagraph.clear();
 			}
 
 			if (banSet.count(w)) {
