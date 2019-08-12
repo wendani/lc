@@ -48,6 +48,7 @@ public:
 			if (startPos == len) {
 				break;
 			}
+			subParagraph[startPos] = tolower(subParagraph[startPos]);
 			int endPosExcl = startPos + 1;
 			while (endPosExcl < len && isalpha(subParagraph[endPosExcl])) {
 				subParagraph[endPosExcl] = tolower(subParagraph[endPosExcl]);
