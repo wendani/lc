@@ -49,7 +49,9 @@ public:
 				listNodeMinPriQ.push(node);
 			}
 		}
-		tail->next = NULL;
+		if (head) {
+			tail->next = NULL;
+		}
 
 		return head;
 	}
