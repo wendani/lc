@@ -49,8 +49,8 @@ public:
 				break;
 			}
 			int endPosExcl = startPos + 1;
-			while (endPosExcl < len && isalpha(subParagraph[endPosExcl]) {
-				subParagraph[pos] = tolower(subParagraph[endPosExcl]);
+			while (endPosExcl < len && isalpha(subParagraph[endPosExcl])) {
+				subParagraph[endPosExcl] = tolower(subParagraph[endPosExcl]);
 				endPosExcl++;
 			}
 
