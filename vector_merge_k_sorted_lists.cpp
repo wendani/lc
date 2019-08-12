@@ -18,6 +18,52 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+class Solution {
+public:
+	ListNode* mergeKLists(vector<ListNode*>& lists) {
+		priority_queue<ListNode *, vector<ListNode *>, comp> listNodeMinPriQ;
+		for (const auto &list : lists) {
+			if (list) {
+				listNodeMinPriQ.push(list);
+			}
+		}
+
+		ListNode *head = NULL;
+		ListNode *tail;
+		while (!listNodeMinPriQ.empty()) {
+			ListNode *node = listNodeMinPriQ.top();
+			listNodeMinPriQ.pop();
+
+			if (!head) {
+				head = node;
+				tail = head;
+			}
+			else {
+				tail->next = node;
+				tail = node;
+			}
+
+			node = node->next;
+			if (node) {
+				listNodeMinPriQ.push(node);
+			}
+		}
+		tail->next = NULL;
+
+		return head;
+	}
+private:
+	struct comp {
+		bool operator()(const ListNode *a, const ListNode *b) {
+			if (a->val >= b->val) {
+				return true;
+			}
+			return false;
+		}
+	};
+};
+
 class Solution {
 public:
 	ListNode* mergeKLists(vector<ListNode*>& lists) {
