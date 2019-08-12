@@ -42,7 +42,7 @@ public:
 			}
 		}
 
-		listNode *prev = NULL;
+		ListNode *prev = NULL;
 		while (!listNodeStk.empty()) {
 			ListNode *curr = listNodeStk.top();
 			listNodeStk.pop();
