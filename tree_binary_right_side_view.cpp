@@ -47,7 +47,7 @@ public:
 				}
 				curr->pop();
 			}
-			rightSideViewNodes.push(node->val);
+			rightSideViewNodes.push_back(node->val);
 
 			queue<TreeNode *> *temp = curr;
 			curr = next;
