@@ -38,7 +38,6 @@ Amazon
 1026
 
 
-
 XOR, bitmap
 missing number
 broken machine (bop)
@@ -48,6 +47,7 @@ next permutation
 
 Two pointers
 valid palindrome
+valid palindrome 2
 duplicate number (287)
 reorder log files
 most common word
@@ -115,6 +115,7 @@ combination sum
 
 BFS
 binary tree level order traversal
+binary tree right side view
 binary tree completeness
 course schedule (true/false)
 merge intervals
