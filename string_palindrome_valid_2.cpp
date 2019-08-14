@@ -23,8 +23,8 @@ public:
 				i++;
 				j--;
 			}
-			else if (isPalindrome(s.substr(i, j - i))
-					|| isPalindrome(i + 1, j - i)) {
+			else if (isPalindrome(s, i, j - 1)
+					|| isPalindrome(s, i + 1, j)) {
 				return true;
 			}
 			else {
@@ -34,18 +34,15 @@ public:
 		return true;
 	}
 private:
-	bool isPalindrome(const string &s)
+	bool isPalindrome(const string &s, int i, int j)
 	{
-		int j = s.length() - 1;
-		int i = 0;
-
 		while (i < j) {
 			if (s[i] != s[j]) {
 				return false;
 			}
+			i++;
+			j--;
 		}
 		return true;
 	}
 };
-
-
