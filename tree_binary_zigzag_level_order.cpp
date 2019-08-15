@@ -37,7 +37,7 @@ public:
 		stack<TreeNode *> *curr = &stk[0];
 		stack<TreeNode *> *next = &stk[1];
 
-		isLeftToRight = 1;
+		int isLeftToRight = 1;
 		curr->push(root);
 		while (!curr->empty()) {
 			zigzag.emplace_back();
