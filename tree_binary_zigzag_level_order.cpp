@@ -46,12 +46,20 @@ public:
 
 				zigzag.back().push_back(node->val);
 				if (isLeftToRight) {
-					next->push(node->left);
-					next->push(node->right);
+					if (node->left) {
+						next->push(node->left);
+					}
+					if (node->right) {
+						next->push(node->right);
+					}
 				}
 				else {
-					next->push(node->right);
-					next->push(node->left);
+					if (node->right) {
+						next->push(node->right);
+					}
+					if (node->left) {
+						next->push(node->left);
+					}
 				}
 				curr->pop();
 			}
