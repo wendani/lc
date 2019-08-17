@@ -10,6 +10,51 @@
 class Solution {
 public:
 	vector<vector<int>> verticalOrder(TreeNode* root) {
+		vector<vector<int>> verticals;
+		if (!root) {
+			return verticals;
+		}
+
+		int leftMost = 0;
+		int rightMost = 0;
+		findEnds(leftMost, rightMost, root, 0);
+		verticals.reserve(rightMost - leftMost);
+
+		queue<pair<TreeNode *, int verticalIdx>> nodeQ;
+		nodeQ.emplace(root, 0 - leftMost);
+		while (!nodeQ.empty()) {
+			auto &p = nodeQ.top();
+			verticals[p.second].push_back(p.first->val);
+
+			if (p.first->left) {
+				nodeQ.emplace(p.first->left, p.second - 1);
+			}
+
+			if (p.first->right) {
+				nodeQ.emplace(p.first->right, p.second + 1);
+			}
+
+			nodeQ.pop();
+		}
+		return verticals;
+	}
+private:
+	void findEnds(int &leftMost, int &rightMost, TreeNode *node, int nodeVerticalIdx)
+	{
+		if (!node) {
+			return;
+		}
+
+		if (nodeVerticalIdx < leftMost) {
+			leftMost = nodeVerticalIdx;
+		}
+
+		if (nodeVerticalIdx > rightMost) {
+			rightMost = nodeVerticalIdx;
+		}
+
+		findEnds(leftMost, rightMost, node->left, nodeVerticalIdx - 1);
+		findEnds(leftMost, rightMost, node->right, nodeVerticalIdx + 1);
 	}
 };
 
