@@ -37,11 +37,14 @@ public:
 				opStk.push(s[i]);
 				i++;
 			}
-			else {
-				assert(s[i] == '*' || s[i] == '/');
+			else if (s[i] == '*' || s[i] == '/') {
 				char &op = s[i];
 
 				i++;
+				while (i < len && !isDigit(s[i])) {
+					i++;
+				}
+				assert(i < len);
 				int numB = 0;
 				while (i < len && isDigit(s[i])) {
 					numB *= 10;
@@ -56,6 +59,9 @@ public:
 					// op == '/'
 					numA /= numB;
 				}
+			}
+			else {
+				i++;
 			}
 		}
 
