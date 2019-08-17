@@ -19,7 +19,7 @@ public:
 				maxPriQ.push(s);
 			}
 		}
-		return maxPriQ.top();
+		return stoi(maxPriQ.top());
 	}
 private:
 	struct comp {
@@ -27,7 +27,7 @@ private:
 		{
 			return a < b ? true : false;
 		}
-	}
+	};
 };
 
 	struct comp {
