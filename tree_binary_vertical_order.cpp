@@ -18,12 +18,12 @@ public:
 		int leftMost = 0;
 		int rightMost = 0;
 		findEnds(leftMost, rightMost, root, 0);
-		verticals.reserve(rightMost - leftMost);
+		verticals.resize(rightMost - leftMost + 1);
 
-		queue<pair<TreeNode *, int verticalIdx>> nodeQ;
+		queue<pair<TreeNode *, int>> nodeQ;
 		nodeQ.emplace(root, 0 - leftMost);
 		while (!nodeQ.empty()) {
-			auto &p = nodeQ.top();
+			auto &p = nodeQ.front();
 			verticals[p.second].push_back(p.first->val);
 
 			if (p.first->left) {
