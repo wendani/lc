@@ -65,12 +65,11 @@ public:
 			}
 		}
 
-		int num = numStk.top();
-		numStk.pop();
-		while(!numStk.empty()) {
+		int num = 0;
+		while (!opStk.empty()) {
 			int &n = numStk.top();
 			if (opStk.top() == '-') {
-				num = n - num;
+				num -= n;
 			}
 			else {
 				num += n;
@@ -79,7 +78,7 @@ public:
 			numStk.pop();
 			opStk.pop();
 		}
-		return num;
+		return num + numStk.top();
 	}
 private:
 	bool isDigit(const char &c)
