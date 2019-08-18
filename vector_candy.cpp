@@ -1,9 +1,9 @@
 class Solution {
 public:
 	int candy(vector<int>& ratings) {
+		int len = ratings.size();
 		vector<int> candies(len, 1);
 
-		int len = ratings.size();
 		for (int i = 1; i < len; i++) {
 			if (ratings[i - 1] < ratings[i]) {
 				candies[i] = candies[i - 1] + 1;
