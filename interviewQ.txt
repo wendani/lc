@@ -26,53 +26,64 @@ height
 16 3Sum closest
 40 combination sum 2
 212 word search 2
-210. Course Schedule 2
-
-
-Amazon
+210 course Schedule 2
 144. Binary Tree Preorder Traversal
 
-698. Partition to K Equal Sum Subsets
 10 regular expression matching
 335. Self Crossing
 
-merge k sorted linked list
+1026
 
 
 XOR, bitmap
 missing number
 broken machine (bop)
 
-two pointers
-valid palindrome
+Number
+K-th lexicographical number
+next permutation
+maximum swap
+happy number
 
-sliding window
+Two pointers
+valid palindrome
+valid palindrome 2
+duplicate number (287) (Amazon)
+reorder log files
+most common word
+
+Sliding window
 longest substring with no repeating characters
 
-queue
+Queue
 moving average (Barefoot)
 
-stack
+Stack
 string decode
-valid parentheses
+valid parentheses (Amazon)
 largest rectangle in histogram
+add two numbers
+basic calculator 2
 
-hashtable
+Hashtable
 array hashmap
 
-hashtable + list
+Hashtable + list
 LRU cache
 
-priority queue
+Priority queue
 K-th largest element in a stream
+last stone weight
+merge K sorted linked list
 
-signature
+Signature
 anagram group
 
-sorting
+Sorting
 maximum swap
+next permutation
 
-recursion
+Recursion
 K-th largest element in an array
 lca in binary tree, bst
 distance K nodes in binary tree
@@ -80,11 +91,13 @@ remove Nth node from end of list
 word search
 # of islands
 walls & gates
+flood fill
 
-binary search
+Binary search
+duplicate number (287)
 binary search in rotated sorted array
 
-invariant
+Invariant
 gas station
 majority element
 largest rectangle in histogram
@@ -94,25 +107,38 @@ best time to buy and sell stock
 3 sum
 2 sum
 
-dfs
+DFS
 topological sort
 subsets
+permutations
 letter combinations of a phone number
 combination sum
 
-bfs
+BFS
+binary tree level order traversal
+binary tree right side view
+binary tree completeness
 course schedule (true/false)
 merge intervals
 partition labels
 word ladder
 
-dp
+DP
+1 dimension
 longest palindromic substring
-coin change
+coin change, fewest number
+coin change 2, number of combinations
+
+2 dimension
+last stone weight 2
+partition equal subset sum
+partition to K equal sum subsets
 
 word break
+max subarray
+max product subarray
 
-space
+Space
 count primes
 
 
