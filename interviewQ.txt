@@ -40,7 +40,7 @@ missing number
 broken machine (bop)
 
 Number
-K-th lexicographical number
+K-th smallest lexicographical number
 next permutation
 maximum swap
 happy number
@@ -64,6 +64,7 @@ valid parentheses (Amazon)
 largest rectangle in histogram
 add two numbers
 basic calculator 2
+binary tree level order zigzag
 
 Hashtable
 array hashmap
@@ -75,6 +76,7 @@ Priority queue
 K-th largest element in a stream
 last stone weight
 merge K sorted linked list
+K-th smallest lexicographical number
 
 Signature
 anagram group
@@ -117,6 +119,7 @@ combination sum
 BFS
 binary tree level order traversal
 binary tree right side view
+binary tree vertical order
 binary tree completeness
 course schedule (true/false)
 merge intervals
