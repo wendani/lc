@@ -27,9 +27,6 @@ height
 40 combination sum 2
 212 word search 2
 210 course Schedule 2
-
-
-Amazon
 144. Binary Tree Preorder Traversal
 
 10 regular expression matching
@@ -43,12 +40,15 @@ missing number
 broken machine (bop)
 
 Number
+K-th lexicographical number
 next permutation
+maximum swap
+happy number
 
 Two pointers
 valid palindrome
 valid palindrome 2
-duplicate number (287)
+duplicate number (287) (Amazon)
 reorder log files
 most common word
 
@@ -60,9 +60,10 @@ moving average (Barefoot)
 
 Stack
 string decode
-valid parentheses
+valid parentheses (Amazon)
 largest rectangle in histogram
 add two numbers
+basic calculator 2
 
 Hashtable
 array hashmap
