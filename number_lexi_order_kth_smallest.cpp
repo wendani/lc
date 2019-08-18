@@ -5,16 +5,16 @@ public:
 			return -1;
 		}
 
-		int dist = k;
-		int num = 1;
+		int dist = k - 1;
+		uint64_t num = 1;
 		while (dist) {
 			int d = distToCurrPlusOne(n, num);
-			if (d <= k) {
+			if (d <= dist) {
 				num++;
 				dist -= d;
 			}
 			else {
-				// d > k
+				// d > dist
 				num *= 10;
 				dist--;
 			}
@@ -23,22 +23,22 @@ public:
 		return num;
 	}
 private:
-	int distToCurrPlusOne(const int &n, int curr)
+	int distToCurrPlusOne(const int &n, uint64_t curr)
 	{
 		int cnt = 0;
 
-		int next = curr + 1;
+		uint64_t next = curr + 1;
 		while (next < n) {
-			cnt = next - curr;
+			cnt += (next - curr);
 			next *= 10;
 			curr *= 10;
 		}
 
-		if (curr < n) {
+		if (curr <= n) {
 			cnt += (n - curr);
-		}
-		if (n < next) {
-			cnt++;
+			if (n < next) {
+				cnt++;
+			}
 		}
 
 		return cnt;
