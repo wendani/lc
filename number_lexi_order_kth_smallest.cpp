@@ -5,6 +5,53 @@ public:
 			return -1;
 		}
 
+		int dist = k;
+		int num = 1;
+		while (dist) {
+			int d = distToCurrPlusOne(n, num);
+			if (d <= k) {
+				num++;
+				dist -= d;
+			}
+			else {
+				// d > k
+				num *= 10;
+				dist--;
+			}
+		}
+
+		return num;
+	}
+private:
+	int distToCurrPlusOne(const int &n, int curr)
+	{
+		int cnt = 0;
+
+		int next = curr + 1;
+		while (next < n) {
+			cnt = next - curr;
+			next *= 10;
+			curr *= 10;
+		}
+
+		if (curr < n) {
+			cnt += (n - curr);
+		}
+		if (n < next) {
+			cnt++;
+		}
+
+		return cnt;
+	}
+};
+
+class Solution {
+public:
+	int findKthNumber(int n, int k) {
+		if (n < k) {
+			return -1;
+		}
+
 		priority_queue<string, vector<string>, comp> maxPriQ;
 
 		int i;
