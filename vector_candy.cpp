@@ -1,6 +1,33 @@
 class Solution {
 public:
 	int candy(vector<int>& ratings) {
+		vector<int> candies(len, 1);
+
+		int len = ratings.size();
+		for (int i = 1; i < len; i++) {
+			if (ratings[i - 1] < ratings[i]) {
+				candies[i] = candies[i - 1] + 1;
+			}
+		}
+		for (int i = len - 2; i >= 0; i--) {
+			if (ratings[i] > ratings[i + 1]) {
+				if (candies[i] <= candies[i + 1]) {
+					candies[i] = candies[i + 1] + 1;
+				}
+			}
+		}
+
+		int sum = 0;
+		for (const auto &candy : candies) {
+			sum += candy;
+		}
+		return sum;
+	}
+};
+
+class Solution {
+public:
+	int candy(vector<int>& ratings) {
 		map<int, vector<int>> ratingIndices;
 
 		int len = ratings.size();
