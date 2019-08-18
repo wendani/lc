@@ -10,7 +10,7 @@ public:
 				it->second.emplace_back(i);
 			}
 			else {
-				ratingIndices.emplace(ratings[i], {i});
+				ratingIndices.emplace(ratings[i], initializer_list<int>{i});
 			}
 		}
 
@@ -23,7 +23,7 @@ public:
 					}
 				}
 				if (idx + 1 < len && ratings[idx] > ratings[idx + 1]) {
-					if (candies[idx] <= candies[idx + 1] {
+					if (candies[idx] <= candies[idx + 1]) {
 						candies[idx] = candies[idx + 1] + 1;
 					}
 				}
