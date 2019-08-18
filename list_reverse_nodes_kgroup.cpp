@@ -16,7 +16,7 @@ public:
 			// find a segment of k nodes
 			ListNode *curr = *prevTail;
 			int i = 0;
-			while (curr & i < k) {
+			while (curr && i < k) {
 				nodeStk.push(curr);
 
 				curr = curr->next;
@@ -41,7 +41,7 @@ public:
 				nodeStk.pop();
 			}
 
-			// stitching with the unexplored
+			// stitch with the unexplored
 			prev->next = curr;
 			prevTail = &prev->next;
 		}
