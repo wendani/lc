@@ -55,14 +55,14 @@ int longestIncreasingPath(int** matrix, int matrixSize, int* matrixColSize) {
 	int i, j;
 	int maxLen;
 
-	if (!matrix || !*matrix || matrixSize < 1 || !matrixColSize || *matrixColSize < 1) P
+	if (!matrix || !*matrix || matrixSize < 1 || !matrixColSize || *matrixColSize < 1) {
 		return 0;
 	}
 
 	maxLen = 0;
 	for (i = 0; i < matrixSize; i++) {
 		for (j = 0; j < *matrixColSize; j++) {
-			int len = increasingPathLength(matrix, matrixSize, *matrixColSize, i, j, matrix[i][j]);
+			int len = increasingPathLength(matrix, matrixSize, *matrixColSize, i, j, matrix[i][j] - 1);
 			if (len > maxLen) {
 				maxLen = len;
 			}
