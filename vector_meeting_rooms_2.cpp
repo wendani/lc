@@ -6,9 +6,9 @@ public:
 		for (const auto &interval : intervals) {
 			// start time, indicated by 1 as the second element
 			timePoints.emplace_back(initializer_list<int>{interval[0], 1});
-			// end time, indicated by 0 as the second element
+			// end time, indicated by -1 as the second element
 			// if start time == end time, end time will always come first
-			timePoints.emplace_back(initializer_list<int>{interval[1], 0});
+			timePoints.emplace_back(initializer_list<int>{interval[1], -1});
 		}
 
 		sort(timePoints.begin(), timePoints.end());
@@ -16,14 +16,9 @@ public:
 		int min = 0;
 		int cnt = 0;
 		for (const auto &timePoint : timePoints) {
-			if (timePoint[1] == 0) {
-				cnt--;
-			}
-			if (timePoint[1] == 1) {
-				cnt++;
-				if (cnt > min) {
-					min = cnt;
-				}
+			cnt += timePoint[1];
+			if (cnt > min) {
+				min = cnt;
 			}
 		}
 		return min;
