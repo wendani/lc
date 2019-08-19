@@ -2,66 +2,47 @@ class Solution {
 public:
 	int calculate(string s) {
 		stack<int> numStk;
-		stack<char> opStk;
 
 		int len = s.length();
 		int i = 0;
+		char op = '+';
 		while (i < len) {
 			if (isDigit(s[i])) {
 				int num = 0;
 				while (i < len && isDigit(s[i])) {
 					num *= 10;
-					num += (s[i] - 48);
+					num += (s[i] - '0');
 					i++;
 				}
-				numStk.push(num);
-			}
-			else if (s[i] == '+' || s[i] == '-') {
-				opStk.push(s[i]);
-				i++;
-			}
-			else if (s[i] == '*' || s[i] == '/') {
-				char &op = s[i];
-
-				i++;
-				while (i < len && !isDigit(s[i])) {
-					i++;
-				}
-				assert(i < len);
-				int numB = 0;
-				while (i < len && isDigit(s[i])) {
-					numB *= 10;
-					numB += (s[i] - 48);
-					i++;
-				}
-
-				int &numA = numStk.top();
 				if (op == '*') {
-					numA *= numB;
-				} else {
-					// op == '/'
-					numA /= numB;
+					numStk.top() *= num;
+				} else if (op == '/') {
+					numStk.top() /= num;
+				} else if (op == '-') {
+					numStk.push(-num);
 				}
+				else {
+					assert(op == '+');
+					numStk.push(num);
+				}
+			}
+			else if (s[i] == ' ') {
+				i++;
 			}
 			else {
+				op = s[i];
 				i++;
 			}
 		}
 
 		int num = 0;
-		while (!opStk.empty()) {
+		while (!numStk.empty()) {
 			int &n = numStk.top();
-			if (opStk.top() == '-') {
-				num -= n;
-			}
-			else {
-				num += n;
-			}
+			num += n;
 
 			numStk.pop();
-			opStk.pop();
 		}
-		return num + numStk.top();
+		return num;
 	}
 private:
 	bool isDigit(const char &c)
