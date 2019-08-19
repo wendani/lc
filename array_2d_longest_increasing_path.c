@@ -1,8 +1,6 @@
-static const int visited = -32768;
-
-static int increasingPathLength(int **matrix, const int rowSize, const int colSize, int row, int column, const int prevVal)
+static int increasingPathLength(int **matrix, const int rowSize, const int colSize, int row, int column, const int prevVal, int **longestIncPathLenFromElement)
 {
-	int currVal, maxLen, len;
+	int maxLen, len;
 
 	if (row < 0 || row > rowSize - 1) {
 		return 0;
@@ -12,43 +10,40 @@ static int increasingPathLength(int **matrix, const int rowSize, const int colSi
 		return 0;
 	}
 
-	if (matrix[row][column] == visited) {
-		return 0;
-	}
-
 	if (matrix[row][column] <= prevVal) {
 		return 0;
 	}
 
-	// reach here when prevVal < matrix[row][column]
-	currVal = matrix[row][column];
-	matrix[row][column] = visited;
+	if (longestIncPathLenFromElement[row][column] > 0) {
+		return longestIncPathLenFromElement[row][column];
+	}
 
+	// reach here when prevVal < matrix[row][column]
 	maxLen = 0;
 	// east
-	len = increasingPathLength(matrix, rowSize, colSize, row, column + 1, currVal);
+	len = increasingPathLength(matrix, rowSize, colSize, row, column + 1, matrix[row][column], longestIncPathLenFromElement);
 	if (len > maxLen) {
 		maxLen = len;
 	}
 	// south
-	len = increasingPathLength(matrix, rowSize, colSize, row + 1, column, currVal);
+	len = increasingPathLength(matrix, rowSize, colSize, row + 1, column, matrix[row][column], longestIncPathLenFromElement);
 	if (len > maxLen) {
 		maxLen = len;
 	}
 	// west
-	len = increasingPathLength(matrix, rowSize, colSize, row, column - 1, currVal);
+	len = increasingPathLength(matrix, rowSize, colSize, row, column - 1, matrix[row][column], longestIncPathLenFromElement);
 	if (len > maxLen) {
 		maxLen = len;
 	}
 	// north
-	len = increasingPathLength(matrix, rowSize, colSize, row - 1, column, currVal);
+	len = increasingPathLength(matrix, rowSize, colSize, row - 1, column, matrix[row][column], longestIncPathLenFromElement);
 	if (len > maxLen) {
 		maxLen = len;
 	}
+	maxLen++;
+	longestIncPathLenFromElement[row][column] = maxLen;
 
-	matrix[row][column] = currVal;
-
-	return maxLen + 1;
+	return maxLen;
 }
 
 int longestIncreasingPath(int** matrix, int matrixSize, int* matrixColSize) {
@@ -59,10 +54,18 @@ int longestIncreasingPath(int** matrix, int matrixSize, int* matrixColSize) {
 		return 0;
 	}
 
+	int **longestIncPathLenFromElement = (int **)malloc(matrixSize * sizeof(int *));
+	for (i = 0; i < matrixSize; i++) {
+		longestIncPathLenFromElement[i] = (int *)malloc(*matrixColSize * sizeof(int));
+		for (j = 0; j < *matrixColSize; j++) {
+			longestIncPathLenFromElement[i][j] = 0;
+		}
+	}
+
 	maxLen = 0;
 	for (i = 0; i < matrixSize; i++) {
 		for (j = 0; j < *matrixColSize; j++) {
-			int len = increasingPathLength(matrix, matrixSize, *matrixColSize, i, j, matrix[i][j] - 1);
+			int len = increasingPathLength(matrix, matrixSize, *matrixColSize, i, j, matrix[i][j] - 1, longestIncPathLenFromElement);
 			if (len > maxLen) {
 				maxLen = len;
 			}
