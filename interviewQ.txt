@@ -27,15 +27,14 @@ height
 40 combination sum 2
 212 word search 2
 210 course Schedule 2
-
-
-Amazon
 144. Binary Tree Preorder Traversal
 
 10 regular expression matching
 335. Self Crossing
 
+
 1026
+basic calculator 2
 
 
 XOR, bitmap
@@ -43,12 +42,15 @@ missing number
 broken machine (bop)
 
 Number
+K-th smallest lexicographical number
 next permutation
+maximum swap
+happy number
 
 Two pointers
 valid palindrome
 valid palindrome 2
-duplicate number (287)
+duplicate number (287) (Amazon)
 reorder log files
 most common word
 
@@ -60,9 +62,12 @@ moving average (Barefoot)
 
 Stack
 string decode
-valid parentheses
+valid parentheses (Amazon)
 largest rectangle in histogram
 add two numbers
+basic calculator 2
+binary tree level order zigzag
+reverse nodes in k-group
 
 Hashtable
 array hashmap
@@ -74,6 +79,7 @@ Priority queue
 K-th largest element in a stream
 last stone weight
 merge K sorted linked list
+K-th smallest lexicographical number
 
 Signature
 anagram group
@@ -81,6 +87,7 @@ anagram group
 Sorting
 maximum swap
 next permutation
+meeting rooms 2
 
 Recursion
 K-th largest element in an array
@@ -89,8 +96,9 @@ distance K nodes in binary tree
 remove Nth node from end of list
 word search
 # of islands
-walls & gates
 flood fill
+walls & gates
+longest increasing path in a matrix
 
 Binary search
 duplicate number (287)
@@ -102,12 +110,14 @@ majority element
 largest rectangle in histogram
 container with most water
 array trap water
+candy
 best time to buy and sell stock
 3 sum
 2 sum
 
 DFS
 topological sort
+longest increasing path in a matrix
 subsets
 permutations
 letter combinations of a phone number
@@ -116,10 +126,13 @@ combination sum
 BFS
 binary tree level order traversal
 binary tree right side view
+binary tree vertical order
 binary tree completeness
 course schedule (true/false)
+
 merge intervals
 partition labels
+
 word ladder
 
 DP

@@ -1,27 +1,3 @@
-/*
- * Example 1:
- *
- * Input: 2736
- * Output: 7236
- * Explanation: Swap the number 2 and the number 7.
- *
- * Example 2:
- *
- * Input: 9973
- * Output: 9973
- * Explanation: No swap.
- *
- *
- * Input: 1993
- * Output: 9193
- * Expected: 9913
- *
- *
- * Input: 98368
- * Output: 98368
- * Expected: 98863
- */
-
 static bool comp(const vector<int> &i, const vector<int> &j)
 {
 	if (i[0] < j[0]) {
@@ -85,3 +61,26 @@ private:
 	vector<int> digits;
 };
 
+/*
+ * Example 1:
+ *
+ * Input: 2736
+ * Output: 7236
+ * Explanation: Swap the number 2 and the number 7.
+ *
+ * Example 2:
+ *
+ * Input: 9973
+ * Output: 9973
+ * Explanation: No swap.
+ *
+ *
+ * Input: 1993
+ * Output: 9193
+ * Expected: 9913
+ *
+ *
+ * Input: 98368
+ * Output: 98368
+ * Expected: 98863
+ */
