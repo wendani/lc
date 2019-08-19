@@ -32,7 +32,10 @@ height
 10 regular expression matching
 335. Self Crossing
 
+253. Meeting Rooms II
+
 1026
+basic calculator 2
 
 
 XOR, bitmap
@@ -65,6 +68,7 @@ largest rectangle in histogram
 add two numbers
 basic calculator 2
 binary tree level order zigzag
+reverse nodes in k-group
 
 Hashtable
 array hashmap
@@ -92,8 +96,9 @@ distance K nodes in binary tree
 remove Nth node from end of list
 word search
 # of islands
-walls & gates
 flood fill
+walls & gates
+longest increasing path in a matrix
 
 Binary search
 duplicate number (287)
@@ -105,12 +110,14 @@ majority element
 largest rectangle in histogram
 container with most water
 array trap water
+candy
 best time to buy and sell stock
 3 sum
 2 sum
 
 DFS
 topological sort
+longest increasing path in a matrix
 subsets
 permutations
 letter combinations of a phone number
@@ -122,8 +129,10 @@ binary tree right side view
 binary tree vertical order
 binary tree completeness
 course schedule (true/false)
+
 merge intervals
 partition labels
+
 word ladder
 
 DP
