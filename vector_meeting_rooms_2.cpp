@@ -5,10 +5,10 @@ public:
 
 		for (const auto &interval : intervals) {
 			// start time, indicated by 1 as the second element
-			timePoints.emplace(initializer_list<int>{interval[0], 1});
+			timePoints.emplace_back(initializer_list<int>{interval[0], 1});
 			// end time, indicated by 0 as the second element
 			// if start time == end time, end time will always come first
-			timePoints.emplace(initializer_list<int>{interval[1], 0});
+			timePoints.emplace_back(initializer_list<int>{interval[1], 0});
 		}
 
 		sort(timePoints.begin(), timePoints.end());
