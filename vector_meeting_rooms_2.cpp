@@ -1,6 +1,33 @@
 class Solution {
 public:
 	int minMeetingRooms(vector<vector<int>>& intervals) {
+		vector<int> starts;
+		vector<int> ends;
+
+		for (const auto &interval : intervals) {
+			starts.emplace_back(interval[0]);
+			ends.emplace_back(interval[1]);
+		}
+
+		sort(starts.begin(), starts.end());
+		sort(ends.begin(), ends.end());
+
+		int min = 0;
+		int len = starts.size();
+		int j = 0;
+		for (int i = 0; i < len; i++) {
+			if (starts[i] < ends[j]) {
+				min++;
+			}
+			else {
+				// ends[j] <= starts[i]
+				j++;
+			}
+		}
+		return min;
+	}
+
+	int minMeetingRooms(vector<vector<int>>& intervals) {
 		vector<vector<int>> timePoints;
 
 		for (const auto &interval : intervals) {
