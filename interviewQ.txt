@@ -34,7 +34,6 @@ height
 
 
 1026
-basic calculator 2
 
 
 XOR, bitmap
