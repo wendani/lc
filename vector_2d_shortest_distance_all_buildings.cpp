@@ -19,18 +19,19 @@ public:
 			}
 		}
 
-		int minDist = rowSize * colSize;
+		int upperLimit = rowSize * colSize * totalBuildings;
+		int minDist = upperLimit;
 		for (int i = 0; i < rowSize; i++) {
 			for (int j = 0; j < colSize; j++) {
 				if (grid[i][j] == 0) {
 					int dist = findDist(grid, rowSize, colSize, totalBuildings, i, j);
-					if (dist < minDist) {
+					if (dist > 0 && dist < minDist) {
 						minDist = dist;
 					}
 				}
 			}
 		}
-		return minDist;
+		return minDist < upperLimit ? minDist : -1;
 	}
 private:
 	int findDist(const vector<vector<int>> &grid, const int rowSize, const int colSize, int totalBuildings, const int i, const int j)
@@ -43,7 +44,7 @@ private:
 		vector<bool> visited(rowSize * colSize, false);
 
 		int dist = 0;
-		idx = i * rowSize + j;
+		int idx = i * colSize + j;
 		curr->insert(idx);
 		visited[idx];
 		while (!curr->empty()) {
@@ -64,7 +65,7 @@ private:
 				int i = row + 1;
 				int j = column;
 				if (i < rowSize && grid[i][j] != 2) {
-					int idx = i * rowSize + j;
+					int idx = i * colSize + j;
 					if (!visited[idx]) {
 						next->insert(idx);
 						visited[idx] = true;
@@ -74,7 +75,7 @@ private:
 				i = row - 1;
 				j = column;
 				if (i >= 0 && grid[i][j] != 2) {
-					int idx = i * rowSize + j;
+					int idx = i * colSize + j;
 					if (!visited[idx]) {
 						next->insert(idx);
 						visited[idx] = true;
@@ -84,7 +85,7 @@ private:
 				i = row;
 				j = column + 1;
 				if (j < colSize && grid[i][j] != 2) {
-					int idx = i * rowSize + j;
+					int idx = i * colSize + j;
 					if (!visited[idx]) {
 						next->insert(idx);
 						visited[idx] = true;
@@ -94,7 +95,7 @@ private:
 				i = row;
 				j = column - 1;
 				if (j >= 0 && grid[i][j] != 2) {
-					int idx = i * rowSize + j;
+					int idx = i * colSize + j;
 					if (!visited[idx]) {
 						next->insert(idx);
 						visited[idx] = true;
@@ -106,9 +107,9 @@ private:
 			dist++;
 			auto *temp = curr;
 			curr = next;
-			next = curr;
+			next = temp;
 		}
-		return rowSize * colSize;
+		return -1;
 	}
 };
 
