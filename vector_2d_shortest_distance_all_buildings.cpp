@@ -33,13 +33,13 @@ public:
 		return minDist;
 	}
 private:
-	int findDist(const vector<vector<int>> &grid, const int rowSize, const int ColSize, int totalBuildings, const int i, const int j)
+	int findDist(const vector<vector<int>> &grid, const int rowSize, const int colSize, int totalBuildings, const int i, const int j)
 	{
 		int totalDist = 0;
 
 		unordered_set<int> idxSet[2];
-		unordered_set<<int> *curr = &idxSet[0];
-		unordered_set<<int> *next = &idxSet[1];
+		unordered_set<int> *curr = &idxSet[0];
+		unordered_set<int> *next = &idxSet[1];
 		vector<bool> visited(rowSize * colSize, false);
 
 		int dist = 0;
