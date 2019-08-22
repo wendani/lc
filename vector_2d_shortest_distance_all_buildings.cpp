@@ -44,9 +44,9 @@ private:
 				int row = idx / colSize;
 				int column = idx % colSize;
 				if (grid[row][column] < 1) {
-					totalDist[i][j] += dist;
-					if (minDist < 0 || totalDist[i][j] < minDist) {
-						minDist = totalDist[i][j];
+					totalDist[row][column] += dist;
+					if (minDist < 0 || totalDist[row][column] < minDist) {
+						minDist = totalDist[row][column];
 					}
 				}
 
