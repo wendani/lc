@@ -1,41 +1,39 @@
 class Solution {
 public:
 	string addBinary(string a, string b) {
-		int lenS = a.length();
-		int lenL = b.length();
-
-		int i;
+		int i = a.length() - 1;
+		int j = b.length() - 1;
 		int credit = 0;
 		string c;
-		for (i = 0; i < lenA && i < lenB; i++) {
+		for (; i >= 0 && j >= 0; i--, j--) {
 			int sum = 0;
 			sum += (a[i] - '0');
-			sum += (b[i] - '0');
+			sum += (b[j] - '0');
 			sum += credit;
 
 			credit = sum & 0x2 ? 1 : 0;
 
-			c.insert(0, 1, sum & 0x1 + '0');
+			c.insert(0, 1, (sum & 0x1) + '0');
 		}
 
-		for (; i < lenA; i++) {
+		for (; i >= 0; i--) {
 			int sum = 0;
 			sum += (a[i] - '0');
 			sum += credit;
 
 			credit = sum & 0x2 ? 1 : 0;
 
-			c.insert(0, 1, sum & 0x1 + '0');
+			c.insert(0, 1, (sum & 0x1) + '0');
 		}
 
-		for (; i < lenB; i++) {
+		for (; j >= 0; j--) {
 			int sum = 0;
-			sum += (b[i] - '0');
+			sum += (b[j] - '0');
 			sum += credit;
 
 			credit = sum & 0x2 ? 1 : 0;
 
-			c.insert(0, 1, sum & 0x1 + '0');
+			c.insert(0, 1, (sum & 0x1) + '0');
 		}
 
 		if (credit) {
