@@ -33,7 +33,7 @@ void setZeroes(int** matrix, int matrixSize, int* matrixColSize){
 			matrix[i][0] = 0;
 		}
 
-		for (int j = 1; j < *matrixColSize; i++) {
+		for (int j = 1; j < *matrixColSize; j++) {
 			matrix[0][j] = 0;
 		}
 	}
