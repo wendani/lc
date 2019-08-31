@@ -8,7 +8,7 @@ red black tree
 hash table
 quick sort
 binary search
-is binary search tree
+is binary search tree (Microsoft)
 set
 
 binary tree
@@ -22,6 +22,7 @@ height
 	isBalanced
 	max distance between two nodes / diameter
 
+TODO
 18 4Sum
 16 3Sum closest
 40 combination sum 2
@@ -31,25 +32,39 @@ height
 
 10 regular expression matching
 335. Self Crossing
-
+41
 
 1026
 
+*********************************************
+
+Bit operation
+n to the power of 2, two's complement (Irdeto, Cisco)
+test if an unsigned integer is odd or even (Irdeto, Pure Storage)
+bit swap: swap odd and even bits in an integer (Cisco)
+bit count (Qualcomm)
 
 XOR, bitmap
 missing number
 broken machine (bop)
+implement bitmap (Barefoot)
+
+Const space
+matrix set zeros
+life game
 
 Number
 K-th smallest lexicographical number
 next permutation
 maximum swap
 happy number
+endian (Microsoft, Barefoot)
 
 Two pointers
 valid palindrome
 valid palindrome 2
 duplicate number (287) (Amazon)
+if a singly linked list has a circle (Microsoft)
 reorder log files
 most common word
 
@@ -58,6 +73,8 @@ longest substring with no repeating characters
 
 Queue
 moving average (Barefoot)
+Average of 4 elements (Barefoot)
+implement queue using doubly linked list, array, or stack(Microsoft)
 
 Stack
 string decode
@@ -87,6 +104,8 @@ Sorting
 maximum swap
 next permutation
 meeting rooms 2
+bubble sort, quick sort, merge sort (Qualcomm)
+if four points form a square (Pure Storage)
 
 Recursion
 K-th largest element in an array
@@ -98,10 +117,14 @@ word search
 flood fill
 walls & gates
 longest increasing path in a matrix
+factorial (Cisco)
 
 Binary search
 duplicate number (287)
+binary search (Cisco)
+binary search on duplicates (Barefoot)
 binary search in rotated sorted array
+binary search min on a rotated sorted array (Arista)
 
 Invariant
 gas station
@@ -112,7 +135,7 @@ array trap water
 candy
 best time to buy and sell stock
 3 sum
-2 sum
+2 sum (Bytedance)
 
 DFS
 topological sort
@@ -152,59 +175,13 @@ max product subarray
 Space
 count primes
 
-
-*********************************************
-
-Bit manipulation
-n to the power of 2, two's complement (Irdeto, Cisco)
-
-test if an unsigned integer is odd or even (Irdeto, Pure Storage)
-
-bit swap: swap odd and even bits in an integer (Cisco)
-
-bit count (Qualcomm)
-
-
-Sorting
-bubble sort, quick sort, merge sort (Qualcomm)
-
-if four points form a square (Pure Storage)
-
-
-Linked list
-if a singly linked list has a circle (Microsoft)
-
-head tail swap of a singly linked list (Microsoft)
-
-Delete elements with value equal to N in a singly linked list (Cisco)
-
-print a linked list in reverse order with constant memory (Microsoft)
-
+OS
+stack growth direction (Cisco, Barefoot)
 
 Array
-2Sum (Bytedance)
-binary search (Cisco)
-binary search on duplicates (Barefoot Networks)
-
-binary search min on a rotated sorted array (Arista Networks)
-
 merge two sorted arrays (Microsoft)
 
-
-Tree
-if a binary tree is a binary search tree (Microsoft)
-
-
-Queue (Microsoft)
-doubly linked list
-array
-stack
-
-Average of 4 elements (Barefoot Networks)
-
-Misc
-stack growth direction (Cisco, Barefoot Networks)
-
-factorial (Cisco)
-
-endian (Microsoft)
+Linked list
+head tail swap of a singly linked list (Microsoft)
+Delete elements with value equal to N in a singly linked list (Cisco)
+print a linked list in reverse order with constant memory (Microsoft)
