@@ -47,7 +47,9 @@ void gameOfLife(int** board, int boardSize, int* boardColSize) {
 			int cnt = countNeighbors(board, boardSize, *boardColSize, i, j);
 
 			if (board[i][j] == 1) {
-				board[i][j] = cnt;
+				if (cnt > 0) {
+					board[i][j] = cnt;
+				}
 			}
 			else {
 				assert(board[i][j] == 0);
