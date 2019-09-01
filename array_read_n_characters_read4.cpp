@@ -13,26 +13,27 @@ public:
 			return 0;
 		}
 
-		while (n >= 4) {
+		int rem = n;
+		while (rem >= 4) {
 			int numRead = read4(buf);
-			n -= numRead;
-			buf += n;
+			rem -= numRead;
+			buf += rem;
 			if (numRead < 4) {
-				return n;
+				return n - rem;
 			}
 		}
 
-		if (n > 0) {
-			// n < 4
+		if (rem > 0) {
+			// rem < 4
 			char temp[4];
 			int numRead = read4(temp);
-			if (numRead > n) {
-				numRead = n;
+			if (numRead > rem) {
+				numRead = rem;
 			}
 			memcpy(buf, temp, numRead);
-			n -= numRead;
+			rem -= numRead;
 		}
-		return n;
+		return n - rem;
 	}
 };
 
