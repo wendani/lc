@@ -17,7 +17,7 @@ public:
 		while (rem >= 4) {
 			int numRead = read4(buf);
 			rem -= numRead;
-			buf += rem;
+			buf += numRead;
 			if (numRead < 4) {
 				return n - rem;
 			}
