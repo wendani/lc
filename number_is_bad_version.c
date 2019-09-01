@@ -2,12 +2,12 @@
 bool isBadVersion(int version);
 
 int firstBadVersion(int n) {
-	int lo = 1;
-	int hi = n;
+	uint64_t lo = 1;
+	uint64_t hi = n;
 
 	int firstBadVersion = 0;
 	while (lo <= hi) {
-		int mid = (lo + hi) >> 1;
+		uint64_t mid = (lo + hi) >> 1;
 		if (isBadVersion(mid)) {
 			firstBadVersion = mid;
 			hi = mid - 1;
