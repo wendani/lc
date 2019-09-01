@@ -5,11 +5,9 @@ int firstBadVersion(int n) {
 	uint64_t lo = 1;
 	uint64_t hi = n;
 
-	int firstBadVersion = 0;
 	while (lo <= hi) {
 		uint64_t mid = (lo + hi) >> 1;
 		if (isBadVersion(mid)) {
-			firstBadVersion = mid;
 			hi = mid - 1;
 		}
 		else {
@@ -17,7 +15,7 @@ int firstBadVersion(int n) {
 			lo = mid + 1;
 		}
 	}
-	return firstBadVersion;
+	return lo;
 }
 
 /*
