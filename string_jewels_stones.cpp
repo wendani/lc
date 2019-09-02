@@ -4,12 +4,12 @@ public:
 		int stoneCounts[58] = {0};
 
 		for (const auto &s : S) {
-			stoneCounts[s - 'a']++;
+			stoneCounts[s - 'A']++;
 		}
 
 		int cnt = 0;
 		for (const auto &j : J) {
-			cnt += stoneCounts[j - 'a'];
+			cnt += stoneCounts[j - 'A'];
 		}
 
 		return cnt;
