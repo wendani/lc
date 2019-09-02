@@ -20,12 +20,16 @@ public:
 			int lenA = wordA.length();
 			int lenB = wordB.length();
 
-			for (int j = 0; j < lenA && j < lenB; j++) {
+			int j = 0;
+			for (; j < lenA && j < lenB; j++) {
 				if (alphaIdx[wordA[j]] > alphaIdx[wordB[j]]) {
 					return false;
 				}
+				else if (alphaIdx[wordA[j]] < alphaIdx[wordB[j]]) {
+					break;
+				}
 			}
-			if (lenA > lenB) {
+			if (j == lenB && lenA > lenB) {
 				return false;
 			}
 		}
