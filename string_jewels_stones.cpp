@@ -1,6 +1,24 @@
 class Solution {
 public:
 	int numJewelsInStones(string J, string S) {
+		int stoneCounts[58] = {0};
+
+		for (const auto &s : S) {
+			stoneCounts[s - 'a']++;
+		}
+
+		int cnt = 0;
+		for (const auto &j : J) {
+			cnt += stoneCounts[j - 'a'];
+		}
+
+		return cnt;
+	}
+};
+
+class Solution {
+public:
+	int numJewelsInStones(string J, string S) {
 		unordered_set<char> jewels;
 
 		for (const auto &j : J) {
