@@ -6,12 +6,12 @@ public:
 private:
 	string sigGen(const string &s)
 	{
-		int alphaIdx[58] = {0};
+		int alphaIdx[128] = {0};
 
 		int currIdx = 1;
 		stringstream signature;
 		for (const auto &c : s) {
-			int idx = alphaIdx[c - 'A'];
+			int idx = alphaIdx[c];
 			if (idx) {
 				signature << idx;
 			}
@@ -19,7 +19,7 @@ private:
 				// idx == 0
 				signature << currIdx;
 
-				alphaIdx[c - 'A'] = currIdx;
+				alphaIdx[c] = currIdx;
 				currIdx++;
 			}
 		}
