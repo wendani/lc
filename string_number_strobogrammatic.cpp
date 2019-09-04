@@ -2,7 +2,7 @@ class Solution {
 public:
 	bool isStrobogrammatic(string num) {
 		int i = 0;
-		int j = num.length();
+		int j = num.length() - 1;
 		while (i <= j) {
 			if (strobo[num[i] - '0'] != num[j]) {
 				return false;
@@ -13,20 +13,21 @@ public:
 		return true;
 	}
 private:
-	static const char strobo[10] = {
-		'0',
-		'1',
-		 0 ,
-		 0 ,
-		 0 ,
-		 0 ,
-		'9',
-		 0 ,
-		'8',
-		'6',
-	};
+	static const char strobo[10];
 };
 
+const char Solution::strobo[10] = {
+	'0',
+	'1',
+	 0 ,
+	 0 ,
+	 0 ,
+	 0 ,
+	'9',
+	 0 ,
+	'8',
+	'6',
+};
 
 /*
  * Example 1:
