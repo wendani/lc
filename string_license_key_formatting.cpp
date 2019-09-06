@@ -11,7 +11,7 @@ public:
 				}
 				else {
 					// S[i] != '-'
-					S.insert(i + 1, '-');
+					S.insert(i + 1, 1, '-');
 				}
 				cntInGroup = 0;
 			}
@@ -22,7 +22,7 @@ public:
 				}
 				else {
 					if (!isdigit(S[i])) {
-						if (islower(S[i]) {
+						if (islower(S[i])) {
 							S[i] = toupper(S[i]);
 						}
 					}
