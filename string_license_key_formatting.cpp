@@ -7,12 +7,8 @@ public:
 		int i = S.length() - 1;
 		while (i >= 0) {
 			if (S[i] != '-') {
-				if (!isdigit(S[i]) && islower(S[i])) {
-					target.push_back(toupper(S[i]));
-				}
-				else {
-					target.push_back(S[i]);
-				}
+				target.push_back(toupper(S[i]));
+
 				cntInGroup++;
 				if (cntInGroup == K) {
 					target.push_back('-');
