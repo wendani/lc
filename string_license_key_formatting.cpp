@@ -5,7 +5,7 @@ public:
 
 		int i = S.length() - 1;
 		while (i >= 0) {
-			if (cntInGroup == 4) {
+			if (cntInGroup == K) {
 				if (S[i] == '-') {
 					i--;
 				}
@@ -16,7 +16,7 @@ public:
 				cntInGroup = 0;
 			}
 			else {
-				// cntInGroup < 4
+				// cntInGroup < K
 				if (S[i] == '-') {
 					S.erase(i, 1);
 				}
@@ -30,6 +30,9 @@ public:
 				}
 				i--;
 			}
+		}
+		if (S[0] == '-') {
+			S.erase(0, 1);
 		}
 		return S;
 	}
