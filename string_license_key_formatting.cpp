@@ -2,6 +2,37 @@ class Solution {
 public:
 	string licenseKeyFormatting(string S, int K) {
 		int cntInGroup = 0;
+		string target;
+
+		int i = S.length() - 1;
+		while (i >= 0) {
+			if (S[i] != '-') {
+				if (!isdigit(S[i]) && islower(S[i])) {
+					target.insert(0, 1, toupper(S[i]));
+				}
+				else {
+					target.insert(0, 1, S[i]);
+				}
+				cntInGroup++;
+				if (cntInGroup == K) {
+					target.insert(0, 1, '-');
+					cntInGroup = 0;
+				}
+			}
+			i--;
+		}
+		if (target[0] == '-') {
+			target.erase(0, 1);
+		}
+		return target;
+	}
+};
+
+
+class Solution {
+public:
+	string licenseKeyFormatting(string S, int K) {
+		int cntInGroup = 0;
 
 		int i = S.length() - 1;
 		while (i >= 0) {
@@ -21,6 +52,7 @@ public:
 					S.erase(i, 1);
 				}
 				else {
+					// S[i] != '-'
 					if (!isdigit(S[i])) {
 						if (islower(S[i])) {
 							S[i] = toupper(S[i]);
