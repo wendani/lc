@@ -8,22 +8,23 @@ public:
 		while (i >= 0) {
 			if (S[i] != '-') {
 				if (!isdigit(S[i]) && islower(S[i])) {
-					target.insert(0, 1, toupper(S[i]));
+					target.push_back(toupper(S[i]));
 				}
 				else {
-					target.insert(0, 1, S[i]);
+					target.push_back(S[i]);
 				}
 				cntInGroup++;
 				if (cntInGroup == K) {
-					target.insert(0, 1, '-');
+					target.push_back('-');
 					cntInGroup = 0;
 				}
 			}
 			i--;
 		}
-		if (target[0] == '-') {
-			target.erase(0, 1);
+		if (target.back() == '-') {
+			target.pop_back();
 		}
+		reverse(target.begin(), target.end());
 		return target;
 	}
 };
