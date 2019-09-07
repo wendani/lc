@@ -7,26 +7,22 @@ public:
 
 		vector<int> beTrustedCounts(N + 1, 0);
 		vector<bool> trustCounts(N + 1, false);
-
-		int judgeIdx = -1;
 		for (const auto &t : trust) {
 			beTrustedCounts[t[1]]++;
 			trustCounts[t[0]] = true;
+		}
 
-			if (beTrustedCounts[t[1]] == N - 1) {
-				// Everybody (except for the town judge) trusts the town judge.
-				if (judgeIdx > 0) {
-					// There is exactly one person that satisfies properties 1 and 2.
-					return -1;
-				}
-				else {
-					judgeIdx = t[1];
-				}
+		int judgeIdx = -1;
+		for (int i = 1; i <= N; i++) {
+			if (beTrustedCounts[i] == N - 1) {
+				judgeIdx = i;
+				break;
 			}
 		}
-		// The town judge trusts nobody.
-		if (judgeIdx > 0) {
-			return trustCounts[judgeIdx] ? -1 : judgeIdx;
+		// The town judge trusts nobody
+		// If a town judge exists, there cannot be more than one person that satisfies properties 1 and 2
+		if (judgeIdx > 0 && trustCounts[judgeIdx]) {
+			return  -1;
 		}
 		return judgeIdx;
 	}
