@@ -5,19 +5,19 @@ public:
 	}
 
 	void push(int x) {
-		stk.push_back(x);
+		stk.push(x);
 
 		if (!minElmtStk.empty()) {
 			int &currMin = minElmtStk.top();
 			if (currMin < x) {
-				minElmtStk.push_back(currMin);
+				minElmtStk.push(currMin);
 			}
 			else {
-				minElmtStk.push_back(x);
+				minElmtStk.push(x);
 			}
 		}
 		else {
-			minElmtStk.push_back(x);
+			minElmtStk.push(x);
 		}
 	}
 
