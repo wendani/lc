@@ -12,7 +12,7 @@ public:
 					return false;
 				}
 			}
-			else (c == 'L') {
+			else if (c == 'L') {
 				contLCnt++;
 				if (contLCnt > 2) {
 					return false;
