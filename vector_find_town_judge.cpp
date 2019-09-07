@@ -1,13 +1,22 @@
 class Solution {
 public:
 	int findJudge(int N, vector<vector<int>>& trust) {
-		vector<int> trustCounts(N + 1, 0);
+		if (N == 1) {
+			return 1;
+		}
+
+		vector<int> beTrustedCounts(N + 1, 0);
+		vector<bool> trustCounts(N + 1, false);
 
 		int judgeIdx = -1;
 		for (const auto &t : trust) {
-			trustCounts[t[1]]++;
-			if (trustCounts[t[1]] == N - 1) {
+			beTrustedCounts[t[1]]++;
+			trustCounts[t[0]] = true;
+
+			if (beTrustedCounts[t[1]] == N - 1) {
+				// Everybody (except for the town judge) trusts the town judge.
 				if (judgeIdx > 0) {
+					// There is exactly one person that satisfies properties 1 and 2.
 					return -1;
 				}
 				else {
@@ -15,10 +24,22 @@ public:
 				}
 			}
 		}
+		// The town judge trusts nobody.
+		if (judgeIdx > 0) {
+			return trustCounts[judgeIdx] ? -1 : judgeIdx;
+		}
 		return judgeIdx;
 	}
 };
 
+
+/*
+ * If the town judge exists, then:
+ *
+ * The town judge trusts nobody.
+ * Everybody (except for the town judge) trusts the town judge.
+ * There is exactly one person that satisfies properties 1 and 2.
+ */
 
 /*
  * trust[i] are all different
