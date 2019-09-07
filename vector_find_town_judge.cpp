@@ -1,7 +1,7 @@
 class Solution {
 public:
 	int findJudge(int N, vector<vector<int>>& trust) {
-		vector<int> trustCounts(0, N + 1);
+		vector<int> trustCounts(N + 1, 0);
 
 		int judgeIdx = -1;
 		for (const auto &t : trust) {
