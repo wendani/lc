@@ -4,7 +4,7 @@ public:
 		int len = words.size();
 		int word1Idx = len;
 		int word2Idx = len;
-		inr minDist = len;
+		int minDist = len;
 		for (int i = 0; i < len; i++) {
 			if (words[i] == word1) {
 				word1Idx = i;
