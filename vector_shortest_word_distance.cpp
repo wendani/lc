@@ -4,26 +4,29 @@ public:
 		int len = words.size();
 		int word1Idx = len;
 		int word2Idx = len;
-		int minDist = len;
+		int minDist = len - 1;
 		for (int i = 0; i < len; i++) {
 			if (words[i] == word1) {
 				word1Idx = i;
 
-				int dist = abs(word1Idx - word2Idx);
-				if (dist < minDist) {
-					minDist = dist;
+				if (word2Idx < len) {
+					int dist = abs(word1Idx - word2Idx);
+					if (dist < minDist) {
+						minDist = dist;
+					}
 				}
 			}
 			else if (words[i] == word2) {
 				word2Idx = i;
 
-				int dist = abs(word1Idx - word2Idx);
-				if (dist < minDist) {
-					minDist = dist;
+				if (word1Idx < len) {
+					int dist = abs(word1Idx - word2Idx);
+					if (dist < minDist) {
+						minDist = dist;
+					}
 				}
 			}
 		}
-		assert(minDist < len);
 		return minDist;
 	}
 };
