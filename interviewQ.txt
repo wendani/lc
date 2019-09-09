@@ -29,38 +29,43 @@ TODO
 212 word search 2
 210 course Schedule 2
 144. Binary Tree Preorder Traversal
+552. Student Attendance Record II
 
 10 regular expression matching
 335. Self Crossing
 41
-
-1026
+50
+247
+239. sliding window maximum
+61. Rotate List
+362. Design Hit Counter
+Find the celebrity
 
 *********************************************
 
-Bit operation
+BIT OPERATION
 n to the power of 2, two's complement (Irdeto, Cisco)
 test if an unsigned integer is odd or even (Irdeto, Pure Storage)
 bit swap: swap odd and even bits in an integer (Cisco)
 bit count (Qualcomm)
 
-XOR, bitmap
+XOR, BITMAP
 missing number
 broken machine (bop)
 implement bitmap (Barefoot)
 
-Const space
+CONST SPACE
 matrix set zeros
 life game
 
-Number
+NUMBER
 K-th smallest lexicographical number
 next permutation
 maximum swap
 happy number
 endian (Microsoft, Barefoot)
 
-Two pointers
+TWO POINTERS
 valid palindrome
 valid palindrome 2
 duplicate number (287) (Amazon)
@@ -68,15 +73,33 @@ if a singly linked list has a circle (Microsoft)
 reorder log files
 most common word
 
-Sliding window
+SLIDING WINDOW
 longest substring with no repeating characters
 
-Queue
+Hashtable
+array hashmap
+
+HASHTABLE + LIST
+LRU cache
+
+MAP
+verify alien dictionary
+bulls & cows
+jewels & stones
+strobogrammatic number
+find town judge
+logger rate limiter
+
+SET
+jewels & stones
+
+QUEUE
 moving average (Barefoot)
 Average of 4 elements (Barefoot)
 implement queue using doubly linked list, array, or stack(Microsoft)
 
-Stack
+STACK
+min stack
 string decode
 valid parentheses (Amazon)
 largest rectangle in histogram
@@ -85,32 +108,29 @@ basic calculator 2
 binary tree level order zigzag
 reverse nodes in k-group
 
-Hashtable
-array hashmap
-
-Hashtable + list
-LRU cache
-
-Priority queue
+PRIORITY QUEUE
 K-th largest element in a stream
 last stone weight
 merge K sorted linked list
 K-th smallest lexicographical number
 
-Signature
+SIGNATURE
 anagram group
+isomorphic string
+backspace string compare
 
-Sorting
+SORTING
 maximum swap
 next permutation
 meeting rooms 2
 bubble sort, quick sort, merge sort (Qualcomm)
 if four points form a square (Pure Storage)
 
-Recursion
+RECURSION
 K-th largest element in an array
 lca in binary tree, bst
 distance K nodes in binary tree
+max difference between node and ancestor in binary tree
 remove Nth node from end of list
 word search
 # of islands
@@ -119,14 +139,15 @@ walls & gates
 longest increasing path in a matrix
 factorial (Cisco)
 
-Binary search
+BINARY SEARCH
 duplicate number (287)
 binary search (Cisco)
 binary search on duplicates (Barefoot)
 binary search in rotated sorted array
 binary search min on a rotated sorted array (Arista)
+first bad version
 
-Invariant
+INVARIANT
 gas station
 majority element
 largest rectangle in histogram
@@ -172,16 +193,23 @@ word break
 max subarray
 max product subarray
 
-Space
+SPACE
 count primes
 
 OS
 stack growth direction (Cisco, Barefoot)
 
-Array
-merge two sorted arrays (Microsoft)
+STRING
+license key formatting
+student attendance record 1
+unique email addresses
 
-Linked list
+ARRAY
+merge two sorted arrays (Microsoft)
+monotonic
+Read N characters given read4
+
+LINKED LIST
 head tail swap of a singly linked list (Microsoft)
 Delete elements with value equal to N in a singly linked list (Cisco)
 print a linked list in reverse order with constant memory (Microsoft)
