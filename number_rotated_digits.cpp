@@ -7,6 +7,55 @@ public:
 
 		int cnt = 0;
 		for (int i = 2; i <= N; i++) {
+			bool valid = true;
+			int iRotated = 0;
+			int factor = 1;
+			while (i) {
+				int rem = i % 10;
+				rem = rotate[rem];
+				if (rem < 0) {
+					valid = false;
+					break;
+				}
+				else {
+					iRotated += (rem * factor);
+				}
+				i /= 10;
+				factor *= 10;
+			}
+			if (valid && i != iRotated) {
+				cnt++;
+			}
+		}
+		return cnt;
+	}
+private:
+	static const int rotate[10];
+};
+
+const int Solution::rotate[10] = {
+	 0,
+	 1,
+	 5,
+	-1,
+	-1,
+	 2,
+	 9,
+	-1,
+	 8,
+	 6,
+};
+
+
+class Solution {
+public:
+	int rotatedDigits(int N) {
+		if (N <= 1) {
+			return 0;
+		}
+
+		int cnt = 0;
+		for (int i = 2; i <= N; i++) {
 			string s = to_string(i);
 			bool valid = true;
 			for (auto &c : s) {
