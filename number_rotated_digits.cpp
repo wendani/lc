@@ -6,10 +6,11 @@ public:
 		}
 
 		int cnt = 0;
-		for (int i = 2; i <= N; i++) {
+		for (int num = 2; num <= N; num++) {
 			bool valid = true;
-			int iRotated = 0;
+			int numRotated = 0;
 			int factor = 1;
+			int i = num;
 			while (i) {
 				int rem = i % 10;
 				rem = rotate[rem];
@@ -18,12 +19,12 @@ public:
 					break;
 				}
 				else {
-					iRotated += (rem * factor);
+					numRotated += (rem * factor);
 				}
 				i /= 10;
 				factor *= 10;
 			}
-			if (valid && i != iRotated) {
+			if (valid && num != numRotated) {
 				cnt++;
 			}
 		}
