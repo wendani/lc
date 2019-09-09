@@ -14,12 +14,14 @@ public:
 			if (found != string::npos) {
 				localRaw.resize(found);
 			}
-			string local;
-			for (const auto &c : localRaw) {
-				if (c != '.') {
-					local.push_back(c);
-				}
-			}
+			// string local;
+			// for (const auto &c : localRaw) {
+			// 	if (c != '.') {
+			// 		local.push_back(c);
+			// 	}
+			// }
+			string &local = localRaw;
+			local.erase(remove(local.begin(), local.end(), '.'), local.end());
 
 			auto it = domainLocals.find(domain);
 			if (it != domainLocals.end()) {
