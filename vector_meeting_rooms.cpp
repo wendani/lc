@@ -2,8 +2,11 @@ class Solution {
 public:
 	bool canAttendMeetings(vector<vector<int>>& intervals) {
 		int len = intervals.size();
+		if (len < 2) {
+			return true;
+		}
 		sort(intervals.begin(), intervals.end());
-		for (int i = 2; i < len; i++) {
+		for (int i = 1; i < len; i++) {
 			if (intervals[i][0] < intervals[i - 1][1]) {
 				return false;
 			}
@@ -11,7 +14,6 @@ public:
 		return true;
 	}
 };
-
 
 /*
  * Example 1:
