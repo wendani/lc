@@ -16,6 +16,7 @@ void updateMinutes(int **grid, const int rowSize, const int colSize, const int i
 	// step onto another rotten orange
 	if (grid[i][j] == 2 && minutesToRot > 2) {
 		return;
+	}
 
 	// minutesToRot == 2 when we start from a new rotten orange
 	if (minutesToRot == 2 || grid[i][j] == 1 || minutesToRot < grid[i][j]) {
