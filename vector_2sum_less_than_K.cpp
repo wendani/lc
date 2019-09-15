@@ -6,7 +6,7 @@ public:
 			return -1;
 		}
 
-		sort(A.begin(), B.end());
+		sort(A.begin(), A.end());
 		int i = 0;
 		int j = len - 1;
 		int max = -1;
