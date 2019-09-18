@@ -28,7 +28,7 @@ private:
 				return;
 			}
 		}
-		prefix.resize(i);
+		prefix.resize(len);
 	}
 };
 
