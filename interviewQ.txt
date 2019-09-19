@@ -21,6 +21,7 @@ Construct
 height
 	isBalanced
 	max distance between two nodes / diameter
+	subtree of another tree
 
 TODO
 18 4Sum
@@ -30,6 +31,14 @@ TODO
 210 course Schedule 2
 144. Binary Tree Preorder Traversal
 552. Student Attendance Record II
+244. Shortest Word Distance II
+853 Car Fleet
+259. 3Sum Smaller
+Shortest Path with Alternating Colors
+Open the Lock
+Sliding Puzzle
+12. Integer to Roman
+
 
 10 regular expression matching
 335. Self Crossing
@@ -89,6 +98,7 @@ jewels & stones
 strobogrammatic number
 find town judge
 logger rate limiter
+single-row keyboard
 
 SET
 jewels & stones
@@ -122,7 +132,7 @@ backspace string compare
 SORTING
 maximum swap
 next permutation
-meeting rooms 2
+meeting rooms 1 & 2
 bubble sort, quick sort, merge sort (Qualcomm)
 if four points form a square (Pure Storage)
 
@@ -136,6 +146,7 @@ word search
 # of islands
 flood fill
 walls & gates
+rotten oranges
 longest increasing path in a matrix
 factorial (Cisco)
 
@@ -155,8 +166,10 @@ container with most water
 array trap water
 candy
 best time to buy and sell stock
+shortest word distance
 3 sum
 2 sum (Bytedance)
+2 sum less than K
 
 DFS
 topological sort
@@ -203,6 +216,7 @@ STRING
 license key formatting
 student attendance record 1
 unique email addresses
+longest common prefix
 
 ARRAY
 merge two sorted arrays (Microsoft)
