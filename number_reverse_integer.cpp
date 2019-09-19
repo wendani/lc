@@ -1,12 +1,7 @@
 class Solution {
 public:
 	int reverse(int x) {
-		bool isNegative = false;
-		if (x < 0) {
-			x = -x;
-			isNegative = true;
-		}
-		int xReverse = 0;
+		int64_t xReverse = 0;
 		while (x) {
 			int rem = x % 10;
 			xReverse *= 10;
@@ -14,7 +9,7 @@ public:
 
 			x /= 10;
 		}
-		return isNegative ? -xReverse : xReverse;
+		return xReverse == static_cast<int>(xReverse) ? xReverse : 0;
 	}
 };
 
