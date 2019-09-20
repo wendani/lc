@@ -23,7 +23,12 @@ private:
 		}
 
 		_pathSum(sumStartFromNode, count, node->left, sumTarget);
-		_pathSum(sumStartFromNode, count, node->right, sumTarget);
+
+		vector<int> rSumStartFromNode;
+		int rCount = 0;
+		_pathSum(rSumStartFromNode, rCount, node->right, sumTarget);
+		sumStartFromNode.insert(sumStartFromNode.end(), rSumStartFromNode.begin(), rSumStartFromNode.end());
+		count += rCount;
 
 		for (auto &sum : sumStartFromNode) {
 			sum += node->val;
