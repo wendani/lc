@@ -12,7 +12,7 @@ bool hasPathSum(struct TreeNode* root, int sum){
 		return false;
 	}
 
-	if (!root->left && !root->right && root->value == sum) {
+	if (!root->left && !root->right && root->val == sum) {
 		return true;
 	}
 
