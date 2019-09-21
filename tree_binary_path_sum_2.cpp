@@ -20,19 +20,19 @@ private:
 			return;
 		}
 
-		if (!node->left && !node->right && root->val == sum) {
-			paths.emplace_back(initializer_list<int>{root->val});
+		if (!node->left && !node->right && node->val == sum) {
+			paths.emplace_back(initializer_list<int>{node->val});
 			return;
 		}
 
-		_pathSum(paths, node->left, sum - root->val);
+		_pathSum(paths, node->left, sum - node->val);
 
 		vector<vector<int>> rPaths;
-		_pathSum(rPaths, node->right, sum - root->val);
+		_pathSum(rPaths, node->right, sum - node->val);
 		paths.insert(paths.end(), rPaths.begin(), rPaths.end());
 
 		for (auto &path :paths) {
-			path.insert(path.begin(), root->val);
+			path.insert(path.begin(), node->val);
 		}
 	}
 };
