@@ -5,7 +5,8 @@ public:
 			return false;
 		}
 
-		xBackward = 0;
+		int xOrig = x;
+		int64_t xBackward = 0;
 		while (x) {
 			int rem = x % 10;
 
@@ -14,7 +15,7 @@ public:
 			x /= 10;
 		}
 
-		return x == xBackward;
+		return xOrig == xBackward;
 	}
 };
 
