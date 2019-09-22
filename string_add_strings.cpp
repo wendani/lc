@@ -1,36 +1,33 @@
 class Solution {
 public:
 	string addStrings(string num1, string num2) {
-		int &&iNum1 = stringToInteger(num1);
-		int &&iNum2 = stringToInteger(num2);
+		size_t len1 = num1.length();
+		size_t len2 = num2.length();
 
-		return integerToString(iNum1 + iNum2);
-	}
-private:
-	int stringToInteger(const string &sNum)
-	{
-		int num = 0;
-		for (const auto &c : sNum) {
-			int digit = c - '0';
+		string num;
+		int credit = 0;
+		int i1 = len1 - 1;
+		int i2 = len2 - 1;
+		while (i1 >= 0 || i2 >= 0) {
+			int digit = credit;
+			if (i1 >= 0) {
+				digit += num1[i1] - '0';
+			}
+			if (i2 >= 0) {
+				digit += num2[i2] - '0';
+			}
+			num.push_back(digit % 10 + '0');
 
-			num *= 10;
-			num += digit;
+			credit = digit / 10;
+			i1--;
+			i2--;
+		}
+		if (credit) {
+			num.push_back(credit + '0');
 		}
 
+		reverse(num.begin(), num.end());
 		return num;
-	}
-
-	string integerToString(int num)
-	{
-		string sNum;
-		while (num) {
-			int rem = num % 10;
-			sNum.push_back(rem + '0');
-			num /= 10;
-		}
-
-		reverse(sNum.begin(), sNum.end());
-		return sNum;
 	}
 };
 
