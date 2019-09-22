@@ -7,10 +7,10 @@ public:
 		for (int i = len - 2; i >= 0; i--) {
 			maxProfitSubperiodStarts[i] = maxProfitSubperiodStarts[i + 1];
 
-			for (int j = i + 1; j < n; j++) {
+			for (int j = i + 1; j < len; j++) {
 				int profit = prices[j] - prices[i];
 				if (profit > 0) {
-					if (j < n - 1) {
+					if (j < len - 1) {
 						profit += maxProfitSubperiodStarts[j + 1];
 					}
 					if (profit > maxProfitSubperiodStarts[i]) {
