@@ -2,6 +2,9 @@ class Solution {
 public:
 	int maxProfit(vector<int>& prices) {
 		int len = prices.size();
+		if (len < 1) {
+			return 0;
+		}
 		vector<int> maxProfitSubperiodStarts(len, 0);
 
 		for (int i = len - 2; i >= 0; i--) {
