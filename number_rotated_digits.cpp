@@ -21,6 +21,7 @@ public:
 				else {
 					numRotated += (rem * factor);
 				}
+
 				i /= 10;
 				factor *= 10;
 			}
