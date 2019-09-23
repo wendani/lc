@@ -7,11 +7,11 @@
  * };
  */
 bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
-    if (!p && !q) 
+    if (!p && !q)
         return true;
     if ((!p && q) || (p && !q))
         return false;
-    
+
     // reach here if (p && q)
     if (p->val != q->val)
         return false;
