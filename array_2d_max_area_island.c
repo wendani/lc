@@ -1,3 +1,54 @@
+static void islandArea(int *area, int **grid, const int rowSize, const int colSize, const int i, const int j)
+{
+	assert(area);
+
+	if (i < 0 || i > rowSize - 1) {
+		return;
+	}
+
+	if (j < 0 || j > colSize - 1) {
+		return;
+	}
+
+	if (grid[i][j] != 1) {
+		return;
+	}
+
+	// reach here when stepping on a land
+	grid[i][j] = -1;
+	(*area)++;
+	// east
+	islandArea(area, grid, rowSize, colSize, i, j + 1);
+	// south
+	islandArea(area, grid, rowSize, colSize, i + 1, j);
+	// north
+	islandArea(area, grid, rowSize, colSize, i - 1, j);
+	// west
+	islandArea(area, grid, rowSize, colSize, i, j - 1);
+}
+
+int maxAreaOfIsland(int** grid, int gridSize, int* gridColSize){
+	int maxArea;
+
+	if (!grid || !*grid || gridSize < 1 || !gridColSize || *gridColSize < 1) {
+		return 0;
+	}
+
+	maxArea = 0;
+	for (int i = 0; i < gridSize; i++) {
+		for (int j = 0; j < *gridColSize; j++) {
+			int area = 0;
+			islandArea(&area, grid, gridSize, *gridColSize, i, j);
+			if (area > maxArea) {
+				maxArea = area;
+			}
+		}
+	}
+
+	return maxArea;
+}
+
+
 static int islandArea(int **grid, const int rowSize, const int colSize, const int i, const int j)
 {
 	int area;
