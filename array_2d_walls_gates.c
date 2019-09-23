@@ -22,13 +22,13 @@ void updateDist(int **rooms, int rowSize, int colSize, int i, int j, int distToG
 		rooms[i][j] = distToGate;
 
 		distToGate++;
-		// East
+		// east
 		updateDist(rooms, rowSize, colSize, i, j + 1, distToGate);
-		// South
+		// south
 		updateDist(rooms, rowSize, colSize, i + 1, j, distToGate);
-		// North
+		// north
 		updateDist(rooms, rowSize, colSize, i - 1, j, distToGate);
-		// West
+		// west
 		updateDist(rooms, rowSize, colSize, i, j - 1, distToGate);
 	}
 }
