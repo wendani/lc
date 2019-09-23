@@ -38,6 +38,10 @@ Shortest Path with Alternating Colors
 Open the Lock
 Sliding Puzzle
 12. Integer to Roman
+43. Multiply Strings
+29. Divide Two Integers
+137. Single Number II
+260. Single Number III
 
 
 10 regular expression matching
@@ -60,6 +64,7 @@ bit count (Qualcomm)
 
 XOR, BITMAP
 missing number
+single number
 broken machine (bop)
 implement bitmap (Barefoot)
 
@@ -73,6 +78,11 @@ next permutation
 maximum swap
 happy number
 endian (Microsoft, Barefoot)
+reverse integer
+rotated digits
+add two numbers
+add strings
+palindrome number
 
 TWO POINTERS
 valid palindrome
@@ -141,12 +151,17 @@ K-th largest element in an array
 lca in binary tree, bst
 distance K nodes in binary tree
 max difference between node and ancestor in binary tree
+path sum 3: find the number of paths that sum to a given value. Paths go downwards (traveling only from parent nodes to child nodes).
+path sum 2: find all root-to-leaf paths where each path's sum equals the given sum.
+paths: return all root-to-leaf paths.
+path sum: determine if a tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
 remove Nth node from end of list
 word search
 # of islands
+max area island
 flood fill
 walls & gates
-rotten oranges
+rotting oranges
 longest increasing path in a matrix
 factorial (Cisco)
 
@@ -158,7 +173,7 @@ binary search in rotated sorted array
 binary search min on a rotated sorted array (Arista)
 first bad version
 
-INVARIANT
+INVARIANTS
 gas station
 majority element
 largest rectangle in histogram
@@ -166,6 +181,7 @@ container with most water
 array trap water
 candy
 best time to buy and sell stock
+best time to buy and sell stock 2: buy one and sell one share of the stock as many times as you like.
 shortest word distance
 3 sum
 2 sum (Bytedance)
@@ -195,6 +211,7 @@ DP
 1 dimension
 longest palindromic substring
 coin change, fewest number
+climb stairs, distinct ways
 coin change 2, number of combinations
 
 2 dimension
