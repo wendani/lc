@@ -19,8 +19,8 @@ struct list_node_head {
  */
 static inline void __list_head_init(struct list_node_head *head)
 {
-	head->next = (struct list_node *) head;
-	head->prev = (struct list_node *) head;
+	head->next = (struct list_node *)head;
+	head->prev = (struct list_node *)head;
 
 	head->qlen = 0;
 }
@@ -51,7 +51,7 @@ int find_depth(struct TreeNode *root)
  */
 static inline int __list_empty(struct list_node_head *head)
 {
-	return (head->next == (struct list_node *) head) ? 1 : 0;
+	return head->next == (struct list_node *)head;
 }
 
 static inline int __list_len(struct list_node_head *head)
@@ -61,13 +61,11 @@ static inline int __list_len(struct list_node_head *head)
 
 static inline void __list_add_tail(struct list_node_head *head, struct list_node *node)
 {
-	struct list_node *prev = head->prev;
-
-	prev->next = node;
-	node->next = (struct list_node *) head;
+	node->next = (struct list_node *)head;
+	node->prev = head->prev;
 
 	head->prev = node;
-	node->prev = prev;
+	node->prev->next = node;
 
 	++head->qlen;
 }
@@ -77,14 +75,16 @@ static inline void __list_add_tail(struct list_node_head *head, struct list_node
  */
 static inline struct list_node *__list_dequeue(struct list_node_head *head)
 {
-	struct list_node *curr = head->next;
-	struct list_node *next = curr->next;
+	if (__list_empty(head))
+		return NULL;
 
-	head->next = next;
-	next->prev = (struct list_node *) head;
+	struct list_node *node = head->next;
+
+	head->next = node->next;
+	node->next->prev = (struct list_node *)head;
 	--head->qlen;
 
-	return curr;
+	return node;
 }
 
 /**
@@ -92,7 +92,7 @@ static inline struct list_node *__list_dequeue(struct list_node_head *head)
  * The sizes of the arrays are returned as *columnSizes array.
  * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
  */
-int** levelOrder(struct TreeNode* root, int** columnSizes, int* returnSize) {
+int** levelOrder(struct TreeNode* root, int* returnSize, int** columnSizes) {
 	int depth, rindx, cindx;
 	int **arr;
 	int *colmn;
