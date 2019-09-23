@@ -1,30 +1,3 @@
-/*
- * Given binary tree [3,9,20,null,null,15,7],
- *
- *     3
- *    / \
- *   9  20
- *     /  \
- *    15   7
- *
- * return its zigzag level order traversal as:
- *
- * [
- *   [3],
- *   [20,9],
- *   [15,7]
- * ]
- */
-
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
 class Solution {
 public:
 	vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
@@ -73,3 +46,31 @@ public:
 		return zigzag;
 	}
 };
+
+/*
+ * Given binary tree [3,9,20,null,null,15,7],
+ *
+ *     3
+ *    / \
+ *   9  20
+ *     /  \
+ *    15   7
+ *
+ * return its zigzag level order traversal as:
+ *
+ * [
+ *   [3],
+ *   [20,9],
+ *   [15,7]
+ * ]
+ */
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
