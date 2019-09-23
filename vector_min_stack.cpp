@@ -14,7 +14,7 @@ public:
 
 	void pop() {
 		if (!stk.empty()) {
-			if (stk.top() == minElmtStk.top() {
+			if (stk.top() == minElmtStk.top()) {
 				minElmtStk.pop();
 			}
 			stk.pop();
