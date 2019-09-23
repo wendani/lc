@@ -23,13 +23,13 @@ void updateMinutes(int **grid, const int rowSize, const int colSize, const int i
 		grid[i][j] = minutesToRot;
 
 		minutesToRot++;
-		// East
+		// east
 		updateMinutes(grid, rowSize, colSize, i, j + 1, minutesToRot);
-		// South
+		// south
 		updateMinutes(grid, rowSize, colSize, i + 1, j, minutesToRot);
-		// North
+		// north
 		updateMinutes(grid, rowSize, colSize, i - 1, j, minutesToRot);
-		// West
+		// west
 		updateMinutes(grid, rowSize, colSize, i, j - 1, minutesToRot);
 	}
 }
