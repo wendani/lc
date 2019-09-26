@@ -1,7 +1,7 @@
 class Solution {
 public:
 	int pathSum(vector<int>& nums) {
-		vector<int> vTree(16, -1);
+		vector<int> vTree(32, -1);
 		for (auto num : nums) {
 			int uDigit = num % 10;
 
@@ -11,7 +11,6 @@ public:
 			assert(hDigit < 10);
 
 			int idx = pow(2, hDigit - 1) + (tDigit - 1);
-			cout << idx;
 			vTree[idx] = uDigit;
 		}
 
@@ -30,6 +29,7 @@ private:
 		if (vTree[nodeIdx * 2] < 0 && vTree[nodeIdx * 2 + 1] < 0) {
 			sum += vTree[nodeIdx];
 			pathCnt++;
+			return;
 		}
 
 		_pathSum(sum, pathCnt, vTree, nodeIdx * 2);
