@@ -1,6 +1,36 @@
 class Solution {
 public:
 	vector<string> generateParenthesis(int n) {
+		return _generateParenthesis(0, n);
+	}
+private:
+	vector<string> _generateParenthesis(int closeParenthesisCredits, int openParenthesisNum)
+	{
+		if (closeParenthesisCredits == 0 && openParenthesisNum == 0) {
+			return {""};
+		}
+
+		vector<string> parentheses;
+		for (int i = 1; i <= openParenthesisNum; i++) {
+			string preOpen(i, '(');
+
+			for (int j = i + closeParenthesisCredits; j > 0; j--) {
+				string preClose(j, ')');
+
+				vector<string> post = _generateParenthesis(i - j + closeParenthesisCredits, openParenthesisNum - i);
+
+				for (const auto &pst : post) {
+					parentheses.push_back(preOpen + preClose + pst);
+				}
+			}
+		}
+		return parentheses;
+	}
+};
+
+class Solution {
+public:
+	vector<string> generateParenthesis(int n) {
 		vector<string> parentheses;
 		_generateParenthesis(parentheses, 0, n);
 		return parentheses;
