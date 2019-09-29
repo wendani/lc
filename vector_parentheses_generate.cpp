@@ -39,7 +39,7 @@ private:
 	void _generateParenthesis(vector<string> &parentheses, int closeParenthesisCredits, int openParenthesisNum)
 	{
 		if (closeParenthesisCredits == 0 && openParenthesisNum == 0) {
-			parentheses.push_back("");
+			parentheses.emplace_back();
 		}
 
 		for (int i = 1; i <= openParenthesisNum; i++) {
