@@ -5,6 +5,24 @@ public:
 			return 0;
 		}
 
+		vector<int> pathNum(n, 1);
+		for (int i = m - 2; i >= 0; i--) {
+			for (int j = n - 2; j >= 0; j--) {
+				pathNum[j] += pathNum[j + 1];
+			}
+		}
+		return pathNum[0];
+	}
+};
+
+
+class Solution {
+public:
+	int uniquePaths(int m, int n) {
+		if (m < 1 || n < 1) {
+			return 0;
+		}
+
 		vector<vector<int>> pathNum(m, vector<int>(n, 0));
 		for (int j = 0; j < n; j++) {
 			pathNum[m - 1][j] = 1;
