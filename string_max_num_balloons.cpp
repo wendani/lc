@@ -15,7 +15,7 @@ public:
 				maxNum = charCnts[c - 'a'];
 			}
 		}
-		return maximum;
+		return maxNum;
 	}
 private:
 	static const unordered_set<char> targetChars;
