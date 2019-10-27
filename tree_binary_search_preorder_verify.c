@@ -27,12 +27,12 @@ static bool _verifyPreorder(int *preorder, int startIdx, int endIdxExcl)
 }
 
 bool verifyPreorder(int* preorder, int preorderSize) {
-	if (!preorder) {
+	if (!preorder || preorderSize < 0) {
 		return false;
 	}
 
-	if (preorderSize < 1) {
-		return false;
+	if (preorderSize == 0) {
+		return true;
 	}
 
 	return _verifyPreorder(preorder, 0, preorderSize);
