@@ -11,13 +11,15 @@ binary search
 is binary search tree (Microsoft)
 set
 
-binary tree
+BINARY TREE
 lca
 distance k nodes
-Construct
+construct
 	from preorder + inorder
 	from            inorder + postorder
 	from preorder      +      postorder (undetermined left/right node)
+verify
+	preorder sequence in binary search tree
 height
 	isBalanced
 	max distance between two nodes / diameter
@@ -25,7 +27,6 @@ height
 
 TODO
 18 4Sum
-16 3Sum closest
 40 combination sum 2
 212 word search 2
 210 course Schedule 2
@@ -42,6 +43,11 @@ Sliding Puzzle
 29. Divide Two Integers
 137. Single Number II
 260. Single Number III
+124. Binary Tree Maximum Path Sum
+64. Minimum Path Sum
+1188 Design Bounded Blocking Queue
+692. Top K Frequent Words
+776. Split BST
 
 
 10 regular expression matching
@@ -127,6 +133,8 @@ add two numbers
 basic calculator 2
 binary tree level order zigzag
 reverse nodes in k-group
+binary tree inorder traversal
+binary search tree iterator
 
 PRIORITY QUEUE
 K-th largest element in a stream
@@ -151,6 +159,7 @@ K-th largest element in an array
 lca in binary tree, bst
 distance K nodes in binary tree
 max difference between node and ancestor in binary tree
+second min in binary tree
 path sum 3: find the number of paths that sum to a given value. Paths go downwards (traveling only from parent nodes to child nodes).
 path sum 2: find all root-to-leaf paths where each path's sum equals the given sum.
 paths: return all root-to-leaf paths.
@@ -184,6 +193,7 @@ best time to buy and sell stock
 best time to buy and sell stock 2: buy one and sell one share of the stock as many times as you like.
 shortest word distance
 3 sum
+3 sum closest
 2 sum (Bytedance)
 2 sum less than K
 
@@ -194,6 +204,7 @@ subsets
 permutations
 letter combinations of a phone number
 combination sum
+generate parentheses
 
 BFS
 binary tree level order traversal
@@ -213,6 +224,7 @@ longest palindromic substring
 coin change, fewest number
 climb stairs, distinct ways
 coin change 2, number of combinations
+# of unique paths from top-left corner to bottom-right corner
 
 2 dimension
 last stone weight 2
@@ -234,6 +246,8 @@ license key formatting
 student attendance record 1
 unique email addresses
 longest common prefix
+frequency of the smallest character
+maximum number of balloons
 
 ARRAY
 merge two sorted arrays (Microsoft)
