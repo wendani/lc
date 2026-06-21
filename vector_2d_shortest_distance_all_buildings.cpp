@@ -27,7 +27,8 @@ public:
 		return minDist;
 	}
 private:
-	int findDist(vector<vector<int>> &totalDist, vector<vector<int>> &grid, const int rowSize, const int colSize, const int landMark, const int i, const int j)
+	int findDist(vector<vector<int>> &totalDist, vector<vector<int>> &grid, const int rowSize, const int colSize,
+		     const int landMark, const int i, const int j)
 	{
 		int minDist = -1;
 
