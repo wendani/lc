@@ -1,6 +1,77 @@
 class Solution {
 public:
     string simplifyPath(string path) {
+        vector<string> dirs;
+
+        const char &delimiter = '/';
+
+        size_t start = 0;
+        size_t pos = path.find(delimiter, start);
+        while (pos != string::npos)
+        {
+            if (pos == start)
+            {
+                // subpath starts with /
+                // ignore
+            }
+            else
+            {
+                string dir = path.substr(start, pos);
+                if (dir == ".")
+                {
+                    // current directory
+                    // ignore
+                }
+                else if (dir == "..")
+                {
+                    if (!dirs.empty())
+                    {
+                        dirs.pop_back();
+                    }
+                }
+                else
+                {
+                    dirs.push_back(dir);
+                }
+            }
+
+            start = pos + 1;
+            pos = path.find(delimiter, start);
+        }
+
+        if (start < path.size())
+        {
+            string dir = path.substr(start);
+            if (dir == ".")
+            {
+                // current directory
+                // ignore
+            }
+            else if (dir == "..")
+            {
+                if (!dirs.empty())
+                {
+                    dirs.pop_back();
+                }
+            }
+            else
+            {
+                dirs.push_back(dir);
+            }
+        }
+
+        string simplePath = "/";
+        for (const string &dir : dirs)
+        {
+            simplePath += dir;
+            simplePath += delimiter;
+        }
+        if (!dirs.empty())
+        {
+            simplePath.pop_back();
+        }
+
+        return simplePath;
     }
 };
 
