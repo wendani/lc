@@ -16,7 +16,7 @@ public:
             }
             else
             {
-                string dir = path.substr(start, pos);
+                string dir = path.substr(start, pos - start);
                 if (dir == ".")
                 {
                     // current directory
