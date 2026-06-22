@@ -1,29 +1,27 @@
 class Solution {
 public:
     vector<vector<int>> largestLocal(vector<vector<int>>& grid) {
-        vector<vector<int>> maxLocal;
-
         int n = grid.size();
+
+        vector<vector<int>> maxLocals(n - 2, vector<int>(n - 2, 0));
+
         for (int i = 1; i < n - 1; i++) {
             for (int j = 1; j < n - 1; j++ ) {
-                int k = i - 1;
-                int l = j - 1;
+                int maxLocal = grid[i - 1][j - 1];
 
-                int max = grid[k][l];
-
-                for (; k <= i + 1; k++) {
-                    for (; l <= j + 1; l++} {
-                        if (max < grid[k][l]) {
-                            max = grid[k][l];
+                for (int k = i - 1; k <= i + 1; k++) {
+                    for (int l = j - 1; l <= j + 1; l++) {
+                        if (maxLocal < grid[k][l]) {
+                            maxLocal = grid[k][l];
                         }
                     }
                 }
 
-                maxLocal[i - 1][j - 1] = max;
+                maxLocals[i - 1][j - 1] = maxLocal;
             }
         }
 
-        return maxLocal;
+        return maxLocals;
     }
 };
 
