@@ -3,10 +3,43 @@ public:
 
     // Encodes a list of strings to a single string.
     string encode(vector<string>& strs) {
+        string msg;
+
+        for (const string &str : strs)
+        {
+            const int len = str.size();
+
+            char buf[9];
+            snprintf(buf, sizeof(buf), "%08x", len);
+
+            // length
+            msg += buf;
+            // value
+            msg += str;
+        }
+
+        return str;
     }
 
     // Decodes a single string to a list of strings.
     vector<string> decode(string s) {
+        vector<string> strs;
+
+        const int tLen = s.size();
+        size_t pos = 0;
+        while (pos < tLen)
+        {
+            // length
+            const int len = stoi(s.substr(pos, 8));
+
+            // value
+            pos += 8;
+            strs.push_back(s.substr(pos, len));
+
+            pos += len;
+        }
+
+        return strs;
     }
 };
 
