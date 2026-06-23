@@ -3,7 +3,7 @@ public:
     string simplifyPath(string path) {
         vector<string> dirs;
 
-        const char &delimiter = '/';
+        const char delimiter = '/';
 
         size_t start = 0;
         size_t pos = path.find(delimiter, start);
@@ -16,7 +16,7 @@ public:
             }
             else
             {
-                string dir = path.substr(start, pos - start);
+                const string dir = path.substr(start, pos - start);
                 if (dir == ".")
                 {
                     // current directory
@@ -41,7 +41,7 @@ public:
 
         if (start < path.size())
         {
-            string dir = path.substr(start);
+            const string dir = path.substr(start);
             if (dir == ".")
             {
                 // current directory
