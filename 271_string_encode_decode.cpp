@@ -18,7 +18,7 @@ public:
             msg += str;
         }
 
-        return str;
+        return msg;
     }
 
     // Decodes a single string to a list of strings.
@@ -30,7 +30,7 @@ public:
         while (pos < tLen)
         {
             // length
-            const int len = stoi(s.substr(pos, 8));
+            const int len = stoi(s.substr(pos, 8), nullptr, 16);
 
             // value
             pos += 8;
