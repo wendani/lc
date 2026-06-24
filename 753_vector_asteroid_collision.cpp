@@ -5,33 +5,43 @@ public:
 
         for (const int &asteroid : asteroids)
         {
+            bool add = true;
+
             while (!steadyAsteroids.empty())
             {
                 const int &a = steadyAsteroids.back();
 
                 if ((a > 0 && asteroid > 0) || (a < 0 && asteroid < 0) || (a < 0 && asteroid > 0))
                 {
-                    steadyAsteroids.push_back(asteroid);
                     break;
                 }
                 else
                 {
                     // a > 0 && asteroid < 0
-                    int explode = a + asteroid;
-                    if (explode > 0)
+                    int collide = a + asteroid;
+                    if (collide > 0)
                     {
-                        // asteroid explodes; do nothing
+                        // asteroid explodes
+                        add = false;
                         break;
                     }
                     else
                     {
+                        // collide <= 0; a explodes
                         steadyAsteroids.pop_back();
-                        if (explode == 0)
+                        if (collide == 0)
                         {
+                            // asteroid also explodes
+                            add = false;
                             break;
                         }
                     }
                 }
+            }
+
+            if (add)
+            {
+                steadyAsteroids.push_back(asteroid);
             }
         }
 
