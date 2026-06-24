@@ -11,7 +11,8 @@ public:
             {
                 const int &a = steadyAsteroids.back();
 
-                if ((a > 0 && asteroid > 0) || (a < 0 && asteroid < 0) || (a < 0 && asteroid > 0))
+                if ((a > 0 && asteroid > 0)
+                        || (a < 0 && asteroid < 0) || (a < 0 && asteroid > 0))
                 {
                     break;
                 }
