@@ -1,7 +1,41 @@
 class Solution {
 public:
     vector<int> asteroidCollision(vector<int>& asteroids) {
+        vector<int> steadyAsteroids;
 
+        for (const int &asteroid : asteroids)
+        {
+            while (!steadyAsteroids.empty())
+            {
+                const int &a = steadyAsteroids.back();
+
+                if ((a > 0 && asteroid > 0) || (a < 0 && asteroid < 0) || (a < 0 && asteroid > 0))
+                {
+                    steadyAsteroids.push_back(asteroid);
+                    break;
+                }
+                else
+                {
+                    // a > 0 && asteroid < 0
+                    int explode = a + asteroid;
+                    if (explode > 0)
+                    {
+                        // asteroid explodes; do nothing
+                        break;
+                    }
+                    else
+                    {
+                        steadyAsteroids.pop_back();
+                        if (explode == 0)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return steadyAsteroids;
     }
 };
 
