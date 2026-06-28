@@ -18,7 +18,7 @@ public:
                 }
                 else if (grid[i][j] == 1)
                 {
-                    freshOranges.push(id);
+                    freshOranges.emplace(id);
                 }
                 else
                 {
