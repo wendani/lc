@@ -7,6 +7,7 @@ public:
     void hit(int timestamp) {
         if (records.empty())
         {
+            // TimestampHitcnt(timestamp, 1) ok
             records.push(TimestampHitcnt{timestamp, 1});
             hitCnt++;
         }
