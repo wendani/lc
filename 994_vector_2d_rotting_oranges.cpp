@@ -1,6 +1,88 @@
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
+        int rowLen = grid.size();
+        int columnLen = grid[0].size();
+
+        int minutes = 0;
+        queue<int> rottenOranges;
+        unorder_set<int> freshOranges;
+        for (int i = 0; i < rowLen; i++)
+        {
+            for (int j = 0; j < columnLen; j++)
+            {
+                int id = i * columnLen + j;
+                if (grid[i][j] == 2)
+                {
+                    rottenOranges.push(id);
+                }
+                else if (grid[i][j] == 1)
+                {
+                    freshOranges.push(id);
+                }
+                else
+                {
+                    // grid[i][j] == 0
+                    // Do nothing
+                }
+            }
+        }
+
+        while (!freshOranges.empty())
+        {
+            int len = rottenOranges.size();
+            if (len == 0)
+            {
+                // Impossible case
+                return -1;
+            }
+
+            minutes++;
+
+            for (int cnt = 0; cnt < len; cnt++)
+            {
+                const int &id = rottenOranges.front();
+                const int i = id / columnLen;
+                const int j = id % columnLen;
+
+                if (j - 1 >= 0)
+                {
+                    int erased = freshOranges.erase(id - 1);
+                    if (erased > 0)
+                    {
+                        rottenOranges.push(id - 1);
+                    }
+                }
+                if (j + 1 < columnLen)
+                {
+                    int erased = freshOranges.erase(id + 1);
+                    if (erased > 0)
+                    {
+                        rottenOranges.push(id + 1);
+                    }
+                }
+                if (i - 1 >= 0)
+                {
+                    int erased = freshOranges.erase(id - columnLen);
+                    if (erased > 0)
+                    {
+                        rottenOranges.push(id - columnLen);
+                    }
+                }
+                if (i + 1 < rowLen)
+                {
+                    int erased = freshOranges.erase(id + columnLen);
+                    if (erased > 0)
+                    {
+                        rottenOranges.push(id + columnLen);
+                    }
+                }
+
+                rottenOranges.pop();
+            }
+        }
+
+        return minutes;
     }
 };
 
