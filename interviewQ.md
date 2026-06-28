@@ -1,17 +1,16 @@
-Warm-up checklist
+# Warm-up checklist
+* trie
+* heap
+* merge sort
+* red black tree
 
-trie
-heap
-merge sort
-red black tree
+* hash table
+* quick sort
+* binary search
+* is binary search tree (Microsoft)
+* set
 
-hash table
-quick sort
-binary search
-is binary search tree (Microsoft)
-set
-
-BINARY TREE
+# BINARY TREE
 lca
 distance k nodes
 construct
@@ -25,7 +24,7 @@ height
 	max distance between two nodes / diameter
 	subtree of another tree
 
-TODO
+# TODO
 18 4Sum
 40 combination sum 2
 212 word search 2
@@ -62,23 +61,23 @@ Find the celebrity
 
 *********************************************
 
-BIT OPERATION
+# BIT OPERATION
 n to the power of 2, two's complement (Irdeto, Cisco)
 test if an unsigned integer is odd or even (Irdeto, Pure Storage)
 bit swap: swap odd and even bits in an integer (Cisco)
 bit count (Qualcomm)
 
-XOR, BITMAP
+# XOR, BITMAP
 missing number
 single number
 broken machine (bop)
 implement bitmap (Barefoot)
 
-CONST SPACE
+# CONST SPACE
 matrix set zeros
 life game
 
-NUMBER
+# NUMBER
 K-th smallest lexicographical number
 next permutation
 maximum swap
@@ -90,7 +89,7 @@ add two numbers
 add strings
 palindrome number
 
-TWO POINTERS
+# TWO POINTERS
 valid palindrome
 valid palindrome 2
 duplicate number (287) (Amazon)
@@ -98,16 +97,16 @@ if a singly linked list has a circle (Microsoft)
 reorder log files
 most common word
 
-SLIDING WINDOW
+# SLIDING WINDOW
 longest substring with no repeating characters
 
-Hashtable
+# HASHTABLE
 array hashmap
 
-HASHTABLE + LIST
+# HASHTABLE + LIST
 LRU cache
 
-MAP
+# MAP
 verify alien dictionary
 bulls & cows
 jewels & stones
@@ -116,15 +115,15 @@ find town judge
 logger rate limiter
 single-row keyboard
 
-SET
+# SET
 jewels & stones
 
-QUEUE
+# QUEUE
 moving average (Barefoot)
 Average of 4 elements (Barefoot)
 implement queue using doubly linked list, array, or stack(Microsoft)
 
-STACK
+# STACK
 min stack
 string decode
 valid parentheses (Amazon)
@@ -136,25 +135,25 @@ reverse nodes in k-group
 binary tree inorder traversal
 binary search tree iterator
 
-PRIORITY QUEUE
+# PRIORITY QUEUE
 K-th largest element in a stream
 last stone weight
 merge K sorted linked list
 K-th smallest lexicographical number
 
-SIGNATURE
+# SIGNATURE
 anagram group
 isomorphic string
 backspace string compare
 
-SORTING
+# SORTING
 maximum swap
 next permutation
 meeting rooms 1 & 2
 bubble sort, quick sort, merge sort (Qualcomm)
 if four points form a square (Pure Storage)
 
-RECURSION
+# RECURSION
 K-th largest element in an array
 lca in binary tree, bst
 distance K nodes in binary tree
@@ -166,7 +165,7 @@ paths: return all root-to-leaf paths.
 path sum: determine if a tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
 remove Nth node from end of list
 word search
-# of islands
+\# of islands
 max area island
 flood fill
 walls & gates
@@ -174,7 +173,7 @@ rotting oranges
 longest increasing path in a matrix
 factorial (Cisco)
 
-BINARY SEARCH
+# BINARY SEARCH
 duplicate number (287)
 binary search (Cisco)
 binary search on duplicates (Barefoot)
@@ -182,7 +181,7 @@ binary search in rotated sorted array
 binary search min on a rotated sorted array (Arista)
 first bad version
 
-INVARIANTS
+# INVARIANTS
 gas station
 majority element
 largest rectangle in histogram
@@ -197,7 +196,7 @@ shortest word distance
 2 sum (Bytedance)
 2 sum less than K
 
-DFS
+# DFS
 topological sort
 longest increasing path in a matrix
 subsets
@@ -206,20 +205,20 @@ letter combinations of a phone number
 combination sum
 generate parentheses
 
-BFS
-binary tree level order traversal
-binary tree right side view
-binary tree vertical order
-binary tree completeness
-course schedule (true/false)
-rotting oranges
+# BFS
+* binary tree level order traversal
+* binary tree right side view
+* binary tree vertical order
+* binary tree completeness
+* course schedule (true/false)
+* rotting oranges
 
-merge intervals
-partition labels
+* merge intervals
+* partition labels
 
-word ladder
+* word ladder
 
-DP
+# DP
 1 dimension
 longest palindromic substring
 coin change, fewest number
@@ -236,13 +235,13 @@ word break
 max subarray
 max product subarray
 
-SPACE
+# SPACE
 count primes
 
-OS
+# OS
 stack growth direction (Cisco, Barefoot)
 
-STRING
+# STRING
 license key formatting
 student attendance record 1
 unique email addresses
@@ -250,12 +249,12 @@ longest common prefix
 frequency of the smallest character
 maximum number of balloons
 
-ARRAY
+# ARRAY
 merge two sorted arrays (Microsoft)
 monotonic
 Read N characters given read4
 
-LINKED LIST
+# LINKED LIST
 head tail swap of a singly linked list (Microsoft)
 Delete elements with value equal to N in a singly linked list (Cisco)
 print a linked list in reverse order with constant memory (Microsoft)
