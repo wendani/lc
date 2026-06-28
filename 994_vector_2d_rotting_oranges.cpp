@@ -6,7 +6,7 @@ public:
 
         int minutes = 0;
         queue<int> rottenOranges;
-        unorder_set<int> freshOranges;
+        unordered_set<int> freshOranges;
         for (int i = 0; i < rowLen; i++)
         {
             for (int j = 0; j < columnLen; j++)
@@ -36,8 +36,6 @@ public:
                 // Impossible case
                 return -1;
             }
-
-            minutes++;
 
             for (int cnt = 0; cnt < len; cnt++)
             {
@@ -80,6 +78,8 @@ public:
 
                 rottenOranges.pop();
             }
+
+            minutes++;
         }
 
         return minutes;
