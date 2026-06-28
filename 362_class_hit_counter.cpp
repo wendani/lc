@@ -1,15 +1,60 @@
 class HitCounter {
 public:
     HitCounter() {
-
+        hitCnt = 0;
     }
 
     void hit(int timestamp) {
+        if (records.empty())
+        {
+            records.push(TimestampHitcnt{timestamp, 1});
+            hitCnt++;
+        }
+        else
+        {
+            auto &record = records.back();
+            if (record.first == timestamp)
+            {
+                record.second++;
+                hitCnt++;
+            }
+            else
+            {
+                // record.first < timestamp
+                records.push(TimestampHitcnt{timestamp, 1});
+                hitCnt++;
 
+                removeObsoleteHits(timestamp);
+            }
+        }
     }
 
     int getHits(int timestamp) {
+        removeObsoleteHits(timestamp);
 
+        return hitCnt;
+    }
+
+private:
+    typedef pair<int, int> TimestampHitcnt;
+
+    queue<TimestampHitcnt> records;
+    int hitCnt;
+
+    void removeObsoleteHits(int timestamp)
+    {
+        while (!records.empty())
+        {
+            const auto record = records.front();
+            if (timestamp - record.first < 300)
+            {
+                break;
+            }
+
+            // timestamp - record.first >= 300
+            hitCnt -= record.second;
+            records.pop();
+        }
     }
 };
 
