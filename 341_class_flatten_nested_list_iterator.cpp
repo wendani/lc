@@ -33,7 +33,7 @@ public:
 
             if (nestedInt.isInteger())
             {
-                flattenInts.push_bask(nestedInt.getInteger());
+                flattenInts.push_back(nestedInt.getInteger());
             }
             else
             {
