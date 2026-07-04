@@ -38,9 +38,9 @@ private:
             return root;
         }
 
-        while (val < n)
+        while (val <= n)
         {
-            val << 1;
+            val <<= 1;
             root++;
         }
 
