@@ -19,7 +19,7 @@
 class NestedIterator {
 public:
     NestedIterator(vector<NestedInteger> &nestedList) {
-        stack<NestedInteger *> nestedIntPtrStk;
+        stack<const NestedInteger *> nestedIntPtrStk;
 
         for (auto rIt = nestedList.rbegin(); rIt != nestedList.rend(); ++rIt)
         {
