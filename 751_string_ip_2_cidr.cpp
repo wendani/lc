@@ -28,6 +28,25 @@ public:
 private:
     const char delimiter = '.';
 
+    int log2(int n)
+    {
+        int root = 0;
+        int val = 1;
+
+        if (n == 0)
+        {
+            return root;
+        }
+
+        while (val < n)
+        {
+            val << 1;
+            root++;
+        }
+
+        return root - 1;
+    }
+
     uint32_t inet_pton(const string &ipStr)
     {
         uint32_t ipNumeric = 0;
