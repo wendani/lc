@@ -1,7 +1,57 @@
 class Solution {
 public:
     vector<string> ipToCIDR(string ip, int n) {
+        vector<string> cidrs;
 
+        uint32_t ipNumeric = inet_pton(ip);
+        while (n > 0)
+        {
+            int root = static_cast<int>(sqrt(n));
+            int block = 1 << root;
+
+            while (ipNumeric % block)
+            {
+                block >>= 1;
+                root--;
+            }
+
+            // ipNumeric % block == 0 when we reach here
+            cidrs.emplace_back(inet_ntop(ipNumeric) + "/" + to_string(32 - root));
+
+            ipNumeric += block;
+            n -= block;
+        }
+    }
+
+private:
+    const char delimiter = '.';
+
+    uint32_t inet_pton(const string &ipStr)
+    {
+        uint32_t ipNumeric = 0;
+
+        size_t start = 0;
+        int shift = 24;
+        for (int i = 0; i < 3; i++)
+        {
+            size_t pos = ipStr.find(delimiter, start);
+
+            ipNumeric += stoi(ipStr.substr(start, pos - start)) << shift;
+
+            start = pos + 1;
+            shift -= 8;
+        }
+        ipNumeric += stoi(ipStr.substr(start));
+
+        return ipNumeric;
+    }
+
+    string inet_ntop(uint32_t ipNumeric)
+    {
+        return to_string((ipNumeric & 0xFF000000) >> 24) + delimiter
+                + to_string((ipNumeric & 0xFF0000) >> 16) + delimiter
+                    + to_string((ipNumeric & 0xFF00) >> 8) + delimiter
+                        + to_string(ipNumeric & 0xFF);
     }
 };
 
