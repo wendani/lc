@@ -6,7 +6,7 @@ public:
         uint32_t ipNumeric = inet_pton(ip);
         while (n > 0)
         {
-            int root = static_cast<int>(sqrt(n));
+            int root = static_cast<int>(log2(n));
             int block = 1 << root;
 
             while (ipNumeric % block)
@@ -21,6 +21,8 @@ public:
             ipNumeric += block;
             n -= block;
         }
+
+        return cidrs;
     }
 
 private:
@@ -36,7 +38,7 @@ private:
         {
             size_t pos = ipStr.find(delimiter, start);
 
-            ipNumeric += stoi(ipStr.substr(start, pos - start)) << shift;
+            ipNumeric += static_cast<uint32_t>(stoi(ipStr.substr(start, pos - start))) << shift;
 
             start = pos + 1;
             shift -= 8;
