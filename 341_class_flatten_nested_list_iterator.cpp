@@ -19,6 +19,37 @@
 class NestedIterator {
 public:
     NestedIterator(vector<NestedInteger> &nestedList) {
+        stack<NestedInteger *> nestedIntPtrStk;
+
+        for (auto rIt = nestedList.rbegin(); rIt != nestedList.rend(); ++rIt)
+        {
+            nestedIntPtrStk.push(&(*rIt));
+        }
+
+        while (!nestedIntPtrStk.empty())
+        {
+            const NestedInteger *nestedIntPtr = nestedIntPtrStk.top();
+            nestedIntPtrStk.pop();
+
+            if (nestedIntPtr->isInteger())
+            {
+                flattenInts.push_back(nestedIntPtr->getInteger());
+            }
+            else
+            {
+                // nestedInt.isInteger() == false
+                const vector<NestedInteger> &nestedInts = nestedIntPtr->getList();
+                for (auto rIt = nestedInts.rbegin(); rIt != nestedInts.rend(); ++rIt)
+                {
+                    nestedIntPtrStk.push(&(*rIt));
+                }
+            }
+        }
+
+        nextIt = flattenInts.begin();
+    }
+
+    NestedIterator(vector<NestedInteger> &nestedList) {
         stack<NestedInteger> nestedIntStk;
 
         for (auto rIt = nestedList.rbegin(); rIt != nestedList.rend(); ++rIt)
