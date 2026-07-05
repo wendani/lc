@@ -1,20 +1,42 @@
 class SnapshotArray {
 public:
     SnapshotArray(int length) {
+        currVals.clear();
+        currVals.resize(length);
+        for (int idx = 0; idx < currVals.size(); idx++)
+        {
+            currVals[idx] = 0;
+        }
 
+        valSnapshots.clear();
+        valSnapshots.resize(length);
+
+        snap_id = 0;
     }
 
     void set(int index, int val) {
-
+        currVals[index] = val;
     }
 
     int snap() {
+        for (int idx = 0; idx < currVals.size(); idx++)
+        {
+            valSnapshots[idx][snap_id] = currVals[idx];
+        }
 
+        return snap_id++;
     }
 
     int get(int index, int snap_id) {
-
+        return valSnapshots[index][snap_id];
     }
+
+private:
+    vector<int> currVals;
+
+    vector<unordered_map<int, int>> valSnapshots;
+
+    int snap_id;
 };
 
 /*
