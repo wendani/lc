@@ -1,12 +1,10 @@
+
+// Memory Limit Exceeded
 class SnapshotArray {
 public:
     SnapshotArray(int length) {
         currVals.clear();
         currVals.resize(length);
-        for (int idx = 0; idx < currVals.size(); idx++)
-        {
-            currVals[idx] = 0;
-        }
 
         valSnapshots.clear();
         valSnapshots.resize(length);
