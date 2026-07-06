@@ -24,7 +24,12 @@ public:
     }
 
     string get(string key, int timestamp) {
-        const vector<TimestampVal> &tvs = ktvStore.at(key);
+        if (!ktvStore.count(key))
+        {
+            return "";
+        }
+
+        const vector<TimestampVal> &tvs = ktvStore[key];
 
         int idxLow = 0;
         int idxHigh = tvs.size() - 1;
@@ -48,7 +53,7 @@ public:
             }
         }
 
-        return tvs[idxHigh].second;
+        return idxHigh < 0 ? "" : tvs[idxHigh].second;
     }
 
 private:
