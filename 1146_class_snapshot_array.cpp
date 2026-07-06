@@ -100,6 +100,7 @@ public:
         return snap_id++;
     }
 
+    // Binary search
     int get(int index, int snap_id) {
         vector<SnapVal> &snapVals = valSnapshots[index];
 
