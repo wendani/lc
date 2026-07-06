@@ -8,7 +8,7 @@ public:
 
         for (int idx = 0; idx < length; idx++)
         {
-            valSnapshots[idx].push_back(snap_id, 0);
+            valSnapshots[idx].emplace_back(snap_id, 0);
         }
     }
 
