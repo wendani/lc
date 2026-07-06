@@ -29,7 +29,7 @@ public:
     }
 
     int get(int index, int snap_id) {
-        vector<SnapVal> &snapVals = valSnapshots[index];
+        const vector<SnapVal> &snapVals = valSnapshots[index];
 
         int idxLow = 0;
         int idxHigh = snapVals.size() - 1;
