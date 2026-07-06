@@ -1,3 +1,75 @@
+class SnapshotArray {
+public:
+    SnapshotArray(int length) {
+        currVals.clear();
+        currVals.resize(length);
+
+        valSnapshots.clear();
+        valSnapshots.resize(length);
+
+        snap_id = 0;
+    }
+
+    void set(int index, int val) {
+        currVals[index] = val;
+    }
+
+    int snap() {
+        for (int idx = 0; idx < currVals.size(); idx++)
+        {
+            vector<SnapVal> &snapVals = valSnapshots[idx];
+            if (snapVals.empty())
+            {
+                snapVals.emplace_back(snap_id, currVals[idx]);
+            }
+            else
+            {
+                // Record change only
+                if (snapVals.back().second != currVals[idx])
+                {
+                    snapVals.emplace_back(snap_id, currVals[idx]);
+                }
+            }
+        }
+
+        return snap_id++;
+    }
+
+    int get(int index, int snap_id) {
+        vector<SnapVal> &snapVals = valSnapshots[index];
+
+        int idxLow = 0;
+        int idxHigh = snapVals.size() - 1;
+        while (idxLow <= idxHigh)
+        {
+            int idxMid = (idxLow + idxHigh) >> 1;
+
+            if (snap_id < snapVals[idxMid].first)
+            {
+                idxHigh = idxMid - 1;
+            }
+            else if (snap_id > snapVals[idxMid].first)
+            {
+                idxLow = idxMid + 1;
+            }
+            else
+            {
+                // snap_id == snapVals[idxMid].first
+                return snapVals[idxMid].second;
+            }
+        }
+
+        return snapVals[idxHigh].second;
+    }
+
+private:
+    vector<int> currVals;
+
+    typedef pair<int, int> SnapVal;
+    vector<vector<SnapVal>> valSnapshots;
+
+    int snap_id;
+};
 
 // Memory Limit Exceeded
 class SnapshotArray {
