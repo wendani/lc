@@ -1,6 +1,71 @@
 class SnapshotArray {
 public:
     SnapshotArray(int length) {
+        valSnapshots.clear();
+        valSnapshots.resize(length);
+
+        snap_id = 0;
+
+        for (int idx = 0; idx < length; idx++)
+        {
+            valSnapshots[idx].push_back(snap_id, 0);
+        }
+    }
+
+    void set(int index, int val) {
+        vector<SnapVal> &snapVals = valSnapshots[index];
+        if (snapVals.back().first == snap_id)
+        {
+            snapVals.back().second = val;
+        }
+        else
+        {
+            snapVals.emplace_back(snap_id, val);
+        }
+    }
+
+    int snap() {
+        return snap_id++;
+    }
+
+    int get(int index, int snap_id) {
+        vector<SnapVal> &snapVals = valSnapshots[index];
+
+        int idxLow = 0;
+        int idxHigh = snapVals.size() - 1;
+        while (idxLow <= idxHigh)
+        {
+            int idxMid = (idxLow + idxHigh) >> 1;
+
+            if (snap_id < snapVals[idxMid].first)
+            {
+                idxHigh = idxMid - 1;
+            }
+            else if (snap_id > snapVals[idxMid].first)
+            {
+                idxLow = idxMid + 1;
+            }
+            else
+            {
+                // snap_id == snapVals[idxMid].first
+                return snapVals[idxMid].second;
+            }
+        }
+
+        return snapVals[idxHigh].second;
+    }
+
+private:
+    typedef pair<int, int> SnapVal;
+    vector<vector<SnapVal>> valSnapshots;
+
+    int snap_id;
+};
+
+// Time Limit Exceeded 70/78
+class SnapshotArray {
+public:
+    SnapshotArray(int length) {
         currVals.clear();
         currVals.resize(length);
 
@@ -71,7 +136,7 @@ private:
     int snap_id;
 };
 
-// Memory Limit Exceeded
+// Memory Limit Exceeded 68/78
 class SnapshotArray {
 public:
     SnapshotArray(int length) {
