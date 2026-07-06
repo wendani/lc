@@ -5,12 +5,55 @@ public:
     }
 
     void set(string key, string value, int timestamp) {
+        if (!ktvStore.count(key))
+        {
+            ktvStore.emplace(piecewise_construct,
+                             forward_as_tuple(key),
+                             forward_as_tuple(initializer_list<TimestampVal>{{timestamp, value}}));
+        }
+        else
+        {
+            // ktvStore.cout(key) > 0
+            vector<TimestampVal> &tvs = ktvStore[key];
 
+            if (tvs.back().second != value)
+            {
+                tvs.emplace_back(timestamp, value);
+            }
+        }
     }
 
     string get(string key, int timestamp) {
+        const vector<TimestampVal> &tvs = ktvStore.at(key);
 
+        int idxLow = 0;
+        int idxHigh = tvs.size() - 1;
+
+        while (idxLow <= idxHigh)
+        {
+            int idxMid = (idxLow + idxHigh) >> 1;
+
+            if (timestamp < tvs[idxMid].first)
+            {
+                idxHigh = idxMid - 1;
+            }
+            else if (timestamp > tvs[idxMid].first)
+            {
+                idxLow = idxMid + 1;
+            }
+            else
+            {
+                // timestamp == tvs[idxMid].first
+                return tvs[idxMid].second;
+            }
+        }
+
+        return tvs[idxHigh].second;
     }
+
+private:
+    typedef pair<int, string> TimestampVal;
+    unordered_map<string, vector<TimestampVal>> ktvStore;
 };
 
 /**
