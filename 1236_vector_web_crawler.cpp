@@ -10,7 +10,38 @@
 class Solution {
 public:
     vector<string> crawl(string startUrl, HtmlParser htmlParser) {
+        unordered_set<string> hostnameUrls;
 
+        queue<string> uncrawledUrls;
+
+        // Find hostname of startUrl
+        const string urlPrefix = "http://";
+        size_t pos = startUrl.find('/', urlPrefix.size());
+        const string hostname = startUrl.substr(urlPrefix.size(), pos);
+
+        hostnameUrls.emplace(startUrl);
+        uncrawledUrls.push(startUrl);
+        while (!uncrawledUrls.empty())
+        {
+            vector<string> urls = getUrls(uncrawledUrls.front());
+            for (const string &url : urls)
+            {
+                if (!url.compare(0, urlPrefix + hostname + '/')
+                        || url == urlPrefix + hostname)
+                {
+                    // Same hostname
+                    if (!hostnameUrls.count(url))
+                    {
+                        hostnameUrls.emplace(url);
+                        uncrawledUrls.push(url);
+                    }
+                }
+            }
+
+            uncrawledUrls.pop();
+        }
+
+        return vector<string>(hostnameUrls.begin(), hostnameUrls.end());
     }
 };
 
