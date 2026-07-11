@@ -14,7 +14,7 @@ public:
         m_hostname = pos != string::npos ?
                         startUrl.substr(urlPrefix.size(), pos - urlPrefix.size()) :
                         startUrl.substr(urlPrefix.size());
-        m_hostnameWithPrefix = urlPrefix + hostname;
+        m_hostnameWithPrefix = urlPrefix + m_hostname;
 
         m_hostnameUrls.emplace(startUrl);
         m_threadCount++;
@@ -44,7 +44,7 @@ private:
     mutex m_threadCountMutex;
     condition_variable m_threadCountCv;
 
-    void crawlThreadFunc(const string &url, htmlParser *htmlParser)
+    void crawlThreadFunc(const string &url, HtmlParser *htmlParser)
     {
         vector<string> urls = htmlParser->getUrls(url);
 
