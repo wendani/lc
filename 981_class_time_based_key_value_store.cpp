@@ -5,16 +5,16 @@ public:
     }
 
     void set(string key, string value, int timestamp) {
-        if (!ktvStore.count(key))
+        if (!m_ktvStore.count(key))
         {
-            ktvStore.emplace(piecewise_construct,
+            m_ktvStore.emplace(piecewise_construct,
                              forward_as_tuple(key),
                              forward_as_tuple(initializer_list<TimestampVal>{{timestamp, value}}));
         }
         else
         {
-            // ktvStore.cout(key) > 0
-            vector<TimestampVal> &tvs = ktvStore[key];
+            // m_ktvStore.cout(key) > 0
+            vector<TimestampVal> &tvs = m_ktvStore[key];
 
             if (tvs.back().second != value)
             {
@@ -24,12 +24,12 @@ public:
     }
 
     string get(string key, int timestamp) {
-        if (!ktvStore.count(key))
+        if (!m_ktvStore.count(key))
         {
             return "";
         }
 
-        const vector<TimestampVal> &tvs = ktvStore[key];
+        const vector<TimestampVal> &tvs = m_ktvStore[key];
 
         int idxLow = 0;
         int idxHigh = tvs.size() - 1;
@@ -58,7 +58,7 @@ public:
 
 private:
     typedef pair<int, string> TimestampVal;
-    unordered_map<string, vector<TimestampVal>> ktvStore;
+    unordered_map<string, vector<TimestampVal>> m_ktvStore;
 };
 
 /**

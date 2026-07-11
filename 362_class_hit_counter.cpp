@@ -1,29 +1,29 @@
 class HitCounter {
 public:
     HitCounter() {
-        hitCnt = 0;
+        m_hitCnt = 0;
     }
 
     void hit(int timestamp) {
-        if (records.empty())
+        if (m_records.empty())
         {
             // TimestampHitcnt(timestamp, 1) ok
-            records.push(TimestampHitcnt{timestamp, 1});
-            hitCnt++;
+            m_records.push(TimestampHitcnt{timestamp, 1});
+            m_hitCnt++;
         }
         else
         {
-            auto &record = records.back();
+            auto &record = m_records.back();
             if (record.first == timestamp)
             {
                 record.second++;
-                hitCnt++;
+                m_hitCnt++;
             }
             else
             {
                 // record.first < timestamp
-                records.push(TimestampHitcnt{timestamp, 1});
-                hitCnt++;
+                m_records.push(TimestampHitcnt{timestamp, 1});
+                m_hitCnt++;
 
                 removeObsoleteHits(timestamp);
             }
@@ -33,28 +33,28 @@ public:
     int getHits(int timestamp) {
         removeObsoleteHits(timestamp);
 
-        return hitCnt;
+        return m_hitCnt;
     }
 
 private:
     typedef pair<int, int> TimestampHitcnt;
 
-    queue<TimestampHitcnt> records;
-    int hitCnt;
+    queue<TimestampHitcnt> m_records;
+    int m_hitCnt;
 
     void removeObsoleteHits(int timestamp)
     {
-        while (!records.empty())
+        while (!m_records.empty())
         {
-            const auto record = records.front();
+            const auto record = m_records.front();
             if (timestamp - record.first < 300)
             {
                 break;
             }
 
             // timestamp - record.first >= 300
-            hitCnt -= record.second;
-            records.pop();
+            m_hitCnt -= record.second;
+            m_records.pop();
         }
     }
 };

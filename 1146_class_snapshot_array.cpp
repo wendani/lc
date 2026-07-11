@@ -1,35 +1,35 @@
 class SnapshotArray {
 public:
     SnapshotArray(int length) {
-        valSnapshots.clear();
-        valSnapshots.resize(length);
+        m_valSnapshots.clear();
+        m_valSnapshots.resize(length);
 
-        snap_id = 0;
+        m_snap_id = 0;
 
         for (int idx = 0; idx < length; idx++)
         {
-            valSnapshots[idx].emplace_back(snap_id, 0);
+            m_valSnapshots[idx].emplace_back(m_snap_id, 0);
         }
     }
 
     void set(int index, int val) {
-        vector<SnapVal> &snapVals = valSnapshots[index];
-        if (snapVals.back().first == snap_id)
+        vector<SnapVal> &snapVals = m_valSnapshots[index];
+        if (snapVals.back().first == m_snap_id)
         {
             snapVals.back().second = val;
         }
         else
         {
-            snapVals.emplace_back(snap_id, val);
+            snapVals.emplace_back(m_snap_id, val);
         }
     }
 
     int snap() {
-        return snap_id++;
+        return m_snap_id++;
     }
 
     int get(int index, int snap_id) {
-        const vector<SnapVal> &snapVals = valSnapshots[index];
+        const vector<SnapVal> &snapVals = m_valSnapshots[index];
 
         int idxLow = 0;
         int idxHigh = snapVals.size() - 1;
@@ -57,9 +57,9 @@ public:
 
 private:
     typedef pair<int, int> SnapVal;
-    vector<vector<SnapVal>> valSnapshots;
+    vector<vector<SnapVal>> m_valSnapshots;
 
-    int snap_id;
+    int m_snap_id;
 };
 
 // Time Limit Exceeded 70/78
@@ -69,10 +69,10 @@ public:
         currVals.clear();
         currVals.resize(length);
 
-        valSnapshots.clear();
-        valSnapshots.resize(length);
+        m_valSnapshots.clear();
+        m_valSnapshots.resize(length);
 
-        snap_id = 0;
+        m_snap_id = 0;
     }
 
     void set(int index, int val) {
@@ -82,27 +82,27 @@ public:
     int snap() {
         for (int idx = 0; idx < currVals.size(); idx++)
         {
-            vector<SnapVal> &snapVals = valSnapshots[idx];
+            vector<SnapVal> &snapVals = m_valSnapshots[idx];
             if (snapVals.empty())
             {
-                snapVals.emplace_back(snap_id, currVals[idx]);
+                snapVals.emplace_back(m_snap_id, currVals[idx]);
             }
             else
             {
                 // Record change only
                 if (snapVals.back().second != currVals[idx])
                 {
-                    snapVals.emplace_back(snap_id, currVals[idx]);
+                    snapVals.emplace_back(m_snap_id, currVals[idx]);
                 }
             }
         }
 
-        return snap_id++;
+        return m_snap_id++;
     }
 
     // Binary search
     int get(int index, int snap_id) {
-        vector<SnapVal> &snapVals = valSnapshots[index];
+        vector<SnapVal> &snapVals = m_valSnapshots[index];
 
         int idxLow = 0;
         int idxHigh = snapVals.size() - 1;
@@ -132,9 +132,9 @@ private:
     vector<int> currVals;
 
     typedef pair<int, int> SnapVal;
-    vector<vector<SnapVal>> valSnapshots;
+    vector<vector<SnapVal>> m_valSnapshots;
 
-    int snap_id;
+    int m_snap_id;
 };
 
 // Memory Limit Exceeded 68/78
@@ -144,10 +144,10 @@ public:
         currVals.clear();
         currVals.resize(length);
 
-        valSnapshots.clear();
-        valSnapshots.resize(length);
+        m_valSnapshots.clear();
+        m_valSnapshots.resize(length);
 
-        snap_id = 0;
+        m_snap_id = 0;
     }
 
     void set(int index, int val) {
@@ -157,22 +157,22 @@ public:
     int snap() {
         for (int idx = 0; idx < currVals.size(); idx++)
         {
-            valSnapshots[idx][snap_id] = currVals[idx];
+            m_valSnapshots[idx][m_snap_id] = currVals[idx];
         }
 
-        return snap_id++;
+        return m_snap_id++;
     }
 
     int get(int index, int snap_id) {
-        return valSnapshots[index][snap_id];
+        return m_valSnapshots[index][snap_id];
     }
 
 private:
     vector<int> currVals;
 
-    vector<unordered_map<int, int>> valSnapshots;
+    vector<unordered_map<int, int>> m_valSnapshots;
 
-    int snap_id;
+    int m_snap_id;
 };
 
 /*
