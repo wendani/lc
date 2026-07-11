@@ -38,7 +38,7 @@ private:
     string m_hostnameWithPrefix;
 
     unordered_set<string> m_hostnameUrls;
-    mutex m_hostnameUrlMutex;
+    mutex m_hostnameUrlsMutex;
 
     int m_threadCount = 0;
     mutex m_threadCountMutex;
@@ -54,11 +54,11 @@ private:
                     || url == m_hostnameWithPrefix)
             {
                 // Same hostname
-                unique_lock<mutex> hostnameUrlLock(m_hostnameUrlMutex);
+                unique_lock<mutex> hostnameUrlsLock(m_hostnameUrlsMutex);
                 if (!m_hostnameUrls.count(url))
                 {
                     m_hostnameUrls.emplace(url);
-                    hostnameUrlLock.unlock();
+                    hostnameUrlsLock.unlock();
 
                     unique_lock<mutex> threadCountLock(m_threadCountMutex);
                     m_threadCount++;
