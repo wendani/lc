@@ -9,7 +9,7 @@ public:
         {
             if (tokenTimes[tokenId] + m_timeToLive > currentTime)
             {
-                cout << tokenId << " to generate not expired yet";
+                cout << tokenId << " to generate not expired yet" << endl;
             }
         }
 
@@ -25,13 +25,13 @@ public:
             }
             else
             {
-                cout << tokenId << " to renew expired";
+                cout << tokenId << " to renew expired" << endl;
                 tokenTimes.erase(tokenId);
             }
         }
         else
         {
-            cout << tokenId << " to renew not exist";
+            cout << tokenId << " to renew not exist" << endl;
         }
     }
 
