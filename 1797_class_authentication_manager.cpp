@@ -5,13 +5,13 @@ public:
     }
 
     void generate(string tokenId, int currentTime) {
-        if (tokenTimes.count(tokenId))
-        {
-            if (tokenTimes[tokenId] + m_timeToLive > currentTime)
-            {
-                cout << tokenId << " to generate not expired yet" << endl;
-            }
-        }
+        // if (tokenTimes.count(tokenId))
+        // {
+        //     if (tokenTimes[tokenId] + m_timeToLive > currentTime)
+        //     {
+        //         cout << tokenId << " to generate not expired yet" << endl;
+        //     }
+        // }
 
         tokenTimes[tokenId] = currentTime;
     }
@@ -25,14 +25,14 @@ public:
             }
             else
             {
-                cout << tokenId << " to renew expired" << endl;
+                // cout << tokenId << " to renew expired" << endl;
                 tokenTimes.erase(tokenId);
             }
         }
-        else
-        {
-            cout << tokenId << " to renew not exist" << endl;
-        }
+        // else
+        // {
+        //     cout << tokenId << " to renew not exist" << endl;
+        // }
     }
 
     int countUnexpiredTokens(int currentTime) {
