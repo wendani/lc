@@ -4,31 +4,31 @@ public:
         m_valSnapshots.clear();
         m_valSnapshots.resize(length);
 
-        m_snap_id = 0;
+        m_snapId = 0;
 
         for (int idx = 0; idx < length; idx++)
         {
-            m_valSnapshots[idx].emplace_back(m_snap_id, 0);
+            m_valSnapshots[idx].emplace_back(m_snapId, 0);
         }
     }
 
     void set(int index, int val) {
         vector<SnapVal> &snapVals = m_valSnapshots[index];
-        if (snapVals.back().first == m_snap_id)
+        if (snapVals.back().first == m_snapId)
         {
             snapVals.back().second = val;
         }
         else
         {
-            snapVals.emplace_back(m_snap_id, val);
+            snapVals.emplace_back(m_snapId, val);
         }
     }
 
     int snap() {
-        return m_snap_id++;
+        return m_snapId++;
     }
 
-    int get(int index, int snap_id) {
+    int get(int index, int snapId) {
         const vector<SnapVal> &snapVals = m_valSnapshots[index];
 
         int idxLow = 0;
@@ -37,17 +37,17 @@ public:
         {
             int idxMid = (idxLow + idxHigh) >> 1;
 
-            if (snap_id < snapVals[idxMid].first)
+            if (snapId < snapVals[idxMid].first)
             {
                 idxHigh = idxMid - 1;
             }
-            else if (snap_id > snapVals[idxMid].first)
+            else if (snapId > snapVals[idxMid].first)
             {
                 idxLow = idxMid + 1;
             }
             else
             {
-                // snap_id == snapVals[idxMid].first
+                // snapId == snapVals[idxMid].first
                 return snapVals[idxMid].second;
             }
         }
@@ -59,7 +59,7 @@ private:
     typedef pair<int, int> SnapVal;
     vector<vector<SnapVal>> m_valSnapshots;
 
-    int m_snap_id;
+    int m_snapId;
 };
 
 // Time Limit Exceeded 70/78
@@ -72,7 +72,7 @@ public:
         m_valSnapshots.clear();
         m_valSnapshots.resize(length);
 
-        m_snap_id = 0;
+        m_snapId = 0;
     }
 
     void set(int index, int val) {
@@ -85,23 +85,23 @@ public:
             vector<SnapVal> &snapVals = m_valSnapshots[idx];
             if (snapVals.empty())
             {
-                snapVals.emplace_back(m_snap_id, currVals[idx]);
+                snapVals.emplace_back(m_snapId, currVals[idx]);
             }
             else
             {
                 // Record change only
                 if (snapVals.back().second != currVals[idx])
                 {
-                    snapVals.emplace_back(m_snap_id, currVals[idx]);
+                    snapVals.emplace_back(m_snapId, currVals[idx]);
                 }
             }
         }
 
-        return m_snap_id++;
+        return m_snapId++;
     }
 
     // Binary search
-    int get(int index, int snap_id) {
+    int get(int index, int snapId) {
         vector<SnapVal> &snapVals = m_valSnapshots[index];
 
         int idxLow = 0;
@@ -110,17 +110,17 @@ public:
         {
             int idxMid = (idxLow + idxHigh) >> 1;
 
-            if (snap_id < snapVals[idxMid].first)
+            if (snapId < snapVals[idxMid].first)
             {
                 idxHigh = idxMid - 1;
             }
-            else if (snap_id > snapVals[idxMid].first)
+            else if (snapId > snapVals[idxMid].first)
             {
                 idxLow = idxMid + 1;
             }
             else
             {
-                // snap_id == snapVals[idxMid].first
+                // snapId == snapVals[idxMid].first
                 return snapVals[idxMid].second;
             }
         }
@@ -134,7 +134,7 @@ private:
     typedef pair<int, int> SnapVal;
     vector<vector<SnapVal>> m_valSnapshots;
 
-    int m_snap_id;
+    int m_snapId;
 };
 
 // Memory Limit Exceeded 68/78
@@ -147,7 +147,7 @@ public:
         m_valSnapshots.clear();
         m_valSnapshots.resize(length);
 
-        m_snap_id = 0;
+        m_snapId = 0;
     }
 
     void set(int index, int val) {
@@ -157,14 +157,14 @@ public:
     int snap() {
         for (int idx = 0; idx < currVals.size(); idx++)
         {
-            m_valSnapshots[idx][m_snap_id] = currVals[idx];
+            m_valSnapshots[idx][m_snapId] = currVals[idx];
         }
 
-        return m_snap_id++;
+        return m_snapId++;
     }
 
-    int get(int index, int snap_id) {
-        return m_valSnapshots[index][snap_id];
+    int get(int index, int snapId) {
+        return m_valSnapshots[index][snapId];
     }
 
 private:
@@ -172,7 +172,7 @@ private:
 
     vector<unordered_map<int, int>> m_valSnapshots;
 
-    int m_snap_id;
+    int m_snapId;
 };
 
 /*
