@@ -69,11 +69,20 @@ private:
                 }
             }
         }
+
+        bool notify = false;
         unique_lock<mutex> lk(m_threadCountMutex);
         m_threadCount--;
+        if (m_threadCount == 0)
+        {
+            notify = true;
+        }
         lk.unlock();
 
-        m_threadCountCv.notify_one();
+        if (notify)
+        {
+            m_threadCountCv.notify_one();
+        }
     }
 };
 
