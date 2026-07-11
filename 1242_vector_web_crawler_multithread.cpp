@@ -17,13 +17,13 @@ public:
         m_hostnameWithPrefix = urlPrefix + hostname;
 
         m_hostnameUrls.emplace(startUrl);
+        m_threadCount++;
 
         // Kickstart thread
         thread t(&Solution::crawlThreadFunc, startUrl);
         t.detach();
 
         unique_lock<mutex> lk(m_threadCountMutex);
-        m_threadCount++;
         while (m_threadCount > 0)
         {
             m_threadCountCv.wait(lk);
