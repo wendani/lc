@@ -10,7 +10,7 @@ class Solution {
 public:
     vector<string> crawl(string startUrl, HtmlParser htmlParser) {
         // Find hostname of startUrl
-        size_t pos = startUrl.find(urlPrefix.size(), '/');
+        size_t pos = startUrl.find('/', urlPrefix.size());
         m_hostname = pos != string::npos ?
                         startUrl.substr(urlPrefix.size(), pos - urlPrefix.size()) :
                         startUrl.substr(urlPrefix.size());
@@ -50,7 +50,7 @@ private:
 
         for (const string &url : urls)
         {
-            if (url.compare(0, m_hostnameWithPrefix.size() + 1, m_hostnameWithPrefix + '/')
+            if (!url.compare(0, m_hostnameWithPrefix.size() + 1, m_hostnameWithPrefix + '/')
                     || url == m_hostnameWithPrefix)
             {
                 // Same hostname
