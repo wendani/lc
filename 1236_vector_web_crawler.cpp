@@ -17,17 +17,20 @@ public:
         // Find hostname of startUrl
         const string urlPrefix = "http://";
         size_t pos = startUrl.find('/', urlPrefix.size());
-        const string hostname = startUrl.substr(urlPrefix.size(), pos);
+        const string hostname = pos != string::npos ?
+                                    startUrl.substr(urlPrefix.size(), pos - urlPrefix.size()) :
+                                    startUrl.substr(urlPrefix.size());
+        const string hostnameWithPrefix = urlPrefix + hostname;
 
         hostnameUrls.emplace(startUrl);
         uncrawledUrls.push(startUrl);
         while (!uncrawledUrls.empty())
         {
-            vector<string> urls = getUrls(uncrawledUrls.front());
+            vector<string> urls = htmlParser.getUrls(uncrawledUrls.front());
             for (const string &url : urls)
             {
-                if (!url.compare(0, urlPrefix + hostname + '/')
-                        || url == urlPrefix + hostname)
+                if (!url.compare(0, hostnameWithPrefix.size() + 1, hostnameWithPrefix + '/')
+                        || url == hostnameWithPrefix)
                 {
                     // Same hostname
                     if (!hostnameUrls.count(url))
