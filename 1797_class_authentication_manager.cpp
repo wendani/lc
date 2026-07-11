@@ -1,20 +1,63 @@
 class AuthenticationManager {
 public:
     AuthenticationManager(int timeToLive) {
-
+        m_timeToLive = timeToLive;
     }
 
     void generate(string tokenId, int currentTime) {
+        if (tokenTimes.count(tokenId))
+        {
+            if (tokenTimes[tokenId] + m_timeToLive > currentTime)
+            {
+                cout << tokenId << " to generate not expired yet";
+            }
+        }
 
+        tokenTimes[tokenId] = currentTime;
     }
 
     void renew(string tokenId, int currentTime) {
-
+        if (tokenTimes.count(tokenId))
+        {
+            if (tokenTimes[tokenId] + m_timeToLive > currentTime)
+            {
+                tokenTimes[tokenId] = currentTime;
+            }
+            else
+            {
+                cout << tokenId << " to renew expired";
+                tokenTimes.erase(tokenId);
+            }
+        }
+        else
+        {
+            cout << tokenId << " to renew not exist";
+        }
     }
 
     int countUnexpiredTokens(int currentTime) {
-
+        int cnt = 0;
+        auto it = tokenTimes.begin();
+        while (it != tokenTimes.end())
+        {
+            if (it->second + m_timeToLive > currentTime)
+            {
+                ++cnt;
+                ++it;
+            }
+            else
+            {
+                // token expired
+                it = tokenTimes.erase(it);
+            }
+        }
+        return cnt;
     }
+
+private:
+    int m_timeToLive;
+
+    unordered_map<string, int> tokenTimes;
 };
 
 /**
