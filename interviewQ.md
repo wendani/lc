@@ -124,16 +124,16 @@ Average of 4 elements (Barefoot)
 implement queue using doubly linked list, array, or stack(Microsoft)
 
 # STACK
-min stack
-string decode
-valid parentheses (Amazon)
-largest rectangle in histogram
-add two numbers
-basic calculator 2
-binary tree level order zigzag
-reverse nodes in k-group
-binary tree inorder traversal
-binary search tree iterator
+* min stack
+* string decode
+* valid parentheses (Amazon)
+* largest rectangle in histogram
+* add two numbers
+* basic calculator 2
+* binary tree level order zigzag
+* reverse nodes in k-group
+* binary tree inorder traversal
+* binary search tree iterator
 
 # PRIORITY QUEUE
 K-th largest element in a stream
