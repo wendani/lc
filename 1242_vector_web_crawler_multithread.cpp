@@ -20,7 +20,7 @@ public:
         m_threadCount++;
 
         // Kickstart thread
-        thread t(&Solution::crawlThreadFunc, startUrl);
+        thread t(&Solution::crawlThreadFunc, this, startUrl, &htmlParser);
         t.detach();
 
         unique_lock<mutex> lk(m_threadCountMutex);
@@ -44,9 +44,9 @@ private:
     mutex m_threadCountMutex;
     condition_variable m_threadCountCv;
 
-    void crawlThreadFunc(const string &url)
+    void crawlThreadFunc(const string &url, htmlParser *htmlParser)
     {
-        vector<string> urls = htmlParser.getUrls(url);
+        vector<string> urls = htmlParser->getUrls(url);
 
         for (const string &url : urls)
         {
@@ -64,7 +64,7 @@ private:
                     m_threadCount++;
                     threadCountLock.unlock();
 
-                    thread t(&Solution::crawlThreadFunc, url);
+                    thread t(&Solution::crawlThreadFunc, this, url, htmlParser);
                     t.detach();
                 }
             }
