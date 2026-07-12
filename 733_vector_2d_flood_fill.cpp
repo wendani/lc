@@ -2,8 +2,12 @@ class Solution {
 public:
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
         int oldColor = image[sr][sc];
-        _floodFill(image, sr, sc, oldColor, color);
+        if (oldColor == color)
+        {
+            return image;
+        }
 
+        _floodFill(image, sr, sc, oldColor, color);
         return image;
     }
 
@@ -20,21 +24,21 @@ private:
 
         if (j - 1 >= 0)
         {
-            _floodFill(image, i, j - 1, color);
+            _floodFill(image, i, j - 1, oldColor, color);
         }
         int columnLen = image[0].size();
         if (j + 1 < columnLen)
         {
-            _floodFill(image, i, j + 1, color);
+            _floodFill(image, i, j + 1, oldColor, color);
         }
         if (i - 1 >= 0)
         {
-            _floodFill(image, i - 1, j, color);
+            _floodFill(image, i - 1, j, oldColor, color);
         }
         int rowLen = image.size();
         if (i + 1 < rowLen)
         {
-            _floodFill(image, i + 1, j, color);
+            _floodFill(image, i + 1, j, oldColor, color);
         }
     }
 };
