@@ -1,6 +1,47 @@
 class Solution {
 public:
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        int oldColor = image[sr][sc];
+        _floodFill(image, sr, sc, oldColor, color);
+
+        return image;
+    }
+
+private:
+    void _floodFill(vector<vector<int>> &image, const int i, const int j, const int oldColor, const int color)
+    {
+        if (image[i][j] != oldColor)
+        {
+            return;
+        }
+
+        // image[i][j] == oldColor when we reach here
+        image[i][j] = color;
+
+        if (j - 1 >= 0)
+        {
+            _floodFill(image, i, j - 1, color);
+        }
+        int columnLen = image[0].size();
+        if (j + 1 < columnLen)
+        {
+            _floodFill(image, i, j + 1, color);
+        }
+        if (i - 1 >= 0)
+        {
+            _floodFill(image, i - 1, j, color);
+        }
+        int rowLen = image.size();
+        if (i + 1 < rowLen)
+        {
+            _floodFill(image, i + 1, j, color);
+        }
+    }
+};
+
+class Solution {
+public:
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
         int rowLen = image.size();
         int columnLen = image[0].size();
 
@@ -68,11 +109,7 @@ public:
 
 /*
  * 733. Flood Fill
- * Easy
- * Topics
- * conpanies icon
- * Companies
- * Hint
+ *
  * You are given an image represented by an m x n grid of integers image, where image[i][j] represents the pixel value of the image. You are also given three integers sr, sc, and color. Your task is to perform a flood fill on the image starting from the pixel image[sr][sc].
  *
  * To perform a flood fill:
