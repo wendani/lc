@@ -5,7 +5,7 @@ public:
         int columnLen = image[0].size();
 
         unordered_set<int> coloredPixels;
-        queue<int> unexploredPixels;
+        queue<int> uncheckedColoredPixels;
 
         int oldColor = image[sr][sc];
         if (oldColor != color)
@@ -14,12 +14,12 @@ public:
 
             int id = sr * columnLen + sc;
             coloredPixels.emplace(id);
-            unexploredPixels.push(id);
+            uncheckedColoredPixels.push(id);
         }
 
-        while (!unexploredPixels.empty())
+        while (!uncheckedColoredPixels.empty())
         {
-            const int &id = unexploredPixels.front();
+            const int &id = uncheckedColoredPixels.front();
 
             int i = id / columnLen;
             int j = id % columnLen;
@@ -32,7 +32,7 @@ public:
                     image[i][j - 1] = color;
 
                     coloredPixels.emplace(id - 1);
-                    unexploredPixels.push(id - 1);
+                    uncheckedColoredPixels.push(id - 1);
                 }
             }
             if (j + 1 < columnLen && !coloredPixels.count(id + 1))
@@ -43,7 +43,7 @@ public:
                     image[i][j + 1] = color;
 
                     coloredPixels.emplace(id + 1);
-                    unexploredPixels.push(id + 1);
+                    uncheckedColoredPixels.push(id + 1);
                 }
             }
             if (i - 1 >= 0 && !coloredPixels.count(id - columnLen))
@@ -54,7 +54,7 @@ public:
                     image[i - 1][j] = color;
 
                     coloredPixels.emplace(id - columnLen);
-                    unexploredPixels.push(id - columnLen);
+                    uncheckedColoredPixels.push(id - columnLen);
                 }
             }
             if (i + 1 < rowLen && !coloredPixels.count(id + columnLen))
@@ -65,11 +65,11 @@ public:
                     image[i + 1][j] = color;
 
                     coloredPixels.emplace(id + columnLen);
-                    unexploredPixels.push(id + columnLen);
+                    uncheckedColoredPixels.push(id + columnLen);
                 }
             }
 
-            unexploredPixels.pop();
+            uncheckedColoredPixels.pop();
         }
 
         return image;
