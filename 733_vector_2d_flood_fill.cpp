@@ -4,7 +4,6 @@ public:
         int rowLen = image.size();
         int columnLen = image[0].size();
 
-        unordered_set<int> coloredPixels;
         queue<int> uncheckedColoredPixels;
 
         int oldColor = image[sr][sc];
@@ -13,7 +12,6 @@ public:
             image[sr][sc] = color;
 
             int id = sr * columnLen + sc;
-            coloredPixels.emplace(id);
             uncheckedColoredPixels.push(id);
         }
 
@@ -24,47 +22,39 @@ public:
             int i = id / columnLen;
             int j = id % columnLen;
 
-            if (j - 1 >= 0 && !coloredPixels.count(id - 1))
+            if (j - 1 >= 0)
             {
-                // Pixel with origin color
                 if (image[i][j - 1] == oldColor)
                 {
                     image[i][j - 1] = color;
 
-                    coloredPixels.emplace(id - 1);
                     uncheckedColoredPixels.push(id - 1);
                 }
             }
-            if (j + 1 < columnLen && !coloredPixels.count(id + 1))
+            if (j + 1 < columnLen)
             {
-                // Pixel with origin color
                 if (image[i][j + 1] == oldColor)
                 {
                     image[i][j + 1] = color;
 
-                    coloredPixels.emplace(id + 1);
                     uncheckedColoredPixels.push(id + 1);
                 }
             }
-            if (i - 1 >= 0 && !coloredPixels.count(id - columnLen))
+            if (i - 1 >= 0)
             {
-                // Pixel with origin color
                 if (image[i - 1][j] == oldColor)
                 {
                     image[i - 1][j] = color;
 
-                    coloredPixels.emplace(id - columnLen);
                     uncheckedColoredPixels.push(id - columnLen);
                 }
             }
-            if (i + 1 < rowLen && !coloredPixels.count(id + columnLen))
+            if (i + 1 < rowLen)
             {
-                // Pixel with origin color
                 if (image[i + 1][j] == oldColor)
                 {
                     image[i + 1][j] = color;
 
-                    coloredPixels.emplace(id + columnLen);
                     uncheckedColoredPixels.push(id + columnLen);
                 }
             }
