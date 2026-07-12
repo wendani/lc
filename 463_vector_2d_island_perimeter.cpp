@@ -1,7 +1,102 @@
 class Solution {
 public:
     int islandPerimeter(vector<vector<int>>& grid) {
+        m_perimeter = 0;
 
+        int rowLen = grid.size();
+        int columnLen = grid[0].size();
+        for (int i = 0; i < rowLen; i++;)
+        {
+            for (int j = 0; j < columnLen; j++)
+            {
+                if (grid[i][j] == 1)
+                {
+                    // Landed on island
+                    measurePerimeter(grid, i, j);
+                    return m_perimeter;
+                }
+            }
+        }
+    }
+
+private:
+    int m_perimeter;
+
+    void measurePerimeter(vector<vector<int>> &grid, const int i, const int j)
+    {
+        if (grid[i][j] != 1)
+        {
+            return;
+        }
+
+        // grid[i][j] == 1 when we reach here
+        grid[i][j] = -1;
+
+        if (j == 0)
+        {
+            m_perimeter++;
+        }
+        else
+        {
+            if (grid[i][j - 1] == 0)
+            {
+                m_perimeter++;
+            }
+            else
+            {
+                measurePerimeter(grid, i, j - 1);
+            }
+        }
+
+        int columnLen = grid[0].size();
+        if (j == columnLen - 1)
+        {
+            m_perimeter++;
+        }
+        else
+        {
+            if (grid[i][j + 1] == 0)
+            {
+                m_perimeter++;
+            }
+            else
+            {
+                measurePerimeter(grid, i, j + 1);
+            }
+        }
+
+        if (i == 0)
+        {
+            m_perimeter++;
+        }
+        else
+        {
+            if (grid[i - 1][j] == 0)
+            {
+                m_perimeter++;
+            }
+            else
+            {
+                measurePerimeter(grid, i - 1, j);
+            }
+        }
+
+        int rowLen = grid.size();
+        if (i == rowLen - 1)
+        {
+            m_perimeter++;
+        }
+        else
+        {
+            if (grid[i + 1][j] == 0)
+            {
+                m_perimeter++;
+            }
+            else
+            {
+                measurePerimeter(grid, i + 1, j);
+            }
+        }
     }
 };
 
