@@ -197,13 +197,14 @@ shortest word distance
 2 sum less than K
 
 # DFS
-topological sort
-longest increasing path in a matrix
-subsets
-permutations
-letter combinations of a phone number
-combination sum
-generate parentheses
+* topological sort
+* longest increasing path in a matrix
+* subsets
+* permutations
+* letter combinations of a phone number
+* combination sum
+* generate parentheses
+* rotting oranges, 994
 
 # BFS
 * binary tree level order traversal
@@ -211,12 +212,14 @@ generate parentheses
 * binary tree vertical order
 * binary tree completeness
 * course schedule (true/false)
-* rotting oranges
 
 * merge intervals
 * partition labels
 
 * word ladder
+
+* rotting oranges, 994
+* flood fill, 733
 
 # DP
 1 dimension
