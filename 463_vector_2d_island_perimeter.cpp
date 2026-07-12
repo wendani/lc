@@ -1,9 +1,11 @@
 class Solution {
 public:
     int islandPerimeter(vector<vector<int>>& grid) {
+        m_perimeter = 0;
+
         int rowLen = grid.size();
         int columnLen = grid[0].size();
-        for (int i = 0; i < rowLen; i++;)
+        for (int i = 0; i < rowLen; i++)
         {
             for (int j = 0; j < columnLen; j++)
             {
