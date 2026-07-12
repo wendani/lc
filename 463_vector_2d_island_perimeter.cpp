@@ -1,8 +1,6 @@
 class Solution {
 public:
     int islandPerimeter(vector<vector<int>>& grid) {
-        m_perimeter = 0;
-
         int rowLen = grid.size();
         int columnLen = grid[0].size();
         for (int i = 0; i < rowLen; i++;)
@@ -17,10 +15,13 @@ public:
                 }
             }
         }
+
+        // We shall never reach here
+        return m_perimeter;
     }
 
 private:
-    int m_perimeter;
+    int m_perimeter = 0;
 
     void measurePerimeter(vector<vector<int>> &grid, const int i, const int j)
     {
