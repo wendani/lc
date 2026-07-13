@@ -1,3 +1,75 @@
+class Solution {
+public:
+    void wallsAndGates(vector<vector<int>>& rooms) {
+        const int INF = 2147483647;
+        queue<int> unexploredGrids;
+
+        int rowLen = rooms.size();
+        int columnLen = rooms[0].size();
+        int id = 0;
+        for (int i = 0; i < rowLen; i++)
+        {
+            for (int j = 0; j < columnLen; j++)
+            {
+                if (rooms[i][j] == 0)
+                {
+                    unexploredGrids.push(id);
+                }
+                id++;
+            }
+        }
+
+        int dist = 1;
+        while (!unexploredGrids.empty())
+        {
+            int len = unexploredGrids.size();
+            for (int cnt = 0; cnt < len; cnt++)
+            {
+                const int &id = unexploredGrids.front();
+                int i = id / columnLen;
+                int j = id % columnLen;
+
+                if (j - 1 >= 0)
+                {
+                    if (rooms[i][j - 1] == INF)
+                    {
+                        rooms[i][j - 1] = dist;
+                        unexploredGrids.push(id - 1);
+                    }
+                }
+                if (j + 1 < columnLen)
+                {
+                    if (rooms[i][j + 1] == INF)
+                    {
+                        rooms[i][j + 1] = dist;
+                        unexploredGrids.push(id + 1);
+                    }
+                }
+                if (i - 1 >= 0)
+                {
+                    if (rooms[i - 1][j] == INF)
+                    {
+                        rooms[i - 1][j] = dist;
+                        unexploredGrids.push(id - columnLen);
+                    }
+                }
+                if (i + 1 < rowLen)
+                {
+                    if (rooms[i + 1][j] == INF)
+                    {
+                        rooms[i + 1][j] = dist;
+                        unexploredGrids.push(id + columnLen);
+                    }
+                }
+
+                unexploredGrids.pop();
+            }
+
+            dist++;
+        }
+    }
+};
+
 /*
  * [
  *     [-1,2147483647,0,2147483647,-1,2147483647,-1,-1,-1,0,0,2147483647,-1,0,0,0,0,0,-1,0,0,2147483647,0,2147483647,2147483647,-1,2147483647,-1,2147483647,-1,-1,-1,0]
