@@ -209,6 +209,7 @@ shortest word distance
 * rotting oranges, 994
 * flood fill, 733
 * island perimeter, 463
+* walls & gates, 286
 
 # BFS
 * binary tree level order traversal
