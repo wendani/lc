@@ -167,16 +167,17 @@ if four points form a square (Pure Storage)
 * word search
 * \# of islands
 * max area island
-* flood fill
 * walls & gates, 286
+* island perimeter, 463
+* flood fill, 733
 * rotting oranges, 994
 * longest increasing path in a matrix
 * factorial (Cisco)
-* flood fill, 733
-* island perimeter, 463
 
 # BINARY SEARCH
-duplicate number (287)
+* duplicate number (287)
+* time-based key value store, 981
+* snapshot array, 1146
 binary search (Cisco)
 binary search on duplicates (Barefoot)
 binary search in rotated sorted array
@@ -206,10 +207,10 @@ shortest word distance
 * letter combinations of a phone number
 * combination sum
 * generate parentheses
-* rotting oranges, 994
-* flood fill, 733
-* island perimeter, 463
 * walls & gates, 286
+* island perimeter, 463
+* flood fill, 733
+* rotting oranges, 994
 
 # BFS
 * binary tree level order traversal
@@ -223,9 +224,9 @@ shortest word distance
 
 * word ladder
 
-* rotting oranges, 994
-* flood fill, 733
 * island perimeter, 463
+* flood fill, 733
+* rotting oranges, 994
 
 # DP
 1 dimension
@@ -235,7 +236,7 @@ climb stairs, distinct ways
 coin change 2, number of combinations
 # of unique paths from top-left corner to bottom-right corner
 
-2 dimension
+## 2 dimension
 last stone weight 2
 partition equal subset sum
 partition to K equal sum subsets
