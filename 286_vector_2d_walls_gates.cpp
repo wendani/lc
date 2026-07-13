@@ -8,6 +8,93 @@ public:
         {
             for (int j = 0; j < columnLen; j++)
             {
+                if (rooms[i][j] == 0)
+                {
+                    updateDist2Gate(rooms, i, j, 0);
+                }
+            }
+        }
+    }
+
+private:
+    void updateDist2Gate(vector<vector<int>> &rooms, const int i, const int j, const int dist2Gate)
+    {
+        // Sanity check
+        int rowLen = rooms.size();
+        if (i < 0 || i >= rowLen)
+        {
+            return;
+        }
+        int columnLen = rooms[0].size();
+        if (j < 0 || j >= columnLen)
+        {
+            return;
+        }
+
+        if (rooms[i][j] == -1)
+        {
+            // Wall
+            return;
+        }
+
+        if (rooms[i][j] == 0)
+        {
+            // dist2Gate is ignored
+            if (j - 1 >= 0 && rooms[i][j - 1] > 0)
+            {
+                updateDist2Gate(rooms, i, j - 1, 1);
+            }
+            if (j + 1 < columnLen && rooms[i][j + 1] > 0)
+            {
+                updateDist2Gate(rooms, i, j + 1, 1);
+            }
+            if (i - 1 >= 0 && rooms[i - 1][j] > 0)
+            {
+                updateDist2Gate(rooms, i - 1, j, 1);
+            }
+            if (i + 1 < rowLen && rooms[i + 1][j] > 0)
+            {
+                updateDist2Gate(rooms, i + 1, j, 1);
+            }
+        }
+        else
+        {
+            // rooms[i][j] > 0, i.e., rooms[i][j] is a room
+            if (0 <= dist2Gate && dist2Gate < rooms[i][j])
+            {
+                rooms[i][j] = dist2Gate;
+                if (j - 1 >= 0)
+                {
+                    updateDist2Gate(rooms, i, j - 1, dist2Gate + 1);
+                }
+                if (j + 1 < columnLen)
+                {
+                    updateDist2Gate(rooms, i, j + 1, dist2Gate + 1);
+                }
+                if (i - 1 >= 0)
+                {
+                    updateDist2Gate(rooms, i - 1, j, dist2Gate + 1);
+                }
+                if (i + 1 < rowLen)
+                {
+                    updateDist2Gate(rooms, i + 1, j, dist2Gate + 1);
+                }
+            }
+        }
+    }
+};
+
+
+class Solution {
+public:
+    void wallsAndGates(vector<vector<int>>& rooms) {
+        int rowLen = rooms.size();
+        int columnLen = rooms[0].size();
+
+        for (int i = 0; i < rowLen; i++)
+        {
+            for (int j = 0; j < columnLen; j++)
+            {
                 dist2Gate(rooms, i, j);
             }
         }
