@@ -1,7 +1,79 @@
 class Solution {
 public:
     void wallsAndGates(vector<vector<int>>& rooms) {
+        int rowLen = rooms.size();
+        int columnLen = rooms[0].size();
 
+        for (int i = 0; i < rowLen; i++)
+        {
+            for (int j = 0; j < columnLen; j++)
+            {
+                dist2Gate(rooms, i, j);
+            }
+        }
+    }
+
+private:
+    int dist2Gate(vector<vector<int>> &rooms, const int i, const int j)
+    {
+        int rowLen = rooms.size();
+        int columnLen = rooms[0].size();
+
+        if (i < 0 || i >= rowLen)
+        {
+            return -1;
+        }
+        if (j < 0 || j >= columnLen)
+        {
+            return -1;
+        }
+
+        if (rooms[i][j] == 0)
+        {
+            // Gate
+            return rooms[i][j];
+        }
+        if (rooms[i][j] == -1)
+        {
+            // Wall
+            return -1;
+        }
+
+        // rooms[i][j] is a room when we reach here
+        int dist = dist2Gate(rooms, i, j - 1);
+        if (dist >= 0)
+        {
+            if (dist + 1 > 0 && dist + 1 < rooms[i][j])
+            {
+                rooms[i][j] = dist + 1;
+            }
+        }
+        int dist = dist2Gate(rooms, i, j + 1);
+        if (dist >= 0)
+        {
+            if (dist + 1 > 0 && dist + 1 < rooms[i][j])
+            {
+                rooms[i][j] = dist + 1;
+            }
+        }
+        int dist = dist2Gate(rooms, i - 1, j);
+        if (dist >= 0)
+        {
+            if (dist + 1 > 0 && dist + 1 < rooms[i][j])
+            {
+                rooms[i][j] = dist + 1;
+            }
+        }
+        int dist = dist2Gate(rooms, i + 1, j);
+        if (dist >= 0)
+        {
+            if (dist + 1 > 0 && dist + 1 < rooms[i][j])
+            {
+                rooms[i][j] = dist + 1;
+            }
+        }
+
+        return rooms[i][j];
     }
 };
 
