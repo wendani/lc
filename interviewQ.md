@@ -168,7 +168,7 @@ if four points form a square (Pure Storage)
 * \# of islands
 * max area island
 * flood fill
-* walls & gates
+* walls & gates, 286
 * rotting oranges, 994
 * longest increasing path in a matrix
 * factorial (Cisco)

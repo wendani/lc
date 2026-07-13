@@ -17,26 +17,20 @@ private:
     int dist2Gate(vector<vector<int>> &rooms, const int i, const int j)
     {
         int rowLen = rooms.size();
-        int columnLen = rooms[0].size();
-
         if (i < 0 || i >= rowLen)
         {
             return -1;
         }
+        int columnLen = rooms[0].size();
         if (j < 0 || j >= columnLen)
         {
             return -1;
         }
 
-        if (rooms[i][j] == 0)
+        if (rooms[i][j] == 0 || rooms[i][j] == -1)
         {
-            // Gate
+            // Gate or wall
             return rooms[i][j];
-        }
-        if (rooms[i][j] == -1)
-        {
-            // Wall
-            return -1;
         }
 
         // rooms[i][j] is a room when we reach here
@@ -48,7 +42,7 @@ private:
                 rooms[i][j] = dist + 1;
             }
         }
-        int dist = dist2Gate(rooms, i, j + 1);
+        dist = dist2Gate(rooms, i, j + 1);
         if (dist >= 0)
         {
             if (dist + 1 > 0 && dist + 1 < rooms[i][j])
@@ -56,7 +50,7 @@ private:
                 rooms[i][j] = dist + 1;
             }
         }
-        int dist = dist2Gate(rooms, i - 1, j);
+        dist = dist2Gate(rooms, i - 1, j);
         if (dist >= 0)
         {
             if (dist + 1 > 0 && dist + 1 < rooms[i][j])
@@ -64,7 +58,7 @@ private:
                 rooms[i][j] = dist + 1;
             }
         }
-        int dist = dist2Gate(rooms, i + 1, j);
+        dist = dist2Gate(rooms, i + 1, j);
         if (dist >= 0)
         {
             if (dist + 1 > 0 && dist + 1 < rooms[i][j])
