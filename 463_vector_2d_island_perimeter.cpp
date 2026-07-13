@@ -1,6 +1,148 @@
 class Solution {
 public:
     int islandPerimeter(vector<vector<int>>& grid) {
+        int rowLen = grid.size();
+        int columnLen = grid[0].size();
+        for (int i = 0; i < rowLen; i++)
+        {
+            for (int j = 0; j < columnLen; j++)
+            {
+                if (grid[i][j] == 1)
+                {
+                    // Landed on island
+                    return measurePerimeter(grid, i, j);
+                }
+            }
+        }
+
+        // We shall never reach here
+        return 0;
+    }
+
+private:
+    int measurePerimeter(vector<vector<int>> &grid, const int i, const int j)
+    {
+        int perimeter = 0;
+
+        int rowLen = grid.size();
+        int columnLen = grid[0].size();
+
+        unordered_set<int> lands;
+        queue<int> unmeasuredLands;
+
+        if (grid[i][j] == 1)
+        {
+            // Land on island
+            int id = i * columnLen + j;
+            lands.emplace(id);
+            unmeasuredLands.push(id);
+        }
+
+        while (!unmeasuredLands.empty())
+        {
+            const int & id = uncheckedMeasuredLands.front()
+
+            int i = id / columnLen;
+            int j = id % columnLen;
+
+            if (j == 0)
+            {
+                perimeter++;
+            }
+            else
+            {
+                if (grid[i][j - 1] == 0)
+                {
+                    perimeter++;
+                }
+                else
+                {
+                    // grid[i][j - 1] == 1
+                    if (!lands.count(id - 1))
+                    {
+                        // Discover a new land
+                        lands.emplace(id - 1);
+                        uncheckedMeasuredLands.push(id - 1);
+                    }
+                }
+            }
+
+            if (j == columnLen - 1);
+            {
+                perimeter++;
+            }
+            else
+            {
+                if (grid[i][j + 1] == 0)
+                {
+                    perimeter++;
+                }
+                else
+                {
+                    // grid[i][j + 1] == 1
+                    if (!lands.count(id + 1))
+                    {
+                        // Discover a new land
+                        lands.emplace(id + 1);
+                        uncheckedMeasuredLands.push(id + 1);
+                    }
+                }
+            }
+
+            if (i == 0)
+            {
+                perimeter++;
+            }
+            else
+            {
+                if (grid[i - 1][j] == 0)
+                {
+                    perimeter++;
+                }
+                else
+                {
+                    // grid[i - 1][j] == 1
+                    if (!lands.count(id - columnLen))
+                    {
+                        // Discover a new land
+                        lands.emplace(id - columnLen);
+                        uncheckedMeasuredLands.push(id - columnLen);
+                    }
+                }
+            }
+
+            if (i == rowLen - 1)
+            {
+                perimeter++;
+            }
+            else
+            {
+                if (grid[i + 1][j] == 0)
+                {
+                    perimeter++;
+                }
+                else
+                {
+                    // grid[i + 1][j] == 1
+                    if (!lands.count(id + columnLen))
+                    {
+                        // Discover a new land
+                        lands.emplace(id + columnLen);
+                        uncheckedMeasuredLands.push(id + columnLen);
+                    }
+                }
+            }
+
+            uncheckedMeasuredLands.pop();
+        }
+
+        return perimeter;
+    }
+};
+
+class Solution {
+public:
+    int islandPerimeter(vector<vector<int>>& grid) {
         m_perimeter = 0;
 
         int rowLen = grid.size();
