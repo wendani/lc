@@ -19,9 +19,11 @@ public:
             }
         }
 
-        int dist = 1;
+        int dist = 0;
         while (!unexploredGrids.empty())
         {
+            dist++;
+
             int len = unexploredGrids.size();
             for (int cnt = 0; cnt < len; cnt++)
             {
@@ -64,8 +66,6 @@ public:
 
                 unexploredGrids.pop();
             }
-
-            dist++;
         }
     }
 };
