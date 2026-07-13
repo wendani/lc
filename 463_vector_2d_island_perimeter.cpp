@@ -40,7 +40,7 @@ private:
 
         while (!unmeasuredLands.empty())
         {
-            const int & id = uncheckedMeasuredLands.front()
+            const int &id = unmeasuredLands.front();
 
             int i = id / columnLen;
             int j = id % columnLen;
@@ -62,12 +62,12 @@ private:
                     {
                         // Discover a new land
                         lands.emplace(id - 1);
-                        uncheckedMeasuredLands.push(id - 1);
+                        unmeasuredLands.push(id - 1);
                     }
                 }
             }
 
-            if (j == columnLen - 1);
+            if (j == columnLen - 1)
             {
                 perimeter++;
             }
@@ -84,7 +84,7 @@ private:
                     {
                         // Discover a new land
                         lands.emplace(id + 1);
-                        uncheckedMeasuredLands.push(id + 1);
+                        unmeasuredLands.push(id + 1);
                     }
                 }
             }
@@ -106,7 +106,7 @@ private:
                     {
                         // Discover a new land
                         lands.emplace(id - columnLen);
-                        uncheckedMeasuredLands.push(id - columnLen);
+                        unmeasuredLands.push(id - columnLen);
                     }
                 }
             }
@@ -128,12 +128,12 @@ private:
                     {
                         // Discover a new land
                         lands.emplace(id + columnLen);
-                        uncheckedMeasuredLands.push(id + columnLen);
+                        unmeasuredLands.push(id + columnLen);
                     }
                 }
             }
 
-            uncheckedMeasuredLands.pop();
+            unmeasuredLands.pop();
         }
 
         return perimeter;
