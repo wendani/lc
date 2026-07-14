@@ -26,7 +26,7 @@ public:
 private:
     unordered_map<string, int> m_cellVals;
 
-    int getOprandValue(string operand)
+    int getOprandValue(const string &operand)
     {
         int val = 0;
         if ('A' <= operand.front() && operand.front() <= 'Z')
@@ -83,7 +83,7 @@ public:
 private:
     unordered_map<int, int> m_cellVals;
 
-    int getOprandValue(string operand)
+    int getOprandValue(const string &operand)
     {
         int val = 0;
         try
