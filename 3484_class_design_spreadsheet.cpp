@@ -1,7 +1,6 @@
 class Spreadsheet {
 public:
     Spreadsheet(int rows) {
-        m_rowLen = rows;
     }
 
     void setCell(string cell, int value) {
@@ -45,9 +44,6 @@ private:
 
         return val;
     }
-
-    int m_rowLen;
-    const int m_columnLen = 26;
 };
 
 class Spreadsheet {
