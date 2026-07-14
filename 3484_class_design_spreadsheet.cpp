@@ -30,17 +30,17 @@ private:
     int getOprandValue(string operand)
     {
         int val = 0;
-        try
-        {
-            val = stoi(operand);
-        }
-        catch (const invalid_argument &e)
+        if ('A' <= operand.front() && 'Z' <= operand.front())
         {
             // value in cell
             if (m_cellVals.count(operand))
             {
                 val = m_cellVals[operand];
             }
+        }
+        else
+        {
+            stoi(operand);
         }
 
         return val;
