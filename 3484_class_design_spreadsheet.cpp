@@ -30,7 +30,7 @@ private:
     int getOprandValue(string operand)
     {
         int val = 0;
-        if ('A' <= operand.front() && 'Z' <= operand.front())
+        if ('A' <= operand.front() && operand.front() <= 'Z')
         {
             // value in cell
             if (m_cellVals.count(operand))
@@ -40,7 +40,7 @@ private:
         }
         else
         {
-            stoi(operand);
+            val = stoi(operand);
         }
 
         return val;
