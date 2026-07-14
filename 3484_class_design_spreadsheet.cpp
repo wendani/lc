@@ -35,18 +35,18 @@ public:
 private:
     unordered_map<int, int> m_cellVals;
 
-    int getOprandValue(string oprand)
+    int getOprandValue(string operand)
     {
         int val = 0;
         try
         {
-            val = stoi(oprand);
+            val = stoi(operand);
         }
         catch (const invalid_argument &e)
         {
             // value in cell
-            const int i = stoi(oprand.substr(1));
-            const int j = oprand.front() - 'A';
+            const int i = stoi(operand.substr(1));
+            const int j = operand.front() - 'A';
 
             const int id = i * m_columnLen + j;
             if (m_cellVals.count(id))
