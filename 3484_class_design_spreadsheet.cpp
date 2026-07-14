@@ -1,20 +1,65 @@
 class Spreadsheet {
 public:
     Spreadsheet(int rows) {
-
+        m_rowLen = rows;
     }
 
     void setCell(string cell, int value) {
+        const int i = stoi(cell.substr(1));
+        const int j = cell.front() - 'A';
 
+        const int id = i * m_columnLen + j;
+        m_cellVals[id] = value;
     }
 
     void resetCell(string cell) {
+        const int i = stoi(cell.substr(1));
+        const int j = cell.front() - 'A';
 
+        const int id = i * m_columnLen + j;
+        m_cellVals.erase(id);
     }
 
     int getValue(string formula) {
+        size_t pos = formula.find('+');
 
+        const string opStr1 = formula.substr(1, pos - 1);
+        const string opStr2 = formula.substr(pos + 1);
+
+        const int op1 = getOprandValue(opStr1);
+        const int op2 = getOprandValue(opStr2);
+
+        return op1 + op2;
     }
+
+private:
+    unordered_map<int, int> m_cellVals;
+
+    int getOprandValue(string oprand)
+    {
+        int val = 0;
+        try
+        {
+            val = stoi(oprand);
+        }
+        catch (const invalid_argument &e)
+        {
+            // value in cell
+            const int i = stoi(oprand.substr(1));
+            const int j = oprand.front() - 'A';
+
+            const int id = i * m_columnLen + j;
+            if (m_cellVals.count(id))
+            {
+                val = m_cellVals[id];
+            }
+        }
+
+        return val;
+    }
+
+    int m_rowLen;
+    const int m_columnLen = 26;
 };
 
 /**
