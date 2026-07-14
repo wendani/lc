@@ -5,6 +5,58 @@ public:
     }
 
     void setCell(string cell, int value) {
+        m_cellVals[cell] = value;
+    }
+
+    void resetCell(string cell) {
+        m_cellVals.erase(cell);
+    }
+
+    int getValue(string formula) {
+        size_t pos = formula.find('+');
+
+        const string opStr1 = formula.substr(1, pos - 1);
+        const string opStr2 = formula.substr(pos + 1);
+
+        const int op1 = getOprandValue(opStr1);
+        const int op2 = getOprandValue(opStr2);
+
+        return op1 + op2;
+    }
+
+private:
+    unordered_map<string, int> m_cellVals;
+
+    int getOprandValue(string operand)
+    {
+        int val = 0;
+        try
+        {
+            val = stoi(operand);
+        }
+        catch (const invalid_argument &e)
+        {
+            // value in cell
+            if (m_cellVals.count(operand))
+            {
+                val = m_cellVals[operand];
+            }
+        }
+
+        return val;
+    }
+
+    int m_rowLen;
+    const int m_columnLen = 26;
+};
+
+class Spreadsheet {
+public:
+    Spreadsheet(int rows) {
+        m_rowLen = rows;
+    }
+
+    void setCell(string cell, int value) {
         const int i = stoi(cell.substr(1));
         const int j = cell.front() - 'A';
 
