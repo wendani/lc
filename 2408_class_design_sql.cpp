@@ -22,6 +22,7 @@ public:
             return false;
         }
 
+        // column len match when we reach here
         const int rowIdx = ++m_tblRowLens[name];
         m_tables[name].emplace(rowIdx, row);
         return true;
@@ -38,8 +39,6 @@ public:
     }
 
     string sel(string name, int rowId, int columnId) {
-        string invalid;
-
         if (!m_tblColumnLens.count(name))
         {
             return invalid;
@@ -85,6 +84,7 @@ public:
     }
 
 private:
+    const string invalid = "<null>";
     const char separator = ',';
     unordered_map<string, int> m_tblColumnLens;
 
