@@ -9,7 +9,7 @@ public:
         {
             m_ktvStore.emplace(piecewise_construct,
                              forward_as_tuple(key),
-                             forward_as_tuple(initializer_list<TimestampVal>{{timestamp, value}}));
+                             forward_as_tuple(initializer_list<TimestampVal>{ {timestamp, value} }));
         }
         else
         {
