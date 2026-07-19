@@ -24,6 +24,105 @@ public:
 
         // column len match when we reach here
         const int rowIdx = ++m_tblRowLens[name];
+
+        // Assemble string for the entire row and piggyback to the end
+        string rowStr{to_string(rowIdx)};
+        for (const auto &cell : row)
+        {
+            rowStr += separator + cell;
+        }
+        row.push_back(rowStr);
+
+        m_tables[name].emplace(rowIdx, row);
+        return true;
+    }
+
+    void rmv(string name, int rowId) {
+        if (!m_tblColumnLens.count(name))
+        {
+            return;
+        }
+
+        // name valid when we reach here
+        m_tables[name].erase(rowId);
+    }
+
+    string sel(string name, int rowId, int columnId) {
+        if (!m_tblColumnLens.count(name))
+        {
+            return invalid;
+        }
+
+        // name valid when we reach here
+        if (columnId < 1 || m_tblColumnLens[name] < columnId)
+        {
+            return invalid;
+        }
+
+        // columnId valid when we reach here
+        if (!m_tables[name].count(rowId))
+        {
+            return invalid;
+        }
+
+        // row valid when we reach here
+        return m_tables[name][rowId][columnId - 1];
+    }
+
+    vector<string> exp(string name) {
+        vector<string> table;
+
+        if (!m_tblColumnLens.count(name))
+        {
+            return table;
+        }
+
+        const int idx = m_tblColumnLens[name];
+        // name valid when we reach here
+        for (const auto &p : m_tables[name])
+        {
+            table.push_back(p.second[idx]);
+        }
+
+        return table;
+    }
+
+private:
+    const string invalid = "<null>";
+    const char separator = ',';
+    unordered_map<string, int> m_tblColumnLens;
+
+    unordered_map<string, int> m_tblRowLens;
+    unordered_map<string, map<int, vector<string>>> m_tables;
+};
+
+
+class SQL {
+public:
+    SQL(vector<string>& names, vector<int>& columns) {
+        const int len = names.size();
+
+        for (int i = 0; i < len; i++)
+        {
+            m_tblColumnLens.emplace(names[i], columns[i]);
+            m_tblRowLens.emplace(names[i], 0);
+        }
+    }
+
+    bool ins(string name, vector<string> row) {
+        if (!m_tblColumnLens.count(name))
+        {
+            return false;
+        }
+
+        // name valid when we reach here
+        if (row.size() != m_tblColumnLens[name])
+        {
+            return false;
+        }
+
+        // column len match when we reach here
+        const int rowIdx = ++m_tblRowLens[name];
         m_tables[name].emplace(rowIdx, row);
         return true;
     }
