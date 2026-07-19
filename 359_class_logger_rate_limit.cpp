@@ -5,8 +5,49 @@ public:
     }
 
     bool shouldPrintMessage(int timestamp, string message) {
+        auto it = m_msgTimestamps.find(message);
+        if (it != m_msgTimestamps.end())
+        {
+            if (timestamp < it->second + interval)
+            {
+                return false;
+            }
 
+            // m_msgTimestamps[message] + interval <= timestamp when we reach here
+            it->second = timestamp;
+        }
+        else
+        {
+            // message not exist
+            m_msgTimestamps.emplace(message, timestamp);
+        }
+
+        return true;
     }
+
+    bool shouldPrintMessage(int timestamp, string message) {
+        if (m_msgTimestamps.count(message))
+        {
+            if (timestamp < m_msgTimestamps[message] + interval)
+            {
+                return false;
+            }
+
+            // m_msgTimestamps[message] + interval <= timestamp when we reach here
+            m_msgTimestamps[message] = timestamp;
+        }
+        else
+        {
+            // message not exist
+            m_msgTimestamps.emplace(message, timestamp);
+        }
+
+        return true;
+    }
+
+private:
+    const int interval = 10;
+    unordered_map<string, int> m_msgTimestamps;
 };
 
 /**
