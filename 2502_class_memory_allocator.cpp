@@ -50,8 +50,8 @@ public:
 private:
     int m_size;
 
-    set<int, int> m_idxSizes;
-    set<int, vector<int>> m_mIdIndices;
+    map<int, int> m_idxSizes;
+    unordered_map<int, vector<int>> m_mIdIndices;
 };
 
 /**
