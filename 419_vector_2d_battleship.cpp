@@ -32,18 +32,10 @@ private:
         // board[i][j] == 'X' when we reach here
         board[i][j] = 'Z';
 
-        if (j - 1 >= 0)
-        {
-            battleship(board, i, j - 1);
-        }
         int columnLen = board[0].size();
         if (j + 1 < columnLen)
         {
             battleship(board, i, j + 1);
-        }
-        if (i - 1 >= 0)
-        {
-            battleship(board, i - 1, j);
         }
         int rowLen = board.size();
         if (i + 1 < rowLen)
