@@ -22,7 +22,7 @@ public:
     }
 
 private:
-    void battleship(vector<vector<int>> &board, const int i, const int j)
+    void battleship(vector<vector<char>> &board, const int i, const int j)
     {
         if (board[i][j] != 'X')
         {
@@ -36,6 +36,7 @@ private:
         {
             battleship(board, i, j - 1);
         }
+        int columnLen = board[0].size();
         if (j + 1 < columnLen)
         {
             battleship(board, i, j + 1);
@@ -44,6 +45,7 @@ private:
         {
             battleship(board, i - 1, j);
         }
+        int rowLen = board.size();
         if (i + 1 < rowLen)
         {
             battleship(board, i + 1, j);
