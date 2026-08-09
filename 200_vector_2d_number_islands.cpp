@@ -5,6 +5,68 @@ public:
         int columnLen = grid[0].size();
 
         int count = 0;
+        unordered_set<int> islandCells;
+
+        for (int i = 0; i < rowLen; i++)
+        {
+            for (int j = 0; j < columnLen; j++)
+            {
+                if (grid[i][j] == '1')
+                {
+                    int id = i * columnLen + j;
+                    if (!islandCells.count(id))
+                    {
+                        count++;
+                        islandCells.emplace(id);
+
+                        queue<int> unexploredIslandCells({id});
+                        while (!unexploredIslandCells.empty())
+                        {
+                            const int id = unexploredIslandCells.front();
+
+                            const int i = id / columnLen;
+                            const int j = id % columnLen;
+
+                            if (j - 1 >= 0 && grid[i][j - 1] == '1')
+                            {
+                                islandCells.emplace(id - 1);
+                                unexploredIslandCells.push(id - 1);
+                            }
+                            if (j + 1 < columnLen && grid[i][j + 1] == '1')
+                            {
+                                islandCells.emplace(id + 1);
+                                unexploredIslandCells.push(id + 1);
+                            }
+                            if (i - 1 >= 0 && grid[i - 1][j] == '1')
+                            {
+                                islandCells.emplace(id - columnLen);
+                                unexploredIslandCells.push(id - columnLen);
+                            }
+                            if (i + 1 < rowLen && grid[i + 1][j] == '1')
+                            {
+                                islandCells.emplace(id + columnLen);
+                                unexploredIslandCells.push(id + columnLen);
+                            }
+
+                            unexploredIslandCells.pop();
+                        }
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
+};
+
+
+class Solution {
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        int rowLen = grid.size();
+        int columnLen = grid[0].size();
+
+        int count = 0;
 
         for (int i = 0; i < rowLen; i++)
         {
