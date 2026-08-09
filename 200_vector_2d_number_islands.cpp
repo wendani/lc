@@ -29,23 +29,35 @@ public:
 
                             if (j - 1 >= 0 && grid[i][j - 1] == '1')
                             {
-                                islandCells.emplace(id - 1);
-                                unexploredIslandCells.push(id - 1);
+                                auto inserted = islandCells.emplace(id - 1);
+                                if (inserted.second)
+                                {
+                                    unexploredIslandCells.push(id - 1);
+                                }
                             }
                             if (j + 1 < columnLen && grid[i][j + 1] == '1')
                             {
-                                islandCells.emplace(id + 1);
-                                unexploredIslandCells.push(id + 1);
+                                auto inserted = islandCells.emplace(id + 1);
+                                if (inserted.second)
+                                {
+                                    unexploredIslandCells.push(id + 1);
+                                }
                             }
                             if (i - 1 >= 0 && grid[i - 1][j] == '1')
                             {
-                                islandCells.emplace(id - columnLen);
-                                unexploredIslandCells.push(id - columnLen);
+                                auto inserted = islandCells.emplace(id - columnLen);
+                                if (inserted.second)
+                                {
+                                    unexploredIslandCells.push(id - columnLen);
+                                }
                             }
                             if (i + 1 < rowLen && grid[i + 1][j] == '1')
                             {
-                                islandCells.emplace(id + columnLen);
-                                unexploredIslandCells.push(id + columnLen);
+                                auto inserted = islandCells.emplace(id + columnLen);
+                                if (inserted.second)
+                                {
+                                    unexploredIslandCells.push(id + columnLen);
+                                }
                             }
 
                             unexploredIslandCells.pop();
