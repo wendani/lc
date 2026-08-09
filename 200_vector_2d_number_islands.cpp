@@ -1,7 +1,56 @@
 class Solution {
 public:
     int numIslands(vector<vector<char>>& grid) {
+        int rowLen = grid.size();
+        int columnLen = grid[0].size();
 
+        int count = 0;
+
+        for (int i = 0; i < rowLen; i++)
+        {
+            for (int j = 0; j < columnLen; j++)
+            {
+                if (grid[i][j] == '1')
+                {
+                    count++;
+
+                    island(grid, i, j);
+                }
+            }
+        }
+
+        return count;
+    }
+
+private:
+    void island(vector<vector<char>> &grid, const int i, const int j)
+    {
+        if (grid[i][j] != '1')
+        {
+            return;
+        }
+
+        // grid[i][j] == '1' when we reach here
+        grid[i][j] = '2';
+
+        if (j - 1 >= 0)
+        {
+            island(grid, i, j - 1);
+        }
+        int columnLen = grid[0].size();
+        if (j + 1 < columnLen)
+        {
+            island(grid, i, j + 1);
+        }
+        if (i - 1 >= 0)
+        {
+            island(grid, i - 1, j);
+        }
+        int rowLen = grid.size();
+        if (i + 1 < rowLen)
+        {
+            island(grid, i + 1, j);
+        }
     }
 };
 
