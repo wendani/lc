@@ -4,6 +4,39 @@ public:
         int rowLen = board.size();
         int columnLen = board[0].size();
 
+        int count = 0;
+
+        for (int i = 0; i < rowLen; i++)
+        {
+            for (int j = 0; j < columnLen; j++)
+            {
+                if (board[i][j] == 'X')
+                {
+                    if (j - 1 >= 0 && board[i][j - 1] == 'X')
+                    {
+                    }
+                    else if (i - 1 >= 0 && board[i - 1][j] == 'X')
+                    {
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
+};
+
+
+class Solution {
+public:
+    int countBattleships(vector<vector<char>>& board) {
+        int rowLen = board.size();
+        int columnLen = board[0].size();
+
         unordered_set<int> battleshipCells;
         int count = 0;
 
