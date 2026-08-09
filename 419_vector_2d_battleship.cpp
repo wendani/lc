@@ -21,7 +21,7 @@ public:
                         if (j + 1 < columnLen && board[i][j + 1] == 'X')
                         {
                             // Horizontal battleship
-                            for (l = j + 1; l < columnLen; l++)
+                            for (int l = j + 1; l < columnLen; l++)
                             {
                                 if (board[i][l] != 'X')
                                 {
@@ -33,7 +33,7 @@ public:
                         else if (i + 1 < rowLen && board[i + 1][j] == 'X')
                         {
                             // Vertical battleship
-                            for (k = i + 1; k < rowLen; k++)
+                            for (int k = i + 1; k < rowLen; k++)
                             {
                                 if (board[k][j] != 'X')
                                 {
