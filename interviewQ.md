@@ -165,9 +165,10 @@ if four points form a square (Pure Storage)
 * path sum: determine if a tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
 * remove Nth node from end of list
 * word search
-* \# of islands
+* \# of islands, 200
 * max area island
 * walls & gates, 286
+* battleship, 419
 * island perimeter, 463
 * flood fill, 733
 * rotting oranges, 994
@@ -207,11 +208,10 @@ shortest word distance
 * letter combinations of a phone number
 * combination sum
 * generate parentheses
-* walls & gates, 286
+* \# of islands, 200
+* battleship, 419
 * island perimeter, 463
 * flood fill, 733
-* rotting oranges, 994
-* battleship, 419
 
 # BFS
 * binary tree level order traversal
@@ -225,6 +225,8 @@ shortest word distance
 
 * word ladder
 
+* \# of islands, 200
+* walls & gates, 286
 * island perimeter, 463
 * flood fill, 733
 * rotting oranges, 994
