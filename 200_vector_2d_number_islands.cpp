@@ -5,7 +5,6 @@ public:
         int columnLen = grid[0].size();
 
         int count = 0;
-        unordered_set<int> islandCells;
 
         for (int i = 0; i < rowLen; i++)
         {
