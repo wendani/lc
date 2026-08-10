@@ -25,37 +25,28 @@ public:
             if (board[i][j] == 'O')
             {
                 int id = i * columnLen + j;
-                auto inserted = unsurroundedCells.emplace(id);
-                if (inserted.second)
-                {
-                    unexploredUnsurroundedCells.emplace(id);
-                }
+                unsurroundedCells.emplace(id);
+                unexploredUnsurroundedCells.emplace(id);
             }
         }
         j = 0;
-        for (i = 0; i < rowLen; i++)
+        for (i = 1; i < rowLen - 1; i++)
         {
             if (board[i][j] == 'O')
             {
                 int id = i * columnLen + j;
-                auto inserted = unsurroundedCells.emplace(id);
-                if (inserted.second)
-                {
-                    unexploredUnsurroundedCells.emplace(id);
-                }
+                unsurroundedCells.emplace(id);
+                unexploredUnsurroundedCells.emplace(id);
             }
         }
         j = columnLen - 1;
-        for (i = 0; i < rowLen; i++)
+        for (i = 1; i < rowLen - 1; i++)
         {
             if (board[i][j] == 'O')
             {
                 int id = i * columnLen + j;
-                auto inserted = unsurroundedCells.emplace(id);
-                if (inserted.second)
-                {
-                    unexploredUnsurroundedCells.emplace(id);
-                }
+                unsurroundedCells.emplace(id);
+                unexploredUnsurroundedCells.emplace(id);
             }
         }
 
