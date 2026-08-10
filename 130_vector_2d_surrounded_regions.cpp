@@ -39,9 +39,9 @@ public:
             }
         }
 
-        for (int i = 1; i < rowLen - 1; i++)
+        for (int i = 0; i < rowLen; i++)
         {
-            for (j = 1; j < columnLen - 1; j++)
+            for (j = 0; j < columnLen; j++)
             {
                 if (board[i][j] == 'O')
                 {
