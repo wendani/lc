@@ -4,6 +4,94 @@ public:
         int rowLen = board.size();
         int columnLen = board[0].size();
 
+        int i, j;
+
+        i = 0;
+        for (j = 0; j < columnLen; j++)
+        {
+            if (board[i][j] == 'O')
+            {
+                unsurroundedRegion(board, i, j);
+            }
+        }
+        i = rowLen - 1;
+        for (j = 0; j < columnLen; j++)
+        {
+            if (board[i][j] == 'O')
+            {
+                unsurroundedRegion(board, i, j);
+            }
+        }
+        j = 0;
+        for (i = 1; i < rowLen - 1; i++)
+        {
+            if (board[i][j] == 'O')
+            {
+                unsurroundedRegion(board, i, j);
+            }
+        }
+        j = columnLen - 1;
+        for (i = 1; i < rowLen - 1; i++)
+        {
+            if (board[i][j] == 'O')
+            {
+                unsurroundedRegion(board, i, j);
+            }
+        }
+
+        for (int i = 1; i < rowLen - 1; i++)
+        {
+            for (j = 1; j < columnLen - 1; j++)
+            {
+                if (board[i][j] == 'O')
+                {
+                    board[i][j] = 'X';
+                }
+                else if (board[i][j] == 'Z')
+                {
+                    board[i][j] = 'O';
+                }
+            }
+        }
+    }
+
+private:
+    void unsurroundedRegion(vector<vector<char>> &board, const int i, const int j)
+    {
+        if (board[i][j] != 'O')
+        {
+            return;
+        }
+
+        // board[i][j] == 'O' when we reach here
+        board[i][j] = 'Z';
+
+        if (j - 1 >= 0 && board[i][j - 1] == 'O')
+        {
+            unsurroundedRegion(board, i, j - 1);
+        }
+        if (j + 1 < columnLen && board[i][j + 1] == 'O')
+        {
+            unsurroundedRegion(board, i, j + 1);
+        }
+        if (i - 1 >= 0 && board[i - 1][j] == 'O')
+        {
+            unsurroundedRegion(board, i - 1, j);
+        }
+        if (i + 1 < rowLen && board[i + 1][j] == 'O')
+        {
+            unsurroundedRegion(board, i + 1, j);
+        }
+    }
+};
+
+
+class Solution {
+public:
+    void solve(vector<vector<char>>& board) {
+        int rowLen = board.size();
+        int columnLen = board[0].size();
+
         unordered_set<int> unsurroundedCells;
         queue<int> unexploredUnsurroundedCells;
 
