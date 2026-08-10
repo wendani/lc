@@ -70,6 +70,7 @@ private:
         {
             unsurroundedRegion(board, i, j - 1);
         }
+        int columnLen = board[0].size();
         if (j + 1 < columnLen && board[i][j + 1] == 'O')
         {
             unsurroundedRegion(board, i, j + 1);
@@ -78,6 +79,7 @@ private:
         {
             unsurroundedRegion(board, i - 1, j);
         }
+        int rowLen = board.size();
         if (i + 1 < rowLen && board[i + 1][j] == 'O')
         {
             unsurroundedRegion(board, i + 1, j);
