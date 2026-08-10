@@ -153,30 +153,8 @@ meeting rooms 1 & 2
 bubble sort, quick sort, merge sort (Qualcomm)
 if four points form a square (Pure Storage)
 
-# RECURSION
-* K-th largest element in an array
-* lca in binary tree, bst
-* distance K nodes in binary tree
-* max difference between node and ancestor in binary tree
-* second min in binary tree
-* path sum 3: find the number of paths that sum to a given value. Paths go downwards (traveling only from parent nodes to child nodes).
-* path sum 2: find all root-to-leaf paths where each path's sum equals the given sum.
-* paths: return all root-to-leaf paths.
-* path sum: determine if a tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
-* remove Nth node from end of list
-* word search
-* max area island
-* \# of islands, 200
-* walls & gates, 286
-* battleship, 419
-* island perimeter, 463
-* flood fill, 733
-* rotting oranges, 994
-* longest increasing path in a matrix
-* factorial (Cisco)
-
 # BINARY SEARCH
-* duplicate number (287)
+* duplicate number, 287
 * time-based key value store, 981
 * snapshot array, 1146
 binary search (Cisco)
@@ -200,6 +178,29 @@ shortest word distance
 2 sum (Bytedance)
 2 sum less than K
 
+# RECURSION
+* K-th largest element in an array
+* lca in binary tree, bst
+* distance K nodes in binary tree
+* max difference between node and ancestor in binary tree
+* second min in binary tree
+* path sum 3: find the number of paths that sum to a given value. Paths go downwards (traveling only from parent nodes to child nodes).
+* path sum 2: find all root-to-leaf paths where each path's sum equals the given sum.
+* paths: return all root-to-leaf paths.
+* path sum: determine if a tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
+* remove Nth node from end of list
+* word search
+* max area island
+* surrounded regions, 130
+* \# of islands, 200
+* walls & gates, 286
+* battleship, 419
+* island perimeter, 463
+* flood fill, 733
+* rotting oranges, 994
+* longest increasing path in a matrix
+* factorial (Cisco)
+
 # DFS
 * topological sort
 * longest increasing path in a matrix
@@ -208,6 +209,7 @@ shortest word distance
 * letter combinations of a phone number
 * combination sum
 * generate parentheses
+* surrounded regions, 130
 * \# of islands, 200
 * battleship, 419
 * island perimeter, 463
@@ -225,6 +227,7 @@ shortest word distance
 
 * word ladder
 
+* surrounded regions, 130
 * \# of islands, 200
 * walls & gates, 286
 * island perimeter, 463
