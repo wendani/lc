@@ -25,8 +25,11 @@ public:
             if (board[i][j] == 'O')
             {
                 int id = i * columnLen + j;
-                unsurroundedCells.emplace(id);
-                unexploredUnsurroundedCells.emplace(id);
+                auto inserted = unsurroundedCells.emplace(id);
+                if (inserted.second)
+                {
+                    unexploredUnsurroundedCells.emplace(id);
+                }
             }
         }
         j = 0;
@@ -35,8 +38,11 @@ public:
             if (board[i][j] == 'O')
             {
                 int id = i * columnLen + j;
-                unsurroundedCells.emplace(id);
-                unexploredUnsurroundedCells.emplace(id);
+                auto inserted = unsurroundedCells.emplace(id);
+                if (inserted.second)
+                {
+                    unexploredUnsurroundedCells.emplace(id);
+                }
             }
         }
         j = columnLen - 1;
@@ -45,8 +51,11 @@ public:
             if (board[i][j] == 'O')
             {
                 int id = i * columnLen + j;
-                unsurroundedCells.emplace(id);
-                unexploredUnsurroundedCells.emplace(id);
+                auto inserted = unsurroundedCells.emplace(id);
+                if (inserted.second)
+                {
+                    unexploredUnsurroundedCells.emplace(id);
+                }
             }
         }
 
